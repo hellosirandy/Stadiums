@@ -1,0 +1,17 @@
+#logoImg {
+  margin-top: 15px;
+  margin-left: 90px;
+  width: 120px;
+}
+
+/*.sideLinks {
+  font-weight: bold !important;
+}*/
+
+#logoLi {
+  height: auto;
+}
+
+.selectLi {
+  margin: 10px 0;
+}

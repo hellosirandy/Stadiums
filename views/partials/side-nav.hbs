@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/stylesheets/partials/side-nav.css">
+<!-- <script src="/javascripts/partials/side-nav.js"></script> -->
+<ul id="slide-out" class="side-nav fixed">
+  <li id="logoLi">
+    <img src="/images/side.png" alt="" id="logoImg">
+  </li>
+  <li><div class="divider"></div></li>
+  <li class="selectLi" id="selectSportLi">
+    <a>
+      <select id="sportSelect" data-selected = "{{selectedSport}}">
+        <option value = "None" disabled selected>Choose a sport</option>
+        <option value = "Baseball">Baseball</option>
+        <option id="asdf" value = "Football">Football</option>
+        <option value = "Basketball">Basketball</option>
+        <option value = "Hockey">Hockey</option>
+      </select>
+    </a>
+  </li>
+  {{#if leagues}}
+  <li class="selectLi" id="selectLeagueLi">
+    <a>
+      <select id="leagueSelect" data-selected = "{{selectedLeague}}">
+        <option value="" disabled selected>Choose a league</option>
+        {{#each leagues}}
+        <option value = "{{this}}" >{{this}}</option>
+        {{/each}}
+      </select>
+    </a>
+  </li>
+  {{/if}}
+  {{#each stadiums}}
+  <li><a href="#!">{{this.name}}</a></li>
+  {{/each}}
+  <!-- <li><a href="#!">First Sidebar Link</a></li>
+  <li><a href="#!">Second Sidebar Link</a></li> -->
+</ul>
+<script src="/javascripts/partials/side-nav.js" charset="utf-8"></script>
