@@ -1,4 +1,4 @@
-var Seeder = require('../helpers/seeder');
+var Seeder = require('../../helpers/seeder');
 var PNCPark = {
   name: 'PNC Park',
   sport: ['Baseball'],
@@ -6,7 +6,7 @@ var PNCPark = {
   detail: {
     team: ['Pittsburgh Pirates'],
     capacity: 38362,
-    opened: new Date(2001, 3, 31),
+    opened: new Date('03/31/2001'),
     architect: 'Populous',
     location: 'Pittsburgh, Pennsylvania',
     images: [

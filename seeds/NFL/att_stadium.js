@@ -1,4 +1,4 @@
-var Seeder = require('../helpers/seeder');
+var Seeder = require('../../helpers/seeder');
 var ATTStadium = {
   name: 'AT&T Stadium',
   sport: ['Football'],
@@ -6,7 +6,7 @@ var ATTStadium = {
   detail: {
     team: ['Dallas Cowboys'],
     capacity: 100000,
-    opened: new Date(2009, 5, 27),
+    opened: new Date('05/27/2009'),
     architect: 'HKS, Inc.',
     location: 'Arlington, Texas'
   }
