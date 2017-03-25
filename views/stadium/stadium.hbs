@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/stylesheets/stadium/stadium.css">
+<script src="/javascripts/stadium/stadium.js" charset="utf-8"></script>
 <div id="stadiumHeader" class="grey darken-1">
   <div class="container">
     <p id="title" class="grey-text text-lighten-3">{{stadium.name}}</p>
@@ -42,7 +43,7 @@
     <div class="row">
       {{#each this}}
       <div class="col s3 albumCell">
-        <img class="materialboxed" src="{{this}}" alt="">
+        <img class="materialboxed cellContent" src="{{this}}" alt="">
       </div>
       {{/each}}
     </div>
