@@ -7,7 +7,7 @@ var BarclaysCenter = {
     team: ['Broolklyn Nets', 'New York Islanders'],
     capacity: 17732,
     opened: new Date(2012, 9, 21),
-    architect: 'HKS, Inc.',
+    architect: 'AECOM (Ellerbe Becket)',
     location: 'Brooklyn, New York'
   }
 };

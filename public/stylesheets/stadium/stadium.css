@@ -1,13 +1,58 @@
 #stadiumHeader {
-  line-height: 80px;
+  line-height: 12vh;
 }
 
 #title {
   margin: 0;
-  font-size: 45px;
+  font-size: 6vh;
 }
 
 .container {
   width: 90%;
   max-width: none;
+}
+
+#stadiumDescription {
+  padding-top: 70px;
+  padding-bottom: 10px;
+}
+
+#stadiumAlbum {
+  padding-top: 20px;
+}
+
+.description img {
+  margin-left: 30%;
+  width: 40%;
+}
+
+.description h4 {
+  font-size: 1.8vw;
+  text-align: center;
+  font-weight: bold;
+}
+
+.description h5 {
+  font-size: 1.3vw;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.one-fifth {
+  width: 20%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.albumCell {
+  height: 13vw;
+  display: flex;
+  align-items: center;
+}
+
+.albumCell img {
+  margin: auto;
+  max-height: 13vw;
+  max-width: 100%;
 }

@@ -3,7 +3,8 @@ var router = express.Router();
 var RouteBasics = require('../middlewares/route-basics');
 var Stadium = require('../models/stadium-schema');
 var League = require('../configs/league');
-var sportList = ['Baseball', 'Football', 'Basketball', 'Hockey']
+var sportList = ['Baseball', 'Football', 'Basketball', 'Hockey'];
+var dateHandler = require('../helpers/date');
 
 /* GET home page. */
 router.get('/', RouteBasics, function(req, res, next) {
@@ -48,6 +49,16 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
           return obj._id == req.params.stadium;
         })[0];
         if (stadium) {
+          stadium.handledDetail = {}
+          if (stadium.detail.opened) stadium.detail.handledOpened = dateHandler(stadium.detail.opened);
+          if (stadium.detail.capacity) stadium.detail.handledCapacity = stadium.detail.capacity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          if (stadium.detail.images) {
+            stadium.detail.handledImages = [];
+            chunkSize = 4;
+            for (var i = 0; i < stadium.detail.images.length; i += chunkSize) {
+              stadium.detail.handledImages.push(stadium.detail.images.slice(i, i + chunkSize));
+            }
+          }
           req.renderValues.stadium = stadium;
           res.render('stadium/stadium', req.renderValues);
         }
