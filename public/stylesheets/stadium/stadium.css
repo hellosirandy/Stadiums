@@ -12,8 +12,13 @@
   max-width: none;
 }
 
-#stadiumMain {
+#stadiumDescription {
   padding-top: 70px;
+  padding-bottom: 10px;
+}
+
+#stadiumAlbum {
+  padding-top: 20px;
 }
 
 .description img {
@@ -38,4 +43,10 @@
     margin-left: auto;
     left: auto;
     right: auto;
+}
+.albumCell img {
+  display: block;
+  height: auto;
+  min-width: 100%;
+  width: 100%;
 }
