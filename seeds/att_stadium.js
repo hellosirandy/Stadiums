@@ -1,8 +1,5 @@
-var Stadium = require('../models/stadium-schema');
-var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/stadiums');
-
-var stadium = new Stadium({
+var Seeder = require('../helpers/seeder');
+var ATTStadium = {
   name: 'AT&T Stadium',
   sport: ['Football'],
   league: ['NFL'],
@@ -13,8 +10,5 @@ var stadium = new Stadium({
     architect: 'HKS, Inc.',
     location: 'Arlington, Texas'
   }
-});
-
-stadium.save(function(err) {
-  mongoose.disconnect();
-});
+};
+Seeder(ATTStadium);

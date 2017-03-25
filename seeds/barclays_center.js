@@ -1,20 +1,14 @@
-var Stadium = require('../models/stadium-schema');
-var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/stadiums');
-
-var stadium = new Stadium({
+var Seeder = require('../helpers/seeder');
+var BarclaysCenter = {
   name: 'Barclays Center',
   sport: ['Basketball', 'Hockey'],
-  league: ['NBA', 'NFL'],
+  league: ['NBA', 'NHL'],
   detail: {
-    team: ['Brooklyn Nets', 'New York Islanders'],
+    team: ['Broolklyn Nets', 'New York Islanders'],
     capacity: 17732,
     opened: new Date(2012, 9, 21),
     architect: 'HKS, Inc.',
-    location: 'Arlington, Texas'
+    location: 'Brooklyn, New York'
   }
-});
-
-stadium.save(function(err) {
-  mongoose.disconnect();
-});
+};
+Seeder(BarclaysCenter);
