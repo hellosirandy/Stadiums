@@ -22,11 +22,13 @@
 }
 
 .description h4 {
+  font-size: 1.8vw;
   text-align: center;
   font-weight: bold;
 }
 
 .description h5 {
+  font-size: 1.3vw;
   text-align: center;
   word-wrap: break-word;
 }
