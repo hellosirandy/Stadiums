@@ -3,22 +3,17 @@ $(document).ready(function() {
   $('#leagueSelect').material_select();
 
   $('#sportSelect').change(function() {
-    var url = $('#sportSelect option:selected').val();
-    window.location = url;
+    var url = '/' + $('#sportSelect option:selected').val();
+    console.log(url);
+    window.location.href = url;
   });
   $('#leagueSelect').change(function() {
-    var url = $('#leagueSelect option:selected').val();
-    console.log(url);
-    window.location = url;
+    var url = '/' + $('#sportSelect').data('selected') + '/' + $('#leagueSelect option:selected').val();
+    window.location.href = url;
   });
 
   DefaultSelect('#sportSelect');
   DefaultSelect('#leagueSelect');
-  // var selectSport = $('#sportSelect').data('selected');
-  // console.log(selectSport);
-  // if (selectSport) $(`#sportSelect option:contains(${selectSport})`).prop('selected', true);
-  // else $(`#sportSelect option:contains("None")`).prop('selected', true);
-  // $('#sportSelect').material_select();
 });
 
 function DefaultSelect(selector) {

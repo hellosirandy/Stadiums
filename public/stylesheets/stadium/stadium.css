@@ -1,0 +1,13 @@
+#stadiumHeader {
+  line-height: 80px;
+}
+
+#title {
+  margin: 0;
+  font-size: 45px;
+}
+
+.container {
+  width: 90%;
+  max-width: none;
+}
