@@ -1,17 +1,25 @@
+#side-nav {
+  
+}
+
 #logoImg {
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 90px;
   width: 120px;
 }
 
-/*.sideLinks {
+.sideLinks {
   font-weight: bold !important;
-}*/
+}
 
 #logoLi {
-  height: auto;
+
 }
 
 .selectLi {
   margin: 10px 0;
+}
+
+.side-nav .divider {
+  margin: 0;
 }

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="/stylesheets/partials/side-nav.css">
-<!-- <script src="/javascripts/partials/side-nav.js"></script> -->
-<ul id="slide-out" class="side-nav fixed">
+<script src="/javascripts/partials/side-nav.js"></script>
+<ul id="side-nav" class="side-nav fixed grey lighten-5">
   <li id="logoLi">
-    <img src="/images/side.png" alt="" id="logoImg">
+    <img src="/images/logo.png" alt="" id="logoImg">
   </li>
   <li><div class="divider"></div></li>
   <li class="selectLi" id="selectSportLi">
@@ -29,9 +29,6 @@
   </li>
   {{/if}}
   {{#each stadiums}}
-  <li><a href="#!">{{this.name}}</a></li>
+  <li><a href="/{{../selectedSport}}/{{../selectedLeague}}/{{this._id}}" class="sideLinks">{{this.name}}</a></li>
   {{/each}}
-  <!-- <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li> -->
 </ul>
-<script src="/javascripts/partials/side-nav.js" charset="utf-8"></script>

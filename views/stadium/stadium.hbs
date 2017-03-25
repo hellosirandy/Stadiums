@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="/stylesheets/stadium/stadium.css">
+<div id="stadiumHeader" class="grey darken-1">
+  <div class="container">
+    <p id="title" class="grey-text text-lighten-3">{{stadium.name}}</p>
+  </div>
+</div>
+
+<div id="stadiumDescription" class="grey lighten-4">
+  <div class="row container" style="margin-bottom: 0;">
+    <div class="col one-fifth description">
+      <img src="/images/seats2.png" alt="">
+      <h4>Capicity</h4>
+      <h5 class="grey-text text-darken-1">{{stadium.detail.handledCapacity}}</h5>
+    </div>
+    <div class="col one-fifth description">
+      <img src="/images/opened.png" alt="">
+      <h4>Opened</h4>
+      <h5 class="grey-text text-darken-1">{{stadium.detail.handledOpened}}</h5>
+    </div>
+    <div class="col one-fifth description">
+      <img src="/images/location.png" alt="">
+      <h4>Location</h4>
+      <h5 class="grey-text text-darken-1">{{stadium.detail.location}}</h5>
+    </div>
+    <div class="col one-fifth description">
+      <img src="/images/architect.png" alt="">
+      <h4>Architect</h4>
+      <h5 class="grey-text text-darken-1">{{stadium.detail.architect}}</h5>
+    </div>
+    <div class="col one-fifth description">
+      <img src="/images/tenant.png" alt="">
+      <h4>Tenants</h4>
+      {{#each stadium.detail.team}}
+      <h5 class="grey-text text-darken-1">{{this}}</h5>
+      {{/each}}
+    </div>
+  </div>
+</div>
+<div id="stadiumAlbum" class="grey lighten-3">
+  <div class="row container" style="margin-bottom: 0;">
+    {{#each stadium.detail.handledImages}}
+    <div class="row">
+      {{#each this}}
+      <div class="col s3 albumCell">
+        <img class="materialboxed" src="{{this}}" alt="">
+      </div>
+      {{/each}}
+    </div>
+    {{/each}}
+  </div>
+</div>
