@@ -39,14 +39,20 @@
 }
 
 .one-fifth {
-    width: 20%;
-    margin-left: auto;
-    left: auto;
-    right: auto;
+  width: 20%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
+
+.albumCell {
+  height: 13vw;
+  display: flex;
+  align-items: center;
+}
+
 .albumCell img {
-  display: block;
-  height: auto;
-  min-width: 100%;
-  width: 100%;
+  margin: auto;
+  max-height: 13vw;
+  max-width: 100%;
 }
