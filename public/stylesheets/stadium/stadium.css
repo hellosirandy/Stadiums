@@ -1,10 +1,10 @@
 #stadiumHeader {
-  line-height: 8rem;
+  line-height: 12vh;
 }
 
 #title {
   margin: 0;
-  font-size: 4rem;
+  font-size: 6vh;
 }
 
 .container {
