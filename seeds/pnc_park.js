@@ -1,8 +1,5 @@
-var Stadium = require('../models/stadium-schema');
-var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/stadiums');
-
-var stadium = new Stadium({
+var Seeder = require('../helpers/seeder');
+var PNCPark = {
   name: 'PNC Park',
   sport: ['Baseball'],
   league: ['MLB'],
@@ -13,8 +10,5 @@ var stadium = new Stadium({
     architect: 'Populous',
     location: 'Pittsburgh, Pennsylvania'
   }
-});
-
-stadium.save(function(err) {
-  mongoose.disconnect();
-});
+};
+Seeder(PNCPark);
