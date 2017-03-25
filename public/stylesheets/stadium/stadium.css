@@ -1,13 +1,38 @@
 #stadiumHeader {
-  line-height: 80px;
+  line-height: 8rem;
 }
 
 #title {
   margin: 0;
-  font-size: 45px;
+  font-size: 4rem;
 }
 
 .container {
   width: 90%;
   max-width: none;
+}
+
+#stadiumMain {
+  padding: 70px 10% 30px;
+}
+
+.description img {
+  margin-left: 25%;
+  width: 50%;
+}
+
+.description h4 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.description h5 {
+  text-align: center;
+}
+
+.one-fifth {
+    width: 20%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
 }
