@@ -1,10 +1,10 @@
 $(document).ready(function() {
+  $(".button-collapse").sideNav();
   $('#sportSelect').material_select();
   $('#leagueSelect').material_select();
 
   $('#sportSelect').change(function() {
     var url = '/' + $('#sportSelect option:selected').val();
-    console.log(url);
     window.location.href = url;
   });
   $('#leagueSelect').change(function() {
@@ -18,7 +18,6 @@ $(document).ready(function() {
 
 function DefaultSelect(selector) {
   var select = $(selector).data('selected');
-  console.log(select);
   if (select) $(`${selector} option:contains(${select})`).prop('selected', true);
   else $(`${selector} option:contains("None")`).prop('selected', true);
   $(selector).material_select();

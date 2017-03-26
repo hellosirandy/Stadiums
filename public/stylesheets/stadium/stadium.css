@@ -46,13 +46,10 @@
 }
 
 .albumCell {
-  height: 13vw;
-  display: flex;
-  align-items: center;
+
 }
 
 .albumCell img {
-  margin: auto;
-  max-height: 13vw;
-  max-width: 100%;
+  height: auto;
+  width: 100%;
 }
