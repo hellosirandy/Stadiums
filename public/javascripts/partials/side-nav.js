@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $(".button-collapse").sideNav();
   $('#sportSelect').material_select();
   $('#leagueSelect').material_select();
 
