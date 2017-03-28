@@ -1,5 +1,5 @@
 #side-nav {
-  
+
 }
 
 #logoImg {
@@ -10,6 +10,9 @@
 
 .sideLinks {
   font-weight: bold !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #logoLi {
