@@ -1,6 +1,6 @@
 var Seeder = require('../../helpers/seeder');
 var stadium = {
-  name: 'America Airlines Arena',
+  name: 'American Airlines Arena',
   sport: ['Basketball'],
   league: ['NBA'],
   detail: {
