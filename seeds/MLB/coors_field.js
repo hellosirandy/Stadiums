@@ -19,6 +19,8 @@ var stadium = {
       'http://assets2.sportsnet.ca/wp-content/uploads/2016/03/rockies-1040x572.jpg',
       'http://www.ballparksofbaseball.com/wp-content/uploads/2016/03/coors16951.jpg',
       'http://www.ballparksofbaseball.com/wp-content/uploads/2016/03/coors16955.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Coors_field_aerial_1.JPG',
+      'https://c1.staticflickr.com/7/6198/6089332963_cd873c7216_b.jpg',
       
     ]
   }

@@ -29,7 +29,9 @@
   </li>
   {{/if}}
   {{#each stadiums}}
-  <li><a href="/{{../selectedSport}}/{{../selectedLeague}}/{{this._id}}" class="sideLinks">{{this.name}}</a></li>
+  <li>
+    <a href="/{{../selectedSport}}/{{../selectedLeague}}/{{this._id}}" class="sideLinks">{{this.name}}</a>
+  </li>
   {{/each}}
 </ul>
 <!-- <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> -->
