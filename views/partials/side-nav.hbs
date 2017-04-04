@@ -2,7 +2,7 @@
 <script src="/javascripts/partials/side-nav.js"></script>
 <ul id="slide-out" class="side-nav fixed grey lighten-5">
   <li id="logoLi">
-    <img src="/images/logo.png" alt="" id="logoImg">
+    <img src="/images/logo.png" alt="" id="logoImg" onclick="window.location.href = '/'">
   </li>
   <li><div class="divider"></div></li>
   <li class="selectLi" id="selectSportLi">
@@ -10,7 +10,7 @@
       <select id="sportSelect" data-selected = "{{selectedSport}}">
         <option value = "None" disabled selected>Choose a sport</option>
         <option value = "Baseball">Baseball</option>
-        <option id="asdf" value = "Football">Football</option>
+        <option value = "Football">Football</option>
         <option value = "Basketball">Basketball</option>
         <option value = "Hockey">Hockey</option>
       </select>

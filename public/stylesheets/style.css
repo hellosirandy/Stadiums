@@ -15,3 +15,8 @@ header, main, footer {
     padding-left: 0;
   }
 }
+
+main .container {
+  width: 90%;
+  max-width: none;
+}

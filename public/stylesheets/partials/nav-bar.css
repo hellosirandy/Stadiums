@@ -1,0 +1,8 @@
+#nav-bar {
+  line-height: 12vh;
+}
+
+#nav-bar #title {
+  margin: 0;
+  font-size: 6vh;
+}

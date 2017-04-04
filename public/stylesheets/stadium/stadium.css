@@ -1,16 +1,7 @@
-#stadiumHeader {
-  line-height: 12vh;
-}
-
-#title {
-  margin: 0;
-  font-size: 6vh;
-}
-
-.container {
+/*.container {
   width: 90%;
   max-width: none;
-}
+}*/
 
 #stadiumDescription {
   padding-top: 70px;

@@ -8,14 +8,31 @@ var dateHandler = require('../helpers/date');
 
 /* GET home page. */
 router.get('/', RouteBasics, function(req, res, next) {
-  res.render('index', req.renderValues);
+  Stadium.find(function(err, stadiums) {
+    if (err) res.redirect('/');
+    else {
+      var n = 5;
+      req.renderValues.stadiumSlider = GenSlider(n, stadiums);
+      req.renderValues.navTitle = 'Stadiums';
+      res.render('index', req.renderValues);
+    }
+  });
+
 });
 
 router.get('/:sport', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    req.renderValues.selectedSport = req.params.sport;
-    req.renderValues.leagues = League(req.params.sport);
-    res.render('index', req.renderValues);
+    Stadium.find({sport: req.params.sport}, function(err, stadiums) {
+      if (err) res.redirect('/');
+      else {
+        var n = 5;
+        req.renderValues.stadiumSlider = GenSlider(n, stadiums);
+        req.renderValues.navTitle = req.params.sport;
+        req.renderValues.selectedSport = req.params.sport;
+        req.renderValues.leagues = League(req.params.sport);
+        res.render('index', req.renderValues);
+      }
+    });
   }
   else res.redirect('/');
 });
@@ -24,6 +41,9 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
     Stadium.find({league: req.params.league}, function(err, stadiums) {
       if (stadiums.length > 0) {
+        var n = 5;
+        req.renderValues.stadiumSlider = GenSlider(n, stadiums);
+        req.renderValues.navTitle = req.params.league;
         req.renderValues.selectedSport = req.params.sport;
         req.renderValues.leagues = League(req.params.sport);
         req.renderValues.selectedLeague = req.params.league;
@@ -60,6 +80,7 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
             }
           }
           req.renderValues.stadium = stadium;
+          req.renderValues.navTitle = stadium.name;
           res.render('stadium/stadium', req.renderValues);
         }
         else res.redirect(`/${req.params.sport}`);
@@ -69,5 +90,33 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
   }
   else res.redirect('/');
 });
+
+function GetRandomNums(n, s) {
+  var arr = [];
+  while (arr.length < n) {
+    var num = Math.floor((Math.random() * s));
+    if(arr.indexOf(num) > -1) continue;
+    arr[arr.length] = num;
+  }
+  return arr;
+}
+
+function GenSlider(n, stadiums) {
+  var randNums = GetRandomNums(n, stadiums.length);
+  var stadiumSlider = [];
+  var align = ['center-align', 'left-align', 'right-align']
+  for (i = 0; i < n; i++) {
+    var stadium = stadiums[randNums[i]]
+    var slide = {
+      name: stadium.name,
+      location: stadium.detail.location,
+      league: stadium.league.join(', '),
+      image: stadium.detail.images[0],
+      class: align[i%3]
+    }
+    stadiumSlider[i] = slide;
+  }
+  return stadiumSlider;
+}
 
 module.exports = router;
