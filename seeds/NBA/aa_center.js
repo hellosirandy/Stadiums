@@ -4,7 +4,7 @@ var stadium = {
   sport: ['Basketball', 'Hockey'],
   league: ['NBA', 'NHL'],
   detail: {
-    team: ['Dallas, Texas', 'Dallas Stars'],
+    team: ['Dallas Mavericks', 'Dallas Stars'],
     capacity: 19200,
     opened: new Date('07/17/2001'),
     architect: 'David M. Schwarz/Architectural',
