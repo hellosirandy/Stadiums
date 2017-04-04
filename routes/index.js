@@ -112,7 +112,7 @@ function GenSlider(n, stadiums) {
       location: stadium.detail.location,
       league: stadium.league.join(', '),
       image: stadium.detail.images[0],
-      class: align[i%3]
+      align: align[i%3]
     }
     stadiumSlider[i] = slide;
   }
