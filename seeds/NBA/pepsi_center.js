@@ -2,7 +2,7 @@ var Seeder = require('../../helpers/seeder');
 var stadium = {
   name: 'Pepsi Center',
   sport: ['Basketball', 'Hockey'],
-  league: ['NBA', 'Hockey'],
+  league: ['NBA', 'NHL'],
   detail: {
     team: ['Denver Nuggets', 'Colorado Avalanche'],
     capacity: 19155,
