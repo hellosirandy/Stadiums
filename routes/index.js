@@ -112,6 +112,7 @@ function GenSlider(n, stadiums) {
       location: stadium.detail.location,
       league: stadium.league.join(', '),
       image: stadium.detail.images[0],
+      href: `/${stadium.sport[0]}/${stadium.league[0]}/${stadium._id}`,
       align: align[i%3]
     }
     stadiumSlider[i] = slide;
