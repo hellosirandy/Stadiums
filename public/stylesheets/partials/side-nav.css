@@ -31,3 +31,7 @@ li > span {
 li.disabled > span {
   color: rgba(0,0,0,0.3) !important;
 }
+
+#slide-out {
+  padding-bottom: 13vmin;
+}
