@@ -1,3 +1,6 @@
 $(document).ready(function(){
-  $('.slider').slider();
+  var width = parseFloat($('.slider').width())
+  $('.slider').slider(
+    {height: width * 0.5}
+  );
 });
