@@ -1,6 +1,6 @@
 module.exports = function(sport) {
   var leagues = [];
-  if (sport == 'Baseball') leagues = ['MLB'];
+  if (sport == 'Baseball') leagues = ['MLB', 'NPB'];
   else if (sport == 'Football') leagues = ['NFL'];
   else if (sport == 'Basketball') leagues = ['NBA'];
   else if (sport == 'Hockey') leagues = ['NHL'];
