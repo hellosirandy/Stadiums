@@ -4,7 +4,7 @@
 - Baseball: MLB, NPB
 - Basketball: NBA
 - Football: NFL
-- Hockey: NFL
+- Hockey: NHL
 
 ### Improvement
 If you have any idea to help me improve my website or the informations of any stadium are wrong, please send me an email at sac840711@gmail.com. Thanks!
