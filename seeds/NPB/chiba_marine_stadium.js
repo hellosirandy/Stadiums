@@ -1,6 +1,6 @@
 var Seeder = require('../../helpers/seeder');
 var stadium = {
-  name: '',
+  name: 'Chiba Marine Stadium',
   sport: ['Baseball'],
   league: ['NPB'],
   detail: {
@@ -16,7 +16,7 @@ var stadium = {
       'https://c2.staticflickr.com/8/7132/26459015273_0079e7a82b_b.jpg',
       'https://c2.staticflickr.com/8/7213/26994609371_44e1d0f200_b.jpg',
       'https://c2.staticflickr.com/8/7493/26459018213_e9bd3c85d3_b.jpg',
-      
+
     ]
   }
 }
