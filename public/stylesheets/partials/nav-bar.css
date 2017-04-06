@@ -6,3 +6,9 @@
   margin: 0;
   font-size: 6vh;
 }
+
+#nav-bar #stadiumCount {
+  font-size: 2vh;
+  font-weight: normal;
+  vertical-align: middle;
+}

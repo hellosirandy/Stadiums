@@ -14,6 +14,7 @@ router.get('/', RouteBasics, function(req, res, next) {
       var n = 5;
       req.renderValues.stadiumSlider = GenSlider(n, stadiums);
       req.renderValues.navTitle = 'Stadiums';
+      req.renderValues.stadiumCount = stadiums.length;
       res.render('index', req.renderValues);
     }
   });
@@ -35,6 +36,7 @@ router.get('/:sport', RouteBasics, function(req, res) {
           req.renderValues.navTitle = req.params.sport;
           req.renderValues.selectedSport = req.params.sport;
           req.renderValues.leagues = leagues;
+          req.renderValues.stadiumCount = stadiums.length;
           res.render('index', req.renderValues);
         }
       }
@@ -45,7 +47,7 @@ router.get('/:sport', RouteBasics, function(req, res) {
 
 router.get('/:sport/:league', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find({league: req.params.league}, function(err, stadiums) {
+    Stadium.find({league: req.params.league}).sort({name: 1}).exec(function(err, stadiums) {
       if (stadiums.length > 0) {
         var n = 5;
         req.renderValues.stadiumSlider = GenSlider(n, stadiums);
@@ -54,6 +56,7 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
         req.renderValues.leagues = League(req.params.sport);
         req.renderValues.selectedLeague = req.params.league;
         req.renderValues.stadiums = stadiums;
+        req.renderValues.stadiumCount = stadiums.length;
         res.render('index', req.renderValues);
       }
       else res.redirect(`/${req.params.sport}`);
@@ -64,7 +67,7 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
 
 router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find({league: req.params.league}, function(err, stadiums) {
+    Stadium.find({league: req.params.league}).sort({name: 1}).exec(function(err, stadiums) {
       if (stadiums.length > 0) {
         req.renderValues.selectedSport = req.params.sport;
         req.renderValues.leagues = League(req.params.sport);
@@ -87,12 +90,16 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
           }
           req.renderValues.stadium = stadium;
           req.renderValues.navTitle = stadium.name;
+          req.renderValues.stadiumCount = stadiums.length;
           res.render('stadium/stadium', req.renderValues);
         }
         else res.redirect(`/${req.params.sport}`);
       }
       else res.redirect(`/${req.params.sport}`);
     });
+    // Stadium.find({league: req.params.league}, function(err, stadiums) {
+    //
+    // });
   }
   else res.redirect('/');
 });
