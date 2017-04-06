@@ -1,0 +1,10 @@
+footer.page-footer {
+  margin-top: 0;
+}
+
+footer .container {
+  width: 80%;
+}
+.footerUl li {
+  margin-top: 10px;
+}

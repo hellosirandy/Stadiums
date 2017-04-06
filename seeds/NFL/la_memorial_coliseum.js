@@ -5,7 +5,7 @@ var stadium = {
   league: ['NFL'],
   detail: {
     team: ['Los Angeles Rams'],
-    capacity: 900000,
+    capacity: 90000,
     opened: new Date('05/01/1923'),
     architect: 'John and Donald Parkinson',
     location: 'Los Angeles, California',
@@ -17,7 +17,7 @@ var stadium = {
       'https://images.washingtonpost.com/?op=resize&url=https://s3-us-west-1.amazonaws.com/annenberg-media/wp-content/uploads/2016/11/Rams-Field.jpg&mode=crop&w=1200&q=99',
       'https://static01.nyt.com/images/2012/06/03/us/COLLISEUM-1/COLLISEUM-1-superJumbo.jpg',
       'https://static01.nyt.com/images/2016/03/10/sports/00COLISEUM3/00COLISEUM3-superJumbo.jpg',
-      
+
     ]
   }
 }

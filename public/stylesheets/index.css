@@ -1,0 +1,22 @@
+.sliderDiv {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.slider a {
+  color: white;
+  cursor: pointer;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.slider a:hover {
+  color: #bdbdbd;
+}
+
+.slider h5 {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.slider {
+  height: auto;
+}

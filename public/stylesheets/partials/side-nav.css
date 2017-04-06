@@ -1,15 +1,15 @@
-#side-nav {
-  
-}
-
 #logoImg {
   margin-top: 20px;
   margin-left: 90px;
   width: 120px;
+  cursor: pointer;
 }
 
 .sideLinks {
   font-weight: bold !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #logoLi {
@@ -22,4 +22,12 @@
 
 .side-nav .divider {
   margin: 0;
+}
+
+li > span {
+  color: #616161 !important;
+}
+
+li.disabled > span {
+  color: rgba(0,0,0,0.3) !important;
 }

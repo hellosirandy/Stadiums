@@ -1,2 +1,20 @@
-<h1>{{title}}</h1>
-<p>Welcome to adsfadfasdf{{title}}</p>
+<script src="/javascripts/index.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/stylesheets/index.css">
+<div id="sliderDiv" class="grey lighten-4 sliderDiv">
+  <div class="container">
+    <div class="slider">
+      <ul class="slides">
+        {{#each stadiumSlider}}
+        <li>
+          <img src={{this.image}}>
+          <div class="caption {{this.align}}">
+            <h3><a href={{this.href}}>{{this.name}}</a></h3>
+            <h5>{{this.location}}</h4>
+            <h5 class="light grey-text text-lighten-3">{{this.league}}</h5>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
