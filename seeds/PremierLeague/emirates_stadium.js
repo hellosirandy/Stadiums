@@ -8,7 +8,7 @@ var stadium = {
     capacity: 60432,
     opened: new Date('07/22/2006'),
     architect: 'Populous',
-    location: 'London, England',
+    location: 'Holloway, London, N5',
     images: [
       'https://i.ytimg.com/vi/5KfUL8FK1eg/maxresdefault.jpg',
       'http://wallpapercave.com/wp/P1Cp4iw.jpg',

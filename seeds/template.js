@@ -2,7 +2,7 @@ var Seeder = require('../../helpers/seeder');
 var stadium = {
   name: '',
   sport: ['Football'],
-  league: ['Premier League'],
+  league: ['La Liga'],
   detail: {
     team: [],
     capacity: ,
