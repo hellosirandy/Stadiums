@@ -25,12 +25,18 @@ router.get('/:sport', RouteBasics, function(req, res) {
     Stadium.find({sport: req.params.sport}, function(err, stadiums) {
       if (err) res.redirect('/');
       else {
-        var n = 5;
-        req.renderValues.stadiumSlider = GenSlider(n, stadiums);
-        req.renderValues.navTitle = req.params.sport;
-        req.renderValues.selectedSport = req.params.sport;
-        req.renderValues.leagues = League(req.params.sport);
-        res.render('index', req.renderValues);
+        leagues = League(req.params.sport);
+        if (leagues.length == 1) {
+          res.redirect(`/${req.params.sport}/${leagues[0]}`)
+        }
+        else {
+          var n = 5;
+          req.renderValues.stadiumSlider = GenSlider(n, stadiums);
+          req.renderValues.navTitle = req.params.sport;
+          req.renderValues.selectedSport = req.params.sport;
+          req.renderValues.leagues = leagues;
+          res.render('index', req.renderValues);
+        }
       }
     });
   }
