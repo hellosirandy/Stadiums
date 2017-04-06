@@ -7,4 +7,4 @@
 - Hockey: NFL
 
 ### Improvement
-If you have any idea to help me improve my website, please send me an email at sac840711@gmail.com. Thanks!
+If you have any idea to help me improve my website or the informations of any stadium are wrong, please send me an email at sac840711@gmail.com. Thanks!
