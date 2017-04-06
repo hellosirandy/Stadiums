@@ -1,8 +1,8 @@
 var Seeder = require('../../helpers/seeder');
 var stadium = {
   name: '',
-  sport: ['Baseball'],
-  league: ['NPB'],
+  sport: ['Football'],
+  league: ['Premier League'],
   detail: {
     team: [],
     capacity: ,
