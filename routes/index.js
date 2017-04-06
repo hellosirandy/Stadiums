@@ -6,12 +6,14 @@ var League = require('../configs/league');
 var sportList = ['Baseball', 'Football', 'Basketball', 'Hockey'];
 var dateHandler = require('../helpers/date');
 
+var slideNum = 7;
+
 router.get('/', RouteBasics, function(req, res, next) {
   Stadium.find(function(err, stadiums) {
     if (err) res.redirect('/');
     else {
-      var n = 5;
-      if (stadiums.length < n) n = stadiums.length;
+      var n = slideNum;
+      if (stadiums.length < slideNum) n = stadiums.length;
       req.renderValues.stadiumSlider = GenSlider(n, stadiums);
       req.renderValues.navTitle = 'Stadiums';
       req.renderValues.stadiumCount = stadiums.length;
@@ -31,8 +33,8 @@ router.get('/:sport', RouteBasics, function(req, res) {
           res.redirect(`/${req.params.sport}/${leagues[0]}`);
         }
         else {
-          var n = 5;
-          if (stadiums.length < n) n = stadiums.length;
+          var n = slideNum;
+          if (stadiums.length < slideNum) n = stadiums.length;
           req.renderValues.stadiumSlider = GenSlider(n, stadiums);
           req.renderValues.navTitle = req.params.sport;
           req.renderValues.selectedSport = req.params.sport;
@@ -50,8 +52,8 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
     Stadium.find({league: req.params.league}).sort({name: 1}).exec(function(err, stadiums) {
       if (stadiums.length > 0) {
-        var n = 5;
-        if (stadiums.length < n) n = stadiums.length;
+        var n = slideNum;
+        if (stadiums.length < slideNum) n = stadiums.length;
         req.renderValues.stadiumSlider = GenSlider(n, stadiums);
         req.renderValues.navTitle = req.params.league;
         req.renderValues.selectedSport = req.params.sport;
