@@ -10,7 +10,6 @@ var stadium = {
     architect: 'Planungsgruppe Drahtler',
     location: 'Dortmund, Germany',
     images: [
-      'http://traveldigg.com/wp-content/uploads/2016/08/Signal-Iduna-Park-At-Night-Photo.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/6/6e/Signal_Iduna_Park_before_the_match_%284th_july_2006%29.jpg?uselang=cs',
       'https://s-media-cache-ak0.pinimg.com/originals/af/95/ec/af95ecae551fe623648d8d9d0fa8c106.jpg',
       'http://www.101greatgoals.com/wp-content/uploads/2015/12/10694926206_79f72f4201_b.jpg',
