@@ -52,3 +52,38 @@
 .tabs .indicator {
   background-color: #9e9e9e;
 }
+
+strong {
+  font-weight: bold;
+}
+
+#stadiumStoryWall {
+  margin: 0 20%;
+}
+
+.story {
+  border: #e0e0e0  1px solid;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.storyInfo a {
+  display: block;
+}
+
+.storyAuthor {
+  color: #616161 ;
+  font-size: 20px;
+}
+
+.storyTime {
+  color: #bdbdbd;
+}
+
+.storyTitle {
+  font-weight: bold;
+}
+
+.storyContent {
+  cursor: pointer;
+}

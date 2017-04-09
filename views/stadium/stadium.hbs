@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="/stylesheets/stadium/stadium.css">
 <script src="/javascripts/stadium/stadium.js" charset="utf-8"></script>
 
+<link href="https://cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
+
+
 <div id="stadiumDescription" class="grey lighten-4">
   <div class="row container" style="margin-bottom: 0;">
     <div class="col one-fifth description">
@@ -37,12 +42,12 @@
   <div class="col s12 grey lighten-4">
     <ul class="tabs grey lighten-4">
       <li class="tab col s3"><a href="#stadiumAlbum">Photos</a></li>
-      <li class="tab col s3"><a href="#stadiumStoryWall">Stories</a></li>
+      <li class="tab col s3"><a class="active" href="#stadiumStoryWall">Stories</a></li>
     </ul>
   </div>
   <div class="grey lighten-3 col s12">
     <div id="stadiumAlbum" class="stadiumTabs">
-      <div class="row container" style="margin-bottom: 0;">
+      <div class="container">
         {{#each stadium.detail.handledImages}}
         <div class="row">
           {{#each this}}
@@ -57,8 +62,33 @@
   </div>
   <div class="grey lighten-3 col s12">
     <div id="stadiumStoryWall" class="stadiumTabs">
-
+      <div class="container">
+        <div class="story grey lighten-4">
+          <div class="storyInfo">
+            <a class="storyAuthor">Andy</a>
+            <a class="storyTime">11:37 Apr. 4</a>
+          </div>
+          <div class="storyContent">
+            <h5 class="storyTitle">This is a story</h5>
+          </div>
+        </div>
+        <div id="editor">
+          <p>Hello World!</p>
+          <p>Some initial <strong>bold</strong> text</p>
+          <p><br></p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
+<!-- Modal Structure -->
+<div id="storyModal" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
 </div>
