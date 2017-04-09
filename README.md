@@ -3,7 +3,7 @@
 ### Currently included leagues
 - Baseball: MLB, NPB
 - Basketball: NBA
-- Football: NFL, Premier League, La Liga
+- Football: NFL, Premier League, La Liga, Bundesliga
 - Hockey: NHL
 
 ### Improvement
