@@ -28,7 +28,7 @@
   line-height: 40px;
 }
 
-#content a {
+#content .navBarLinks {
   color: #e0e0e0;
   transition: color 0.2s;
   font-weight: bold;
@@ -37,6 +37,10 @@
 #content a:hover {
   color: #bdbdbd;
   transition: color 0.2s;
+}
+
+#content img {
+  cursor: pointer;
 }
 
 #profilePic {
@@ -91,4 +95,8 @@
   #loginModal {
     width: 100%;
   }
+}
+
+#profileDropdown {
+  margin-top: 10px;
 }

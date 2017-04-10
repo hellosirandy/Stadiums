@@ -6,4 +6,9 @@ router.get('/', RouteBasics, function(req, res, next) {
   res.redirect('/stadium')
 });
 
+router.get('/signout', RouteBasics, function(req, res) {
+  req.logout();
+  res.redirect('/stadium');
+});
+
 module.exports = router;

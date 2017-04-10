@@ -4,9 +4,9 @@
   <div class="container">
     <div id="content">
       {{#if user}}
-      <img src="{{user.profilePic}}" alt="" class="circle" id="profilePic">
+      <img src="{{user.profilePic}}" alt="" class="circle" id="profilePic" data-activates='profileDropdown' data-beloworigin="true" >
       {{else}}
-      <a href="#loginModal">Sign in / Sign up</a>
+      <a href="#loginModal" class="navBarLinks">Sign in / Sign up</a>
       {{/if}}
     </div>
   </div>
@@ -43,3 +43,7 @@
     </div>
   </div>
 </div>
+
+<ul id='profileDropdown' class='dropdown-content'>
+  <li><a href="/signout" class="dropDownLink grey-text text-darken-3">Sign out</a></li>
+</ul>
