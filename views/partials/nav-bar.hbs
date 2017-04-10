@@ -1,5 +1,14 @@
 <link rel="stylesheet" href="/stylesheets/partials/nav-bar.css">
-<div id="nav-bar" class="grey darken-1">
+<script src="/javascripts/partials/nav-bar.js" charset="utf-8"></script>
+<div id="navBar" class="grey darken-1">
+  <div class="container">
+    <div id="content">
+      <a href="#loginModal">sign in / sign up</a>
+      <!-- <img src="/images/profile_pic.jpg" alt="" class="circle" id="profilePic"> -->
+    </div>
+  </div>
+</div>
+<div id="stadiumNav" class="grey darken-1">
   <div class="container">
     <p id="title" class="grey-text text-lighten-3">
       <span data-activates="slide-out" class="button-collapse" id="hamburger">
@@ -7,5 +16,19 @@
       </span>
       {{navTitle}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span>
     </p>
+  </div>
+</div>
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <h4>Sign with</h4>
+    <hr>
+    <div id="facebookBtn" class="socialBtn hoverable">
+      <div class="socialBtnImgDiv">
+        <img src="/images/facebook.png" alt="" class="socialBtnImg">
+      </div>
+      <div class="socialBtnTextDiv">
+        <a>Facebook</a>
+      </div>
+    </div>
   </div>
 </div>

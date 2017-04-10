@@ -1,3 +1,7 @@
+:root {
+  --facebook-color: rgb(59, 89, 152);
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
