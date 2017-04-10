@@ -3,8 +3,11 @@
 <div id="navBar" class="grey darken-1">
   <div class="container">
     <div id="content">
+      {{#if user}}
+      <img src="{{user.profilePic}}" alt="" class="circle" id="profilePic">
+      {{else}}
       <a href="#loginModal">Sign in / Sign up</a>
-      <!-- <img src="/images/profile_pic.jpg" alt="" class="circle" id="profilePic"> -->
+      {{/if}}
     </div>
   </div>
 </div>
@@ -26,7 +29,7 @@
       <div class="socialBtnImgDiv">
         <img src="/images/facebook.png" alt="" class="socialBtnImg">
       </div>
-      <div class="socialBtnTextDiv">
+      <div class="socialBtnTextDiv" onclick="window.location = '/auth/facebook';">
         <a>Facebook</a>
       </div>
     </div>
