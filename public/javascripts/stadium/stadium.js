@@ -3,13 +3,11 @@ $(document).ready(function() {
     theme: 'snow'
   });
   $('#storyModal').modal();
-  $('.storyContent').click(function() {
-    console.log($(this).find('.storyTitle').html());
+  $('.story').click(function() {
     var title = $(this).find('.storyTitle').html();
     $('#storyModal').find('h4').html(title);
     $('#storyModal').modal('open');
   });
-  console.log('hi');
 
   var form = document.querySelector('form');
   form.onsubmit = function() {

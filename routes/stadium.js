@@ -100,9 +100,14 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
             else {
               var processedStories = stories;
               for (var i = 0; i < stories.length; i++) {
-                console.log(stories[i].create);
+                var timeList = stories[i].create.toString().split(' ');
+                var month = timeList[1];
+                var date = timeList[2];
+                var time = timeList[4].split(':').slice(0, 2);
+                processedStories[i].processedCreate = time.join(':') + ' ' + month + ' ' + date;
               }
-              req.renderValues.stories = stories;
+              // console.log(processedStories[0].author);
+              req.renderValues.stories = processedStories;
               res.render('stadium/stadium', req.renderValues);
             }
           });
@@ -126,7 +131,8 @@ router.post('/:sport/:league/:stadium', function(req, res) {
     var quill = JSON.parse(req.body.about).ops;
     var doc = new Document(quill);
     var newStory = new Story({
-      name: req.user.fullName,
+      author: req.user,
+      title: req.body.storyTitleInput,
       stadium: req.params.stadium,
       content: doc.convertTo('html')
     });

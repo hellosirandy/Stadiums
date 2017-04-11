@@ -27,6 +27,7 @@ passport.use(new FacebookStrategy({
           if (!user) user = new User();
           user.email = profile._json.email;
           user.profilePic = profile._json.picture.data.url;
+          user.fullName = profile._json.name;
           user.save(function(err) {
             if (err) return done(err);
             else return done(null, user);

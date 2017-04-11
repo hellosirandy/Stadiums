@@ -63,27 +63,51 @@ strong {
 
 .story {
   border: #e0e0e0  1px solid;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
   padding: 15px;
+  cursor: pointer;
 }
 
 .storyInfo a {
   display: block;
 }
 
+.storyInfo img {
+  width: 34px;
+  height: 34px;
+  float: left;
+}
+
 .storyAuthor {
   color: #616161 ;
-  font-size: 20px;
+  font-size: 15px;
+  line-height: 17px;
 }
 
 .storyTime {
   color: #bdbdbd;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.storyAuthorTimeDiv {
+  margin-left: 45px;
 }
 
 .storyTitle {
   font-weight: bold;
 }
 
-.storyContent {
-  cursor: pointer;
+#newStoryDiv {
+  border: #e0e0e0  1px solid;
+
+}
+
+.input-field input {
+  margin-bottom: 0;
+}
+
+#newStoryDiv h5 {
+  margin-bottom: 0;
+  font-weight: bold;
 }

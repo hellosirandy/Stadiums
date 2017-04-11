@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var storySchema = new Schema({
-  author: String,
+  author: Object,
   stadium: String,
+  title: String,
   content: String,
   create: {type: Date, default: Date.now}
 });

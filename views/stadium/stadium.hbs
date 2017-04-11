@@ -63,25 +63,46 @@
   <div class="grey lighten-3 col s12">
     <div id="stadiumStoryWall" class="stadiumTabs">
       <div class="container">
-        <div class="story grey lighten-4">
+        {{#each stories}}
+        <div class="story grey lighten-4 row">
           <div class="storyInfo">
-            <a class="storyAuthor">Andy</a>
-            <a class="storyTime">11:37 Apr. 4</a>
+            <img src="{{this.author.profilePic}}" alt="" class="circle">
+            <div class="storyAuthorTimeDiv">
+              <a class="storyAuthor">{{this.author.fullName}}</a>
+              <a class="storyTime">{{this.processedCreate}}</a>
+            </div>
           </div>
           <div class="storyContent">
-            <h5 class="storyTitle">This is a story</h5>
+            <h5 class="storyTitle">{{this.title}}</h5>
           </div>
         </div>
+        {{/each}}
+
         {{#if user}}
-        <div id="editor">
-          <p>Hello World!</p>
-          <p>Some initial <strong>bold</strong> text</p>
-          <p><br></p>
+        <div id="newStoryDiv" class="row grey lighten-4">
+          <form class="col s12" method="post" onsubmit="return getContent()">
+            <h5>Write a new story</h5>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="storyTitleInput" type="text" name="storyTitleInput">
+                <label for="storyTitleInput">Title</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div id="editor">
+                  <p>Hello World!</p>
+                  <p>Some initial <strong>bold</strong> text</p>
+                  <p><br></p>
+                </div>
+              </div>
+
+            </div>
+            <input name="about" type="hidden">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Post</button>
+          </form>
         </div>
-        <form method="post" onsubmit="return getContent()">
-          <input name="about" type="hidden">
-          <button class="btn waves-effect waves-light" type="submit" name="action">Post</button>
-        </form>
+
         {{/if}}
       </div>
     </div>
