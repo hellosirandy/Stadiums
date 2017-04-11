@@ -6,6 +6,7 @@ var League = require('../configs/league');
 var sportList = ['Baseball', 'Football', 'Basketball', 'Hockey'];
 var dateHandler = require('../helpers/date');
 var slideNum = 7;
+var Story = require('../models/story-schema');
 
 router.get('/', RouteBasics, function(req, res, next) {
   Stadium.find(function(err, stadiums) {
@@ -94,15 +95,49 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
           req.renderValues.stadium = stadium;
           req.renderValues.navTitle = stadium.name;
           req.renderValues.stadiumCount = stadiums.length;
-          console.log(stadium);
-          res.render('stadium/stadium', req.renderValues);
+          Story.find({stadium: stadium._id}, function(err, stories) {
+            if (err) throw err;
+            else {
+              var processedStories = stories;
+              for (var i = 0; i < stories.length; i++) {
+                console.log(stories[i].create);
+              }
+              req.renderValues.stories = stories;
+              res.render('stadium/stadium', req.renderValues);
+            }
+          });
+
         }
         else res.redirect(`/stadium/${req.params.sport}`);
       }
       else res.redirect(`/stadium/${req.params.sport}`);
     });
   }
-  // else res.redirect('/stadium');
+  else res.redirect('/stadium');
+});
+
+var renderer  = require('quilljs-renderer');
+var Document  = renderer.Document;
+renderer.loadFormat('html');
+
+router.post('/:sport/:league/:stadium', function(req, res) {
+  var prev = req.flash('previousPath');
+  if (req.isAuthenticated()) {
+    var quill = JSON.parse(req.body.about).ops;
+    var doc = new Document(quill);
+    var newStory = new Story({
+      name: req.user.fullName,
+      stadium: req.params.stadium,
+      content: doc.convertTo('html')
+    });
+    newStory.save(function(err) {
+      if (err) throw err;
+      else res.redirect(prev[prev.length - 1]);
+    });
+  }
+  else {
+    res.redirect(prev[prev.length - 1]);
+  }
 });
 
 function GetRandomNums(n, s) {

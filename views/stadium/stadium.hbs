@@ -78,6 +78,10 @@
           <p>Some initial <strong>bold</strong> text</p>
           <p><br></p>
         </div>
+        <form method="post" onsubmit="return getContent()">
+          <input name="about" type="hidden">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Post</button>
+        </form>
         {{/if}}
       </div>
     </div>
