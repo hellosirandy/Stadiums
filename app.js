@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
 var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
 
 var index = require('./routes/index');
 var auth = require('./routes/auth');
@@ -39,6 +40,7 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   cookie: { maxAge: 180 * 60 * 1000 }
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));

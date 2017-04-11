@@ -6,9 +6,10 @@ router.get('/', RouteBasics, function(req, res, next) {
   res.redirect('/stadium')
 });
 
-router.get('/signout', RouteBasics, function(req, res) {
+router.get('/signout', function(req, res) {
   req.logout();
-  res.redirect('/stadium');
+  var prev = req.flash('previousPath');
+  res.redirect(prev[prev.length - 1]);
 });
 
 module.exports = router;

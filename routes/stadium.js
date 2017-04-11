@@ -29,7 +29,7 @@ router.get('/:sport', RouteBasics, function(req, res) {
       else {
         leagues = League(req.params.sport);
         if (leagues.length == 1) {
-          res.redirect(`/${req.params.sport}/${leagues[0]}`);
+          res.redirect(`/stadium/${req.params.sport}/${leagues[0]}`);
         }
         else {
           var n = slideNum;
@@ -94,6 +94,7 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
           req.renderValues.stadium = stadium;
           req.renderValues.navTitle = stadium.name;
           req.renderValues.stadiumCount = stadiums.length;
+          console.log(stadium);
           res.render('stadium/stadium', req.renderValues);
         }
         else res.redirect(`/stadium/${req.params.sport}`);
@@ -101,7 +102,7 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
       else res.redirect(`/stadium/${req.params.sport}`);
     });
   }
-  else res.redirect('/stadium');
+  // else res.redirect('/stadium');
 });
 
 function GetRandomNums(n, s) {
