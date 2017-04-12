@@ -64,7 +64,7 @@
     <div id="stadiumStoryWall" class="stadiumTabs" data-user="{{user}}">
       <div class="container">
         {{#each stories}}
-        <div class="story grey lighten-4 row">
+        <div class="story grey lighten-4 row" data-content={{this.content}}>
           <div class="storyInfo">
             <img src="{{this.author.profilePic}}" alt="" class="circle">
             <div class="storyAuthorTimeDiv">
@@ -74,6 +74,7 @@
           </div>
           <div class="storyContent">
             <h5 class="storyTitle">{{this.title}}</h5>
+            {{{this.content}}}
           </div>
         </div>
         {{/each}}
@@ -100,6 +101,7 @@
                 <label for="storyTitleInput">Title</label>
               </div>
             </div>
+            {{errors.content}}
             <div class="row">
               <div class="col s12">
                 <div id="editor">

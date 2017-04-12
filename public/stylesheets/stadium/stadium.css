@@ -153,3 +153,9 @@ label.active {
 #postBtn {
   display: block;
 }
+
+.storyContent p {
+  font-size: 15px;
+  /*line-height: 20px;*/
+  margin: 2px 0;
+}
