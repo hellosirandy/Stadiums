@@ -100,7 +100,7 @@ strong {
 
 #newStoryDiv {
   border: #e0e0e0  1px solid;
-
+  padding: 15px 0;
 }
 
 .input-field input {
@@ -134,4 +134,22 @@ label.active {
 
 #errorDiv p {
   font-size: 16px;
+}
+
+#newStoryDivTitle {
+  font-size: 1.8vw;
+  color: black;
+  font-weight: bold;
+  line-height: 40px;
+  /*margin-left: */
+}
+
+#newStoryDivTitle i {
+  font-size: 1.8vw;
+  margin-right: 5px;
+  line-height: 40px;
+}
+
+#postBtn {
+  display: block;
 }
