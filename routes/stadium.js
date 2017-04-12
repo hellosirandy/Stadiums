@@ -106,8 +106,9 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
                 var time = timeList[4].split(':').slice(0, 2);
                 processedStories[i].processedCreate = time.join(':') + ' ' + month + ' ' + date;
               }
-              // console.log(processedStories[0].author);
               req.renderValues.stories = processedStories;
+              var errors = req.flash('error');
+              if (errors.length > 0) req.renderValues.errors = errors[0];
               res.render('stadium/stadium', req.renderValues);
             }
           });
@@ -126,23 +127,36 @@ var Document  = renderer.Document;
 renderer.loadFormat('html');
 
 router.post('/:sport/:league/:stadium', function(req, res) {
-  var prev = req.flash('previousPath');
   if (req.isAuthenticated()) {
-    var quill = JSON.parse(req.body.about).ops;
-    var doc = new Document(quill);
-    var newStory = new Story({
-      author: req.user,
-      title: req.body.storyTitleInput,
-      stadium: req.params.stadium,
-      content: doc.convertTo('html')
-    });
-    newStory.save(function(err) {
-      if (err) throw err;
-      else res.redirect(prev[prev.length - 1]);
-    });
+    req.checkBody('storyTitleInput', 'Please give it a title').notEmpty();
+    var errors = req.validationErrors();
+    if (errors) {
+      var messages = [];
+      if (errors) {
+        errors.forEach(function(error) {
+          messages.push(error.msg);
+        });
+      }
+      req.flash('error', {'messages': messages, 'save': req.body});
+      res.redirect(req.get('referer'));
+    }
+    else {
+      var quill = JSON.parse(req.body.about).ops;
+      var doc = new Document(quill);
+      var newStory = new Story({
+        author: req.user,
+        title: req.body.storyTitleInput,
+        stadium: req.params.stadium,
+        content: doc.convertTo('html')
+      });
+      newStory.save(function(err) {
+        if (err) throw err;
+        else res.redirect(req.get('referer'));
+      });
+    }
   }
   else {
-    res.redirect(prev[prev.length - 1]);
+    res.redirect(req.get('referer'));
   }
 });
 

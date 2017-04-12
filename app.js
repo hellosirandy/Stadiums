@@ -10,6 +10,7 @@ var session = require('express-session');
 var passport = require('passport');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
+var validator = require('express-validator');
 
 var index = require('./routes/index');
 var auth = require('./routes/auth');
@@ -32,6 +33,7 @@ app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cookieParser());
 app.use(session({
   secret: 'hellosirandy',

@@ -1,5 +1,4 @@
 function RouteBasics (req, res, next) {
-  req.flash('previousPath', req.originalUrl)
   req.renderValues = {
     title: 'Stadiums',
     user: req.user,

@@ -8,8 +8,7 @@ router.get('/', RouteBasics, function(req, res, next) {
 
 router.get('/signout', function(req, res) {
   req.logout();
-  var prev = req.flash('previousPath');
-  res.redirect(prev[prev.length - 1]);
+  res.redirect(req.get('referer'));
 });
 
 module.exports = router;

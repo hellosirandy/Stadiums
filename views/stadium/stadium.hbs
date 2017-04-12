@@ -61,7 +61,7 @@
     </div>
   </div>
   <div class="grey lighten-3 col s12">
-    <div id="stadiumStoryWall" class="stadiumTabs">
+    <div id="stadiumStoryWall" class="stadiumTabs" data-user="{{user}}">
       <div class="container">
         {{#each stories}}
         <div class="story grey lighten-4 row">
@@ -80,7 +80,15 @@
 
         {{#if user}}
         <div id="newStoryDiv" class="row grey lighten-4">
-          <form class="col s12" method="post" onsubmit="return getContent()">
+
+          <form class="col s12" method="post">
+            {{#if errors}}
+              <div class="red lighten-4" id="errorDiv">
+                {{#each errors.messages}}
+                <p class="errorMsgs">* {{this}}</p>
+                {{/each}}
+              </div>
+            {{/if}}
             <h5>Write a new story</h5>
             <div class="row">
               <div class="input-field col s6">

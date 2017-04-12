@@ -1,7 +1,5 @@
 $(document).ready(function() {
-  var quill = new Quill('#editor', {
-    theme: 'snow'
-  });
+
   $('#storyModal').modal();
   $('.story').click(function() {
     var title = $(this).find('.storyTitle').html();
@@ -9,9 +7,15 @@ $(document).ready(function() {
     $('#storyModal').modal('open');
   });
 
-  var form = document.querySelector('form');
-  form.onsubmit = function() {
-    var about = document.querySelector('input[name=about]');
-    about.value = JSON.stringify(quill.getContents());
+  if ($('#stadiumStoryWall').data('user')) {
+    var quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+    var form = document.querySelector('form');
+    form.onsubmit = function() {
+      var about = document.querySelector('input[name=about]');
+      about.value = JSON.stringify(quill.getContents());
+    }
   }
+
 });

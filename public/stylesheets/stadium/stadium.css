@@ -111,3 +111,27 @@ strong {
   margin-bottom: 0;
   font-weight: bold;
 }
+
+#storyTitleInput {
+  font-weight: bold;
+  /*box-shadow: #616161;*/
+}
+
+#storyTitleInput:focus {
+ border-bottom: 1px solid #616161 !important;
+ box-shadow: 0 1px 0 0 #616161 !important
+}
+
+label.active {
+  color: #616161 !important;
+}
+
+#errorDiv {
+  line-height: 32px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+#errorDiv p {
+  font-size: 16px;
+}
