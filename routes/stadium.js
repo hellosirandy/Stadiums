@@ -106,8 +106,6 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
                 var time = timeList[4].split(':').slice(0, 2);
                 processedStories[i].processedCreate = time.join(':') + ' ' + month + ' ' + date;
               }
-              console.log(stories[0].content);
-              // console.log('asdfasdfasdf');
               req.renderValues.stories = processedStories;
               var errors = req.flash('error');
               if (errors.length > 0) req.renderValues.errors = errors[0];
@@ -130,11 +128,6 @@ renderer.loadFormat('html');
 
 router.post('/:sport/:league/:stadium', function(req, res) {
   if (req.isAuthenticated()) {
-    // var quill = JSON.parse(req.body.about).ops;
-    // var doc = new Document(quill);
-    // var content = doc.convertTo('html', {
-    //   line: '<p id="line-{lineNumber}" style="{lineStyle}">{content}</p>'
-    // });
     req.checkBody('storyTitleInput', 'Please give it a title').notEmpty();
     var errors = req.validationErrors();
     if (errors) {
@@ -144,7 +137,7 @@ router.post('/:sport/:league/:stadium', function(req, res) {
           messages.push(error.msg);
         });
       }
-      req.flash('error', {'messages': messages, 'content': content});
+      req.flash('error', {'messages': messages});
       res.redirect(req.get('referer'));
     }
     else {
