@@ -6,8 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressHbs = require('express-handlebars');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var passport = require('passport');
+var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
+var validator = require('express-validator');
 
 var index = require('./routes/index');
+var auth = require('./routes/auth');
+var stadium = require('./routes/stadium');
 
 var app = express();
 
@@ -15,6 +22,7 @@ mongoose.connect('localhost:27017/stadiums', function(err){
   if (err) throw err;
   else console.log('Connect to mongodb');
 });
+require('./configs/passport');
 
 // view engine setup
 app.engine('hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
@@ -25,10 +33,23 @@ app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cookieParser());
+app.use(session({
+  secret: 'hellosirandy',
+  resave: false,
+  saveUninitialize: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  cookie: { maxAge: 180 * 60 * 1000 }
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/auth', auth);
+app.use('/stadium', stadium);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

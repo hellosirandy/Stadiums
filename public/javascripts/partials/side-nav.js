@@ -4,11 +4,11 @@ $(document).ready(function() {
   $('#leagueSelect').material_select();
 
   $('#sportSelect').change(function() {
-    var url = '/' + $('#sportSelect option:selected').val();
+    var url = '/stadium/' + $('#sportSelect option:selected').val();
     window.location.href = url;
   });
   $('#leagueSelect').change(function() {
-    var url = '/' + $('#sportSelect').data('selected') + '/' + $('#leagueSelect option:selected').val();
+    var url = '/stadium/' + $('#sportSelect').data('selected') + '/' + $('#leagueSelect option:selected').val();
     window.location.href = url;
   });
 
