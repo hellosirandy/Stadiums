@@ -122,10 +122,6 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
   else res.redirect('/stadium');
 });
 
-var renderer  = require('quilljs-renderer');
-var Document  = renderer.Document;
-renderer.loadFormat('html');
-
 router.post('/:sport/:league/:stadium', function(req, res) {
   if (req.isAuthenticated()) {
     req.checkBody('storyTitleInput', 'Please give it a title').notEmpty();
