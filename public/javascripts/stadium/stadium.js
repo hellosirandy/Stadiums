@@ -8,14 +8,26 @@ $(document).ready(function() {
     // $('#storyModal').find('p').html(content);
     // $('#storyModal').modal('open');
   });
-
-  $('.continueBtn').each(function() {
-    var storyContent = $(this).parent().find('.storyContent');
-    var height = parseFloat(storyContent.height());
-    if (height < 150) {
-      $(this).css({display: 'none'});
-    }
-  });
+	
+	$('#storyTab').click(function() {
+		
+	});
+	
+	$('ul.tabs').tabs({
+		onShow: function(el) {
+			console.log(el.attr('id'));
+			if (el.attr('id') == 'stadiumStoryWall') {
+				$('.continueBtn').each(function() {
+					var storyContent = $(this).parent().find('.storyContent');
+					var height = parseFloat(storyContent.height());
+					if (height < 150) {
+						$(this).css({display: 'none'});
+					}
+				});
+			}
+		},
+	});
+  
 
   $('.continueBtn').click(function() {
     var storyContent = $(this).parent().find('.storyContent');
