@@ -2,6 +2,9 @@
 <script src="/javascripts/partials/nav-bar.js" charset="utf-8"></script>
 <div id="navBar" class="grey darken-1">
   <div class="container">
+  	<a data-activates="slide-out" class="button-collapse" id="hamburger">
+			<i class="material-icons">menu</i>
+    </a>
     <div id="content">
       {{#if user}}
       <img src="{{user.profilePic}}" alt="" class="circle" id="profilePic" data-activates='profileDropdown' data-beloworigin="true" >
@@ -14,9 +17,6 @@
 <div id="stadiumNav" class="grey darken-1">
   <div class="container">
     <p id="title" class="grey-text text-lighten-3">
-      <span data-activates="slide-out" class="button-collapse" id="hamburger">
-        <i class="material-icons">menu</i>
-      </span>
       {{navTitle}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span>
     </p>
   </div>

@@ -42,7 +42,7 @@
   <div class="col s12 grey lighten-4">
     <ul class="tabs grey lighten-4">
       <li class="tab col s3"><a href="#stadiumAlbum">Photos</a></li>
-      <li class="tab col s3"><a class="active" href="#stadiumStoryWall">Stories</a></li>
+      <li class="tab col s3" id="storyTab"><a href="#stadiumStoryWall">Stories</a></li>
     </ul>
   </div>
   <div class="grey lighten-3 col s12">
@@ -52,7 +52,7 @@
         <div class="row">
           {{#each this}}
           <div class="col s3 albumCell">
-            <img class="materialboxed cellContent" src="{{this}}" alt="">
+            <img class="materialboxed cellContent" data-caption="Source: {{this}}" src="{{this}}" alt="">
           </div>
           {{/each}}
         </div>
