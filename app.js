@@ -38,7 +38,7 @@ app.use(cookieParser());
 app.use(session({
   secret: 'hellosirandy',
   resave: false,
-  saveUninitialize: false,
+  saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   cookie: { maxAge: 180 * 60 * 1000 }
 }));
