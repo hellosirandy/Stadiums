@@ -29,11 +29,12 @@ passport.use(new FacebookStrategy({
           user.profilePic = profile._json.picture.data.url;
           user.fullName = profile._json.name;
           user.save(function(err) {
+            console.log(user);
             if (err) return done(err);
             else return done(null, user);
           });
         }
-      })
+      });
     });
   }
 ));
