@@ -90,6 +90,7 @@
 	width: 264px;
 	margin-left: 10px;
 	margin-top: -10px;
+	z-index: 9999;
 }
 
 #navBarLinkDiv #searchWrapper #searchResults a{

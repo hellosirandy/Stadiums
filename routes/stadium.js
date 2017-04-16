@@ -17,6 +17,14 @@ router.get('/', RouteBasics, function(req, res, next) {
       req.renderValues.stadiumSlider = GenSlider(n, stadiums);
       req.renderValues.navTitle = 'Stadiums';
       req.renderValues.stadiumCount = stadiums.length;
+			var allStadiums = [];
+//			for (var i = 0; i < stadiums.length; i++) {
+//				allStadiums[i] = {
+//					url: stadiums[i]._id,
+//					name: stadiums[i].name
+//				}
+//			}
+			req.renderValues.allStadiums = JSON.stringify(stadiums);
       res.render('index', req.renderValues);
     }
   });
