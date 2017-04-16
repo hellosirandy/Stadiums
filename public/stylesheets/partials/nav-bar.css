@@ -60,7 +60,7 @@
 }
 
 #navBarLinkDiv #searchWrapper #searchInput {
-	width: 220px;
+	width: 180px;
 	height: 40px;
 	margin: 10px;
 	border: solid 1px #9e9e9e;
@@ -87,20 +87,28 @@
 
 #navBarLinkDiv #searchWrapper #searchResults {
 /*	display: none;*/
-	width: 264px;
+	width: 224px;
 	margin-left: 10px;
 	margin-top: -10px;
 	z-index: 9999;
+	position: absolute;
+	max-height: 0px;
+	overflow-y: scroll;
+	transition: max-height 0.3s ease;
 }
 
 #navBarLinkDiv #searchWrapper #searchResults a{
 	padding-left: 10px;
-	line-height: 40px;
-	height: 40px;
+	line-height: 50px;
+	height: 50px;
 	display: block;
 	cursor: pointer;
 	background-color: #e0e0e0;
-	color: #424242;
+	color: #424242;  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
 
 #navBarLinkDiv #searchWrapper #searchResults a:hover {
@@ -166,5 +174,5 @@
 
 #hamburger i {
 	font-size: 33px;
-	line-height: 40px;
+	line-height: 60px;
 }

@@ -9,7 +9,7 @@ var slideNum = 7;
 var Story = require('../models/story-schema');
 
 router.get('/', RouteBasics, function(req, res, next) {
-  Stadium.find(function(err, stadiums) {
+  Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
     if (err) res.redirect('/');
     else {
       var n = slideNum;
@@ -33,21 +33,28 @@ router.get('/', RouteBasics, function(req, res, next) {
 
 router.get('/:sport', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find({sport: req.params.sport}, function(err, stadiums) {
+    Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
       if (err) res.redirect('/');
       else {
+				var sportStadiums = []
+				for (var i = 0; i < stadiums.length; i++) {
+					if (stadiums[i].sport.indexOf(req.params.sport) > -1) {
+						sportStadiums.push(stadiums[i]);
+					}
+				}
         leagues = League(req.params.sport);
         if (leagues.length == 1) {
           res.redirect(`/stadium/${req.params.sport}/${leagues[0]}`);
         }
         else {
           var n = slideNum;
-          if (stadiums.length < slideNum) n = stadiums.length;
-          req.renderValues.stadiumSlider = GenSlider(n, stadiums);
+          if (sportStadiums.length < slideNum) n = sportStadiums.length;
+          req.renderValues.stadiumSlider = GenSlider(n, sportStadiums);
           req.renderValues.navTitle = req.params.sport;
           req.renderValues.selectedSport = req.params.sport;
           req.renderValues.leagues = leagues;
-          req.renderValues.stadiumCount = stadiums.length;
+          req.renderValues.stadiumCount = sportStadiums.length;
+					req.renderValues.allStadiums = JSON.stringify(stadiums);
           res.render('index', req.renderValues);
         }
       }
@@ -58,20 +65,31 @@ router.get('/:sport', RouteBasics, function(req, res) {
 
 router.get('/:sport/:league', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find({league: req.params.league}).sort({name: 1}).exec(function(err, stadiums) {
-      if (stadiums.length > 0) {
-        var n = slideNum;
-        if (stadiums.length < slideNum) n = stadiums.length;
-        req.renderValues.stadiumSlider = GenSlider(n, stadiums);
-        req.renderValues.navTitle = req.params.league;
-        req.renderValues.selectedSport = req.params.sport;
-        req.renderValues.leagues = League(req.params.sport);
-        req.renderValues.selectedLeague = req.params.league;
-        req.renderValues.stadiums = stadiums;
-        req.renderValues.stadiumCount = stadiums.length;
-        res.render('index', req.renderValues);
-      }
-      else res.redirect(`/stadium/${req.params.sport}`);
+    Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
+			if (err) res.redirect('/');
+			else {
+				var leagueStadiums = []
+				for (var i = 0; i < stadiums.length; i++) {
+					if (stadiums[i].sport.indexOf(req.params.sport) > -1 && stadiums[i].league.indexOf(req.params.league) > -1) {
+						leagueStadiums.push(stadiums[i]);
+					}
+				}
+				if (leagueStadiums.length > 0) {
+					var n = slideNum;
+					if (stadiums.length < slideNum) n = leagueStadiums.length;
+					req.renderValues.stadiumSlider = GenSlider(n, leagueStadiums);
+					req.renderValues.navTitle = req.params.league;
+					req.renderValues.selectedSport = req.params.sport;
+					req.renderValues.leagues = League(req.params.sport);
+					req.renderValues.selectedLeague = req.params.league;
+					req.renderValues.stadiums = leagueStadiums;
+					req.renderValues.stadiumCount = leagueStadiums.length;
+					req.renderValues.allStadiums = JSON.stringify(stadiums);
+					res.render('index', req.renderValues);
+				}
+				else res.redirect(`/stadium/${req.params.sport}`);
+			}
+			
     });
   }
   else res.redirect('/stadium');
@@ -79,14 +97,21 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
 
 router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find({league: req.params.league}).sort({name: 1}).exec(function(err, stadiums) {
+    Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
       if (stadiums.length > 0) {
+				var leagueStadiums = []
+				for (var i = 0; i < stadiums.length; i++) {
+					if (stadiums[i].sport.indexOf(req.params.sport) > -1  && stadiums[i].league.indexOf(req.params.league) > -1) {
+						leagueStadiums.push(stadiums[i]);
+					}
+				}
         req.renderValues.selectedSport = req.params.sport;
         req.renderValues.leagues = League(req.params.sport);
         req.renderValues.selectedLeague = req.params.league;
-        req.renderValues.stadiums = stadiums;
+        req.renderValues.stadiums = leagueStadiums;
+				req.renderValues.allStadiums = JSON.stringify(stadiums);
 
-        var stadium = stadiums.filter(function( obj ) {
+        var stadium = leagueStadiums.filter(function( obj ) {
           return obj._id == req.params.stadium;
         })[0];
         if (stadium) {
