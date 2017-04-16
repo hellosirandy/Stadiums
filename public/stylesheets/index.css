@@ -7,11 +7,12 @@
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   display: block;
+  line-height: 1.5;
 }
 
 .slider a.stadiumName {
   cursor: pointer;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .slider a.stadiumName:hover {
@@ -19,7 +20,7 @@
 }
 
 .slider a.stadiumInfo {
-  font-size: 23px;
+  font-size: 30px;
 }
 
 .slider {
