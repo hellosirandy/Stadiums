@@ -94,7 +94,6 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
           }
           req.renderValues.stadium = stadium;
           req.renderValues.navTitle = stadium.name;
-          req.renderValues.stadiumCount = stadiums.length;
           Story.find({stadium: stadium._id}, function(err, stories) {
             if (err) throw err;
             else {
