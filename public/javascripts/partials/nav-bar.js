@@ -22,18 +22,22 @@ $(document).ready(function(){
 		}
 	});
 	var con = parseFloat($('#navBar .container').width()) - 40;
-//	console.log(con);
 	$('#searchInput').focus(function() {
 		$('#profilePic').css({'display': 'none'});
-		$('#hamburger').css({'display': 'none'});
-		$('#navBarLinkDiv').css({'float': 'left'});
-		$(this).width(con);
+		$('.navBarLinks').css({'display': 'none'});
+		$(this).width(200);
+//		$('#hamburger').css({'display': 'none'});
+//		$('#navBarLinkDiv').css({'float': 'left'});
+//		$(this).width(con);
 	});
 	$('#searchInput').focusout(function() {
 		$('#profilePic').css({'display': 'block'});
-		$('#hamburger').css({'display': 'inline-block'});
-		$('#navBarLinkDiv').css({'float': 'right'});
-		$(this).width(180);
+		$('.navBarLinks').css({'display': 'block'});
+		$(this).width(100);
+//		$('#profilePic').css({'display': 'block'});
+//		$('#hamburger').css({'display': 'inline-block'});
+//		$('#navBarLinkDiv').css({'float': 'right'});
+//		$(this).width(180);
 	});
 });
 
