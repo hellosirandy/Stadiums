@@ -7,7 +7,7 @@ router.get('/facebook', passport.authenticate('facebook', {scope: ['public_profi
 router.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/' }), function(req, res, next) {
   req.logIn(req.user, function(err) {
     if (err) throw err;
-    res.redirect(req.get('referer'));
+    res.redirect('/stadium/Baseball');
   });
 });
 
