@@ -2,7 +2,6 @@
 }
 
 #navBar .container {
-  padding-top: 10px;
   height: 60px;
   border-bottom: solid 0.5px #9e9e9e;
 }
@@ -29,30 +28,92 @@
   vertical-align: middle;
 }
 
-#content {
-  height: 40px;
+#navBarLinkDiv {
+  height: 60px;
   float: right;
-  line-height: 40px;
 }
 
-#content .navBarLinks {
+#navBarLinkDiv .navBarLinks {
   color: #e0e0e0;
   transition: color 0.2s;
   font-weight: bold;
+	line-height: 60px;
+	float: right;
 }
 
-#content a:hover {
+#navBarLinkDiv a:hover {
   color: #bdbdbd;
   transition: color 0.2s;
 }
 
-#content img {
+#navBarLinkDiv img {
+	margin-top: 10px;
   cursor: pointer;
-}
-
-#profilePic {
   width: 40px;
   height: 40px;
+	float: right;
+}
+
+#navBarLinkDiv #searchWrapper {
+	position: relative;
+	display: inline-block;
+}
+
+#navBarLinkDiv #searchWrapper #searchInput {
+	width: 100px;
+	height: 40px;
+	margin: 10px;
+	border: solid 1px #9e9e9e;
+	border-radius: 5px;
+	padding-left: 10px;
+	padding-right: 32px;
+	font-size: 15px;
+	color: #e0e0e0;
+	transition: none;
+} 
+
+#navBarLinkDiv #searchWrapper #searchIcon {
+	position: absolute;
+	right: 20px;
+	top: 19px;
+	font-size: 24px;
+}
+
+#navBarLinkDiv #searchWrapper #searchInput:focus {
+	border-bottom: 1px solid #bdbdbd !important;
+	box-shadow: none !important;
+	background-color: #e0e0e0 !important;
+	color: #424242;
+	transition: all 0.3s ease;
+}
+
+#navBarLinkDiv #searchWrapper #searchResults {
+	width: 244px;
+	margin-left: 10px;
+	margin-top: -10px;
+	z-index: 9999;
+	position: absolute;
+	max-height: 0px;
+	overflow-y: scroll;
+	transition: max-height 0.3s ease;
+}
+
+#navBarLinkDiv #searchWrapper #searchResults a{
+	padding-left: 10px;
+	line-height: 50px;
+	height: 50px;
+	display: block;
+	cursor: pointer;
+	background-color: #e0e0e0;
+	color: #424242;  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+#navBarLinkDiv #searchWrapper #searchResults a:hover {
+	background-color: #bdbdbd;
 }
 
 #loginModal {
@@ -114,5 +175,5 @@
 
 #hamburger i {
 	font-size: 33px;
-	line-height: 40px;
+	line-height: 60px;
 }

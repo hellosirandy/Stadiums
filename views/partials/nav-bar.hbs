@@ -5,7 +5,14 @@
   	<a data-activates="slide-out" class="button-collapse" id="hamburger">
 			<i class="material-icons">menu</i>
     </a>
-    <div id="content">
+    <div id="navBarLinkDiv">
+    	<div id="searchWrapper">
+    		<span id="allStadiums" style="display: none;">{{allStadiums}}</span>
+				<input type="text" id="searchInput" class="grey darken-1">
+				<i class="material-icons" id="searchIcon">search</i>
+				<div id="searchResults" class="grey lighten-2 z-depth-3">
+				</div>
+    	</div>
       {{#if user}}
       <img src="{{user.profilePic}}" alt="" class="circle" id="profilePic" data-activates='profileDropdown' data-beloworigin="true" >
       {{else}}
