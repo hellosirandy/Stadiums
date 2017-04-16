@@ -5,18 +5,33 @@
 
 .slider a {
   color: white;
-  cursor: pointer;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  display: block;
+  line-height: 1.5;
 }
 
-.slider a:hover {
+.slider a.stadiumName {
+  cursor: pointer;
+  font-size: 50px;
+}
+
+.slider a.stadiumName:hover {
   color: #bdbdbd;
 }
 
-.slider h5 {
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+.slider a.stadiumInfo {
+  font-size: 30px;
 }
 
 .slider {
   height: auto;
+}
+
+@media only screen and (max-width : 714px) {
+  .slider a.stadiumName {
+    font-size: 7vw;
+  }
+  .slider a.stadiumInfo {
+    font-size: 4.2vw;
+  }
 }

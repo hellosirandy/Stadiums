@@ -61,6 +61,12 @@ strong {
   margin: 0 20%;
 }
 
+@media only screen and (max-width: 400px) {
+  #stadiumStoryWall {
+    margin: 0 2%;
+  }
+}
+
 .story {
   border: #e0e0e0  1px solid;
   padding: 15px;

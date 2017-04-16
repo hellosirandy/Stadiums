@@ -16,9 +16,9 @@
 </div>
 <div id="stadiumNav" class="grey darken-1">
   <div class="container">
-    <p id="title" class="grey-text text-lighten-3">
-      {{navTitle}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span>
-    </p>
+    <a id="title" class="grey-text text-lighten-3">
+      {{navTitle}} {{#if stadiumCount}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span> {{/if}}
+    </a>
   </div>
 </div>
 <div id="loginModal" class="modal">

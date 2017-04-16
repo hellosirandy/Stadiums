@@ -8,12 +8,19 @@
 }
 
 #stadiumNav {
-  line-height: 12vh;
+  padding: 20px 0;
 }
 
 #stadiumNav #title {
   margin: 0;
-  font-size: 6vh;
+  font-size: 3vw;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width : 1024px) {
+  #stadiumNav #title {
+    font-size: 30px;
+  }
 }
 
 #stadiumNav #stadiumCount {
