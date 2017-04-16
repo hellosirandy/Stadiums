@@ -27,11 +27,11 @@
   height: auto;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width : 714px) {
   .slider a.stadiumName {
     font-size: 7vw;
   }
   .slider a.stadiumInfo {
-    font-size: 4vw;
+    font-size: 4.2vw;
   }
 }

@@ -70,8 +70,6 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
 });
 
 router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
-  console.log('stadium');
-  console.log(req.user);
   if (sportList.indexOf(req.params.sport) >= 0) {
     Stadium.find({league: req.params.league}).sort({name: 1}).exec(function(err, stadiums) {
       if (stadiums.length > 0) {
