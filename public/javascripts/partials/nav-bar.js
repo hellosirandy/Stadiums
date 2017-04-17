@@ -4,41 +4,34 @@ $(document).ready(function(){
   $('#profilePic').click(function() {
     $(this).dropdown('open');
   });
-	var allStadiums = JSON.parse($('#allStadiums').html());
-	$('#searchInput').keyup(function() {
-		$('#searchResults').html('');
-		var val = $(this).val();
-		if (val != '') {
-			var results = [];
-			for (var i = 0; i < allStadiums.length; i++) {
-				if (allStadiums[i].name.toLowerCase().search(val.toLowerCase()) > -1) {
-					results.push(allStadiums[i]);
-				}
-			}
-			ShowSearchResults(results);
-		}
-		else {
-			HideSearchResults();
-		}
-	});
-	var con = parseFloat($('#navBar .container').width()) - 40;
-	$('#searchInput').focus(function() {
-		$('#profilePic').css({'display': 'none'});
-		$('.navBarLinks').css({'display': 'none'});
-		$(this).width(200);
-//		$('#hamburger').css({'display': 'none'});
-//		$('#navBarLinkDiv').css({'float': 'left'});
-//		$(this).width(con);
-	});
-	$('#searchInput').focusout(function() {
-		$('#profilePic').css({'display': 'block'});
-		$('.navBarLinks').css({'display': 'block'});
-		$(this).width(100);
+//	var allStadiums = JSON.parse($('#allStadiums').html());
+//	$('#searchInput').keyup(function() {
+//		$('#searchResults').html('');
+//		var val = $(this).val();
+//		if (val != '') {
+//			var results = [];
+//			for (var i = 0; i < allStadiums.length; i++) {
+//				if (allStadiums[i].name.toLowerCase().search(val.toLowerCase()) > -1) {
+//					results.push(allStadiums[i]);
+//				}
+//			}
+//			ShowSearchResults(results);
+//		}
+//		else {
+//			HideSearchResults();
+//		}
+//	});
+//	var con = parseFloat($('#navBar .container').width()) - 40;
+//	$('#searchInput').focus(function() {
+//		$('#profilePic').css({'display': 'none'});
+//		$('.navBarLinks').css({'display': 'none'});
+//		$(this).width(200);
+//	});
+//	$('#searchInput').focusout(function() {
 //		$('#profilePic').css({'display': 'block'});
-//		$('#hamburger').css({'display': 'inline-block'});
-//		$('#navBarLinkDiv').css({'float': 'right'});
-//		$(this).width(180);
-	});
+//		$('.navBarLinks').css({'display': 'block'});
+//		$(this).width(100);
+//	});
 });
 
 function ShowSearchResults(results) {
