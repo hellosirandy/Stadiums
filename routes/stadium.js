@@ -17,18 +17,10 @@ router.get('/', RouteBasics, function(req, res, next) {
       req.renderValues.stadiumSlider = GenSlider(n, stadiums);
       req.renderValues.navTitle = 'Stadiums';
       req.renderValues.stadiumCount = stadiums.length;
-			var allStadiums = [];
-//			for (var i = 0; i < stadiums.length; i++) {
-//				allStadiums[i] = {
-//					url: stadiums[i]._id,
-//					name: stadiums[i].name
-//				}
-//			}
-			req.renderValues.allStadiums = JSON.stringify(stadiums);
+			req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
       res.render('index', req.renderValues);
     }
   });
-
 });
 
 router.get('/:sport', RouteBasics, function(req, res) {
@@ -54,7 +46,7 @@ router.get('/:sport', RouteBasics, function(req, res) {
           req.renderValues.selectedSport = req.params.sport;
           req.renderValues.leagues = leagues;
           req.renderValues.stadiumCount = sportStadiums.length;
-					req.renderValues.allStadiums = JSON.stringify(stadiums);
+					req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
           res.render('index', req.renderValues);
         }
       }
@@ -84,7 +76,7 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
 					req.renderValues.selectedLeague = req.params.league;
 					req.renderValues.stadiums = leagueStadiums;
 					req.renderValues.stadiumCount = leagueStadiums.length;
-					req.renderValues.allStadiums = JSON.stringify(stadiums);
+					req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
 					res.render('index', req.renderValues);
 				}
 				else res.redirect(`/stadium/${req.params.sport}`);
@@ -109,7 +101,7 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
         req.renderValues.leagues = League(req.params.sport);
         req.renderValues.selectedLeague = req.params.league;
         req.renderValues.stadiums = leagueStadiums;
-				req.renderValues.allStadiums = JSON.stringify(stadiums);
+				req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
 
         var stadium = leagueStadiums.filter(function( obj ) {
           return obj._id == req.params.stadium;
@@ -213,6 +205,17 @@ function GenSlider(n, stadiums) {
     stadiumSlider[i] = slide;
   }
   return stadiumSlider;
+}
+
+function GenerateSearchData(stadiums) {
+  var allStadiums = [];
+  for (var i = 0; i < stadiums.length; i++) {
+    allStadiums[i] = {
+      url: `/stadium/${stadiums[i].sport[0]}/${stadiums[i].league[0]}/${stadiums[i]._id}`,
+      name: stadiums[i].name
+    }
+  }
+  return allStadiums;
 }
 
 module.exports = router;
