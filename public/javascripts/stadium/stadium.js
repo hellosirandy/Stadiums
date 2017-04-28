@@ -4,7 +4,6 @@ $(document).ready(function() {
 
 	$('ul.tabs').tabs({
 		onShow: function(el) {
-			console.log(el.attr('id'));
 			if (el.attr('id') == 'stadiumStoryWall') {
 				$('.continueBtn').each(function() {
 					var storyContent = $(this).parent().find('.storyContent');
@@ -39,8 +38,10 @@ $(document).ready(function() {
     });
     var form = document.querySelector('form');
     form.onsubmit = function() {
-      var about = document.querySelector('input[name=about]');
-      about.value = quill.root.innerHTML;
+      var storyContent = document.querySelector('input[name=storyContent]');
+      var storyEvaluation = document.querySelector('input[name=storyEvaluation]');
+      storyContent.value = quill.root.innerHTML;
+      storyEvaluation.value = parseFloat($('#evaluationScore').html());
     }
     var sentences = []
     quill.on('text-change', function(delta, source) {

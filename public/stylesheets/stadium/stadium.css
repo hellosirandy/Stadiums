@@ -101,6 +101,21 @@ strong {
 
 .storyTitle {
   font-weight: bold;
+  font-size: 2em;
+}
+
+.storyTitle span {
+  float: right;
+  font-size: 0.7em;
+}
+.storyTitle span.positive {
+  color: #81c784;
+}
+.storyTitle span.negative {
+  color: #e57373;
+}
+.storyTitle span.zero {
+  color: #bdbdbd;
 }
 
 #newStoryDiv {
@@ -198,6 +213,9 @@ label.active {
 
 .continueBtn:hover {
   color: #9e9e9e;
+  -moz-transition: color 0.2s ease;
+  -webkit-transition: color 0.2s ease;
+  -o-transition: color 0.2s ease;
   transition: color 0.2s ease;
 }
 

@@ -81,7 +81,7 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
 				}
 				else res.redirect(`/stadium/${req.params.sport}`);
 			}
-			
+
     });
   }
   else res.redirect('/stadium');
@@ -128,6 +128,9 @@ router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
                 var month = timeList[1];
                 var date = timeList[2];
                 var time = timeList[4].split(':').slice(0, 2);
+                if (stories[i].evaluation > 0) processedStories[i].evaluationClass = 'positive'
+                else if (stories[i].evaluation < 0) processedStories[i].evaluationClass = 'negative'
+                else processedStories[i].evaluationClass = 'zero'
                 processedStories[i].processedCreate = time.join(':') + ' ' + month + ' ' + date;
               }
               req.renderValues.stories = processedStories;
@@ -165,7 +168,8 @@ router.post('/:sport/:league/:stadium', function(req, res) {
         author: req.user,
         title: req.body.storyTitleInput,
         stadium: req.params.stadium,
-        content: req.body.about
+        content: req.body.storyContent,
+        evaluation: req.body.storyEvaluation,
       });
       newStory.save(function(err) {
         if (err) throw err;

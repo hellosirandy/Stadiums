@@ -41,7 +41,7 @@
   <div class="col s12 grey lighten-4">
     <ul class="tabs grey lighten-4">
       <li class="tab col s3"><a href="#stadiumAlbum">Photos</a></li>
-      <li class="tab col s3" id="storyTab"><a href="#stadiumStoryWall" class="active">Stories</a></li>
+      <li class="tab col s3" id="storyTab"><a href="#stadiumStoryWall">Stories</a></li>
     </ul>
   </div>
   <div class="grey lighten-3 col s12">
@@ -72,7 +72,7 @@
             </div>
           </div>
           <div class="storyContent">
-            <h5 class="storyTitle">{{this.title}}</h5>
+            <h5 class="storyTitle">{{this.title}} <span class="{{this.evaluationClass}}">{{this.evaluation}}</span></h5>
             <div class="divider" style="margin-bottom: 10px;"></div>
             {{{this.content}}}
           </div>
@@ -108,11 +108,11 @@
                 <div id="editor">
                 </div>
               </div>
-
             </div>
-            <input name="about" type="hidden">
+            <input name="storyContent" type="hidden">
             <div class="row">
               <div class="col s12">
+                <input name="storyEvaluation" type="hidden">
                 <h5 id="evaluation">Evaluation: <span id="evaluationScore">0</span></h5>
               </div>
             </div>
@@ -129,7 +129,9 @@
     </div>
   </div>
 </div>
+<div class="row" style="height: 500px;">
 
+</div>
 <!-- Modal Structure -->
 <div id="storyModal" class="modal">
   <div class="modal-content">
