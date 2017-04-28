@@ -5,7 +5,6 @@
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
 
-
 <div id="stadiumDescription" class="grey lighten-4">
   <div class="row container" style="margin-bottom: 0;">
     <div class="col one-fifth description">
@@ -73,7 +72,7 @@
             </div>
           </div>
           <div class="storyContent">
-            <h5 class="storyTitle">{{this.title}}</h5>
+            <h5 class="storyTitle">{{this.title}} <span class="{{this.evaluationClass}}">{{this.evaluation}}</span></h5>
             <div class="divider" style="margin-bottom: 10px;"></div>
             {{{this.content}}}
           </div>
@@ -109,9 +108,14 @@
                 <div id="editor">
                 </div>
               </div>
-
             </div>
-            <input name="about" type="hidden">
+            <input name="storyContent" type="hidden">
+            <div class="row">
+              <div class="col s12">
+                <input name="storyEvaluation" type="hidden">
+                <h5 id="evaluation">Evaluation: <span id="evaluationScore">0</span></h5>
+              </div>
+            </div>
             <div class="row">
               <div class="col s5">
                 <input type="submit" style="display: none;" id="submitBtn"/>
@@ -120,13 +124,14 @@
             </div>
           </form>
         </div>
-
         {{/if}}
       </div>
     </div>
   </div>
 </div>
+<div class="row" style="height: 500px;">
 
+</div>
 <!-- Modal Structure -->
 <div id="storyModal" class="modal">
   <div class="modal-content">

@@ -25,8 +25,8 @@ mongoose.connect('localhost:27017/stadiums', function(err){
 require('./configs/passport');
 
 // view engine setup
-app.engine('hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
-app.set('view engine', '.hbs');
+app.engine('html', expressHbs({defaultLayout: 'layout', extname: '.html'}));
+app.set('view engine', '.html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
