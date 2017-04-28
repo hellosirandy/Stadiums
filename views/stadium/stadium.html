@@ -5,7 +5,6 @@
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
 
-
 <div id="stadiumDescription" class="grey lighten-4">
   <div class="row container" style="margin-bottom: 0;">
     <div class="col one-fifth description">
@@ -42,7 +41,7 @@
   <div class="col s12 grey lighten-4">
     <ul class="tabs grey lighten-4">
       <li class="tab col s3"><a href="#stadiumAlbum">Photos</a></li>
-      <li class="tab col s3" id="storyTab"><a href="#stadiumStoryWall">Stories</a></li>
+      <li class="tab col s3" id="storyTab"><a href="#stadiumStoryWall" class="active">Stories</a></li>
     </ul>
   </div>
   <div class="grey lighten-3 col s12">
@@ -113,6 +112,11 @@
             </div>
             <input name="about" type="hidden">
             <div class="row">
+              <div class="col s12">
+                <h5 id="evaluation">Evaluation: <span id="evaluationScore">0</span></h5>
+              </div>
+            </div>
+            <div class="row">
               <div class="col s5">
                 <input type="submit" style="display: none;" id="submitBtn"/>
                 <a id="postBtn" class="waves-effect waves-light btn grey darken-2" onclick="$('#submitBtn').click();">Post</a>
@@ -120,7 +124,6 @@
             </div>
           </form>
         </div>
-
         {{/if}}
       </div>
     </div>

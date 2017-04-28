@@ -200,3 +200,13 @@ label.active {
   color: #9e9e9e;
   transition: color 0.2s ease;
 }
+
+#evaluation {
+  float: right;
+  color: #bdbdbd;
+  transition: color 0.5s ease;
+}
+
+#editor {
+  min-height: 8vw;
+}
