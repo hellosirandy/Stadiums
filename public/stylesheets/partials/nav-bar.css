@@ -70,7 +70,7 @@
 	font-size: 15px;
 	color: #e0e0e0;
 	transition: none;
-} 
+}
 
 #navBarLinkDiv #searchWrapper #searchIcon {
 	position: absolute;
@@ -105,11 +105,10 @@
 	display: block;
 	cursor: pointer;
 	background-color: #e0e0e0;
-	color: #424242;  
+	color: #424242;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
 }
 
 #navBarLinkDiv #searchWrapper #searchResults a:hover {
@@ -176,4 +175,16 @@
 #hamburger i {
 	font-size: 33px;
 	line-height: 60px;
+}
+
+#emailSignin {
+  text-align: center;
+}
+#emailSignin a {
+  font-size: 18px;
+  line-height: 5;
+  color: #616161;
+}
+#emailSignin a:hover {
+    text-decoration: underline;
 }

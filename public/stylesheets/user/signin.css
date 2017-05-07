@@ -1,0 +1,12 @@
+#signupText {
+  font-size: 1vw;
+  line-height: 2;
+}
+
+#signupText a {
+  cursor: pointer;
+}
+
+#signupText a:hover {
+  text-decoration: underline;
+}

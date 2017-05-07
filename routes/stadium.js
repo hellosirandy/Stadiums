@@ -9,142 +9,124 @@ var slideNum = 7;
 var Story = require('../models/story-schema');
 
 router.get('/', RouteBasics, function(req, res, next) {
-  Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
-    if (err) res.redirect('/');
-    else {
-      var n = slideNum;
-      if (stadiums.length < slideNum) n = stadiums.length;
-      req.renderValues.stadiumSlider = GenSlider(n, stadiums);
-      req.renderValues.navTitle = 'Stadiums';
-      req.renderValues.stadiumCount = stadiums.length;
-			req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
-      res.render('index', req.renderValues);
-    }
-  });
+  var stadiums = req.stadiums;
+  var n = slideNum;
+  if (stadiums.length < slideNum) n = stadiums.length;
+  req.renderValues.stadiumSlider = GenSlider(n, stadiums);
+  req.renderValues.navTitle = 'Stadiums';
+  req.renderValues.stadiumCount = stadiums.length;
+  res.render('index', req.renderValues);
 });
 
 router.get('/:sport', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
-      if (err) res.redirect('/');
-      else {
-				var sportStadiums = []
-				for (var i = 0; i < stadiums.length; i++) {
-					if (stadiums[i].sport.indexOf(req.params.sport) > -1) {
-						sportStadiums.push(stadiums[i]);
-					}
-				}
-        leagues = League(req.params.sport);
-        if (leagues.length == 1) {
-          res.redirect(`/stadium/${req.params.sport}/${leagues[0]}`);
-        }
-        else {
-          var n = slideNum;
-          if (sportStadiums.length < slideNum) n = sportStadiums.length;
-          req.renderValues.stadiumSlider = GenSlider(n, sportStadiums);
-          req.renderValues.navTitle = req.params.sport;
-          req.renderValues.selectedSport = req.params.sport;
-          req.renderValues.leagues = leagues;
-          req.renderValues.stadiumCount = sportStadiums.length;
-					req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
-          res.render('index', req.renderValues);
-        }
+    var stadiums = req.stadiums;
+    var sportStadiums = []
+    for (var i = 0; i < stadiums.length; i++) {
+      if (stadiums[i].sport.indexOf(req.params.sport) > -1) {
+        sportStadiums.push(stadiums[i]);
       }
-    });
+    }
+    leagues = League(req.params.sport);
+    if (leagues.length == 1) {
+      res.redirect(`/stadium/${req.params.sport}/${leagues[0]}`);
+    }
+    else {
+      var n = slideNum;
+      if (sportStadiums.length < slideNum) n = sportStadiums.length;
+      req.renderValues.stadiumSlider = GenSlider(n, sportStadiums);
+      req.renderValues.navTitle = req.params.sport;
+      req.renderValues.selectedSport = req.params.sport;
+      req.renderValues.leagues = leagues;
+      req.renderValues.stadiumCount = sportStadiums.length;
+      res.render('index', req.renderValues);
+    }
   }
   else res.redirect('/stadium');
 });
 
 router.get('/:sport/:league', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
-			if (err) res.redirect('/');
-			else {
-				var leagueStadiums = []
-				for (var i = 0; i < stadiums.length; i++) {
-					if (stadiums[i].sport.indexOf(req.params.sport) > -1 && stadiums[i].league.indexOf(req.params.league) > -1) {
-						leagueStadiums.push(stadiums[i]);
-					}
-				}
-				if (leagueStadiums.length > 0) {
-					var n = slideNum;
-					if (stadiums.length < slideNum) n = leagueStadiums.length;
-					req.renderValues.stadiumSlider = GenSlider(n, leagueStadiums);
-					req.renderValues.navTitle = req.params.league;
-					req.renderValues.selectedSport = req.params.sport;
-					req.renderValues.leagues = League(req.params.sport);
-					req.renderValues.selectedLeague = req.params.league;
-					req.renderValues.stadiums = leagueStadiums;
-					req.renderValues.stadiumCount = leagueStadiums.length;
-					req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
-					res.render('index', req.renderValues);
-				}
-				else res.redirect(`/stadium/${req.params.sport}`);
-			}
-
-    });
+    var stadiums = req.stadiums;
+    var leagueStadiums = []
+    for (var i = 0; i < stadiums.length; i++) {
+      if (stadiums[i].sport.indexOf(req.params.sport) > -1 && stadiums[i].league.indexOf(req.params.league) > -1) {
+        leagueStadiums.push(stadiums[i]);
+      }
+    }
+    if (leagueStadiums.length > 0) {
+      var n = slideNum;
+      if (stadiums.length < slideNum) n = leagueStadiums.length;
+      req.renderValues.stadiumSlider = GenSlider(n, leagueStadiums);
+      req.renderValues.navTitle = req.params.league;
+      req.renderValues.selectedSport = req.params.sport;
+      req.renderValues.leagues = League(req.params.sport);
+      req.renderValues.selectedLeague = req.params.league;
+      req.renderValues.stadiums = leagueStadiums;
+      req.renderValues.stadiumCount = leagueStadiums.length;
+      res.render('index', req.renderValues);
+    }
+    else res.redirect(`/stadium/${req.params.sport}`);
   }
   else res.redirect('/stadium');
 });
 
 router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
-    Stadium.find().sort({name: 1}).exec(function(err, stadiums) {
-      if (stadiums.length > 0) {
-				var leagueStadiums = []
-				for (var i = 0; i < stadiums.length; i++) {
-					if (stadiums[i].sport.indexOf(req.params.sport) > -1  && stadiums[i].league.indexOf(req.params.league) > -1) {
-						leagueStadiums.push(stadiums[i]);
-					}
-				}
-        req.renderValues.selectedSport = req.params.sport;
-        req.renderValues.leagues = League(req.params.sport);
-        req.renderValues.selectedLeague = req.params.league;
-        req.renderValues.stadiums = leagueStadiums;
-				req.renderValues.allStadiums = JSON.stringify(GenerateSearchData(stadiums));
-
-        var stadium = leagueStadiums.filter(function( obj ) {
-          return obj._id == req.params.stadium;
-        })[0];
-        if (stadium) {
-          stadium.handledDetail = {}
-          if (stadium.detail.opened) stadium.detail.handledOpened = dateHandler(stadium.detail.opened);
-          if (stadium.detail.capacity) stadium.detail.handledCapacity = stadium.detail.capacity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          if (stadium.detail.images) {
-            stadium.detail.handledImages = [];
-            chunkSize = 4;
-            for (var i = 0; i < stadium.detail.images.length; i += chunkSize) {
-              stadium.detail.handledImages.push(stadium.detail.images.slice(i, i + chunkSize));
-            }
-          }
-          req.renderValues.stadium = stadium;
-          req.renderValues.navTitle = stadium.name;
-          Story.find({stadium: stadium._id}, function(err, stories) {
-            if (err) throw err;
-            else {
-              var processedStories = stories;
-              for (var i = 0; i < stories.length; i++) {
-                var timeList = stories[i].create.toString().split(' ');
-                var month = timeList[1];
-                var date = timeList[2];
-                var time = timeList[4].split(':').slice(0, 2);
-                if (stories[i].evaluation > 0) processedStories[i].evaluationClass = 'positive'
-                else if (stories[i].evaluation < 0) processedStories[i].evaluationClass = 'negative'
-                else processedStories[i].evaluationClass = 'zero'
-                processedStories[i].processedCreate = time.join(':') + ' ' + month + ' ' + date;
-              }
-              req.renderValues.stories = processedStories;
-              var errors = req.flash('error');
-              if (errors.length > 0) req.renderValues.errors = errors[0];
-              res.render('stadium/stadium', req.renderValues);
-            }
-          });
-
+    var stadiums = req.stadiums;
+    if (stadiums.length > 0) {
+      var leagueStadiums = []
+      for (var i = 0; i < stadiums.length; i++) {
+        if (stadiums[i].sport.indexOf(req.params.sport) > -1  && stadiums[i].league.indexOf(req.params.league) > -1) {
+          leagueStadiums.push(stadiums[i]);
         }
-        else res.redirect(`/stadium/${req.params.sport}`);
+      }
+      req.renderValues.selectedSport = req.params.sport;
+      req.renderValues.leagues = League(req.params.sport);
+      req.renderValues.selectedLeague = req.params.league;
+      req.renderValues.stadiums = leagueStadiums;
+
+      var stadium = leagueStadiums.filter(function( obj ) {
+        return obj._id == req.params.stadium;
+      })[0];
+      if (stadium) {
+        stadium.handledDetail = {}
+        if (stadium.detail.opened) stadium.detail.handledOpened = dateHandler(stadium.detail.opened);
+        if (stadium.detail.capacity) stadium.detail.handledCapacity = stadium.detail.capacity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (stadium.detail.images) {
+          stadium.detail.handledImages = [];
+          chunkSize = 4;
+          for (var i = 0; i < stadium.detail.images.length; i += chunkSize) {
+            stadium.detail.handledImages.push(stadium.detail.images.slice(i, i + chunkSize));
+          }
+        }
+        req.renderValues.stadium = stadium;
+        req.renderValues.navTitle = stadium.name;
+        Story.find({stadium: stadium._id}, function(err, stories) {
+          if (err) throw err;
+          else {
+            var processedStories = stories;
+            for (var i = 0; i < stories.length; i++) {
+              var timeList = stories[i].create.toString().split(' ');
+              var month = timeList[1];
+              var date = timeList[2];
+              var time = timeList[4].split(':').slice(0, 2);
+              if (stories[i].evaluation > 0) processedStories[i].evaluationClass = 'positive'
+              else if (stories[i].evaluation < 0) processedStories[i].evaluationClass = 'negative'
+              else processedStories[i].evaluationClass = 'zero'
+              processedStories[i].processedCreate = time.join(':') + ' ' + month + ' ' + date;
+            }
+            req.renderValues.stories = processedStories;
+            var errors = req.flash('error');
+            if (errors.length > 0) req.renderValues.errors = errors[0];
+            res.render('stadium/stadium', req.renderValues);
+          }
+        });
+
       }
       else res.redirect(`/stadium/${req.params.sport}`);
-    });
+    }
+    else res.redirect(`/stadium/${req.params.sport}`);
   }
   else res.redirect('/stadium');
 });
@@ -209,17 +191,6 @@ function GenSlider(n, stadiums) {
     stadiumSlider[i] = slide;
   }
   return stadiumSlider;
-}
-
-function GenerateSearchData(stadiums) {
-  var allStadiums = [];
-  for (var i = 0; i < stadiums.length; i++) {
-    allStadiums[i] = {
-      url: `/stadium/${stadiums[i].sport[0]}/${stadiums[i].league[0]}/${stadiums[i]._id}`,
-      name: stadiums[i].name
-    }
-  }
-  return allStadiums;
 }
 
 module.exports = router;

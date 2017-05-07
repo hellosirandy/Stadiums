@@ -1,5 +1,6 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var configAuth = require('./auth');
 var User = require('../models/user-schema');
 
@@ -37,3 +38,21 @@ passport.use(new FacebookStrategy({
     });
   }
 ));
+
+passport.use('local.signup', new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback: true
+}), function(req, email, password, done) {
+  User.findOne({'email': email}, function(err, user) {
+    if (err) return done(err);
+    if (user) return done(null, false, {message: 'Email is alread in use'});
+    var newUser = new User();
+    newUser.email = email;
+    newUser.password = newUser.encryptPassword(password);
+    newUser.save(function(err) {
+      if (err) return done(err);
+      return done(err, newUser);
+    })
+  });
+});
