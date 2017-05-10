@@ -57,7 +57,7 @@ router.get('/:sport/:league', RouteBasics, LoadStadium, function(req, res) {
     }
     if (leagueStadiums.length > 0) {
       var n = slideNum;
-      if (stadiums.length < slideNum) n = leagueStadiums.length;
+      if (leagueStadiums.length < slideNum) n = leagueStadiums.length;
       req.renderValues.stadiumSlider = GenSlider(n, leagueStadiums);
       req.renderValues.navTitle = req.params.league;
       req.renderValues.selectedSport = req.params.sport;
@@ -178,7 +178,7 @@ function GetRandomNums(n, s) {
 function GenSlider(n, stadiums) {
   var randNums = GetRandomNums(n, stadiums.length);
   var stadiumSlider = [];
-  var align = ['center-align', 'left-align', 'right-align']
+  var align = ['center-align', 'left-align', 'right-align'];
   for (i = 0; i < n; i++) {
     var stadium = stadiums[randNums[i]]
     var slide = {
