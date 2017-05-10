@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/stylesheets/stadium/recommandation.css">
+<script src="/javascripts/stadium/recommandation.js" charset="utf-8"></script>
+<div class="grey lighten-4" id="stadiumRecommandation">
+  <div class="row container" style="margin-bottom: 0;">
+    <h4 id="recommandationTitle">You may also like</h4>
+    <div class="row">
+    {{#each recommandation}}
+      <div class="col s3">
+        <h6 class="recommandationName">{{this.name}}</h6>
+      </div>
+    {{/each}}
+    </div>
+    <div class="row">
+    {{#each recommandation}}
+      <div class="col s3">
+        <div class="recommandationPic" style="background-image: url({{this.image}})" data-href="{{this.href}}"></div>
+      </div>
+    {{/each}}
+    </div>
+  </div>
+</div>

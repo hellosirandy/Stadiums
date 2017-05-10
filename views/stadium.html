@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="/stylesheets/stadium/stadium.css">
+<script src="/javascripts/stadium/stadium.js" charset="utf-8"></script>
+
+<link href="https://cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
+
+{{> stadium/description}}
+
+<div id="tabRow" class="row">
+  <div class="col s12 grey lighten-4">
+    <ul class="tabs grey lighten-4">
+      <li class="tab col s3"><a href="#stadiumAlbum">Photos</a></li>
+      <li class="tab col s3" id="storyTab"><a href="#stadiumStoryWall">Stories</a></li>
+    </ul>
+  </div>
+  <div class="grey lighten-3 col s12">
+    {{> stadium/album}}
+  </div>
+  <div class="grey lighten-3 col s12">
+    {{> stadium/story}}
+  </div>
+</div>
+{{> stadium/recommandation}}

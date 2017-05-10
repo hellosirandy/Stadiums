@@ -1,0 +1,13 @@
+<div id="stadiumAlbum" class="stadiumTabs">
+  <div class="container">
+    {{#each stadium.detail.handledImages}}
+    <div class="row">
+      {{#each this}}
+      <div class="col s3 albumCell">
+        <img class="materialboxed cellContent" data-caption="Source: {{this}}" src="{{this}}" alt="">
+      </div>
+      {{/each}}
+    </div>
+    {{/each}}
+  </div>
+</div>
