@@ -228,3 +228,7 @@ label.active {
 #editor {
   min-height: 8vw;
 }
+
+#stadiumStoryWall .loginBtn {
+  display: block;
+}
