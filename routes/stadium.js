@@ -7,8 +7,9 @@ var sportList = ['Baseball', 'Football', 'Basketball', 'Hockey'];
 var dateHandler = require('../helpers/date');
 var slideNum = 7;
 var Story = require('../models/story-schema');
+var LoadStadium = require('../middlewares/load-stadium');
 
-router.get('/', RouteBasics, function(req, res, next) {
+router.get('/', RouteBasics, LoadStadium, function(req, res, next) {
   var stadiums = req.stadiums;
   var n = slideNum;
   if (stadiums.length < slideNum) n = stadiums.length;
@@ -18,7 +19,7 @@ router.get('/', RouteBasics, function(req, res, next) {
   res.render('index', req.renderValues);
 });
 
-router.get('/:sport', RouteBasics, function(req, res) {
+router.get('/:sport', RouteBasics, LoadStadium, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
     var stadiums = req.stadiums;
     var sportStadiums = []
@@ -45,7 +46,7 @@ router.get('/:sport', RouteBasics, function(req, res) {
   else res.redirect('/stadium');
 });
 
-router.get('/:sport/:league', RouteBasics, function(req, res) {
+router.get('/:sport/:league', RouteBasics, LoadStadium, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
     var stadiums = req.stadiums;
     var leagueStadiums = []
@@ -71,7 +72,7 @@ router.get('/:sport/:league', RouteBasics, function(req, res) {
   else res.redirect('/stadium');
 });
 
-router.get('/:sport/:league/:stadium', RouteBasics, function(req, res) {
+router.get('/:sport/:league/:stadium', RouteBasics, LoadStadium, function(req, res) {
   if (sportList.indexOf(req.params.sport) >= 0) {
     var stadiums = req.stadiums;
     if (stadiums.length > 0) {

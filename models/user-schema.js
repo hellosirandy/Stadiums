@@ -5,8 +5,9 @@ var bcrypt = require('bcrypt-nodejs');
 var userSchema = new Schema({
   fullName: String,
   email: String,
-  profilePic: String,
+  profilePic: {type: String, default: '/images/default_profile_pic.png'},
   password: String,
+  strategy: String
 });
 
 userSchema.methods.encryptPassword = function(password) {
