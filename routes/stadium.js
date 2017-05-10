@@ -214,7 +214,6 @@ function GenRecommandation(target, stadiums) {
   });
   stadiums.reverse();
   stadiums.slice(0, 4).forEach(function(stadium) {
-    console.log(stadium.score);
     recommandation.push({
       name: stadium.name,
       href: `/stadium/${stadium.sport[0]}/${stadium.league[0].replace(' ', '%20')}/${stadium._id}`,
