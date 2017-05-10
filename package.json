@@ -23,6 +23,7 @@
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
+    "sentiment": "^4.0.0",
     "serve-favicon": "~2.3.2",
     "socket.io": "^1.7.3"
   }
