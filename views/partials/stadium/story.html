@@ -1,0 +1,67 @@
+<div id="stadiumStoryWall" class="stadiumTabs" data-user="{{user}}">
+  <div class="container">
+    {{#each stories}}
+    <div class="story grey lighten-4 row" data-content={{this.content}}>
+      <div class="storyInfo">
+        <img src="{{this.author.profilePic}}" alt="" class="circle">
+        <div class="storyAuthorTimeDiv">
+          <a class="storyAuthor">{{this.author.fullName}}</a>
+          <a class="storyTime">{{this.processedCreate}}</a>
+        </div>
+      </div>
+      <div class="storyContent">
+        <h5 class="storyTitle">{{this.title}} <span class="{{this.evaluationClass}}">{{this.evaluation}}</span></h5>
+        <div class="divider" style="margin-bottom: 10px;"></div>
+        {{{this.content}}}
+      </div>
+      <a class="continueBtn" data-status="hidden">... Full article</a>
+    </div>
+    {{/each}}
+
+    {{#if user}}
+    <div id="newStoryDiv" class="row grey lighten-4">
+
+      <form class="col s12" method="post">
+        {{#if errors}}
+          <div class="red lighten-4" id="errorDiv">
+            {{#each errors.messages}}
+            <p class="errorMsgs">* {{this}}</p>
+            {{/each}}
+          </div>
+        {{/if}}
+        <div class="row" style="margin-bottom: 0;">
+          <div class="col s12">
+            <a id="newStoryDivTitle"><i class="material-icons left">mode_edit</i>New story</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="storyTitleInput" type="text" name="storyTitleInput">
+            <label for="storyTitleInput">Title</label>
+          </div>
+        </div>
+        {{errors.content}}
+        <div class="row">
+          <div class="col s12">
+            <div id="editor">
+            </div>
+          </div>
+        </div>
+        <input name="storyContent" type="hidden">
+        <div class="row">
+          <div class="col s12">
+            <input name="storyEvaluation" type="hidden">
+            <h5 id="evaluation">Evaluation: <span id="evaluationScore">0</span></h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s5">
+            <input type="submit" style="display: none;" id="submitBtn"/>
+            <a id="postBtn" class="waves-effect waves-light btn grey darken-2" onclick="$('#submitBtn').click();">Post</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    {{/if}}
+  </div>
+</div>

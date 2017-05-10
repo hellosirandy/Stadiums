@@ -1,0 +1,30 @@
+#stadiumRecommandation {
+  padding-top: 20px;
+}
+
+#stadiumRecommandation h4{
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 2;
+  font-size: 1.5vw;
+}
+
+.recommandationName {
+  font-size: 1.2vw;
+  text-align: center;
+  color: #616161;
+}
+
+.recommandationPic {
+  margin: 10px 0 30px;
+  cursor: pointer;
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.recommandationPic:hover {
+  opacity: 1;
+}

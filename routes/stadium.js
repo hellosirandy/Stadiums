@@ -120,7 +120,8 @@ router.get('/:sport/:league/:stadium', RouteBasics, LoadStadium, function(req, r
             req.renderValues.stories = processedStories;
             var errors = req.flash('error');
             if (errors.length > 0) req.renderValues.errors = errors[0];
-            res.render('stadium/stadium', req.renderValues);
+            req.renderValues.recommandation = GenRecommandation(stadium, stadiums);
+            res.render('stadium', req.renderValues);
           }
         });
 
@@ -192,6 +193,44 @@ function GenSlider(n, stadiums) {
     stadiumSlider[i] = slide;
   }
   return stadiumSlider;
+}
+
+function GenRecommandation(target, stadiums) {
+  var recommandation = [];
+  stadiums.forEach(function(stadium) {
+    var score = 0;
+    if (target.name != stadium.name) {
+      if (stadium.detail.location == target.detail.location) score += 10;
+      if (stadium.detail.architect == target.detail.architect) score += 3;
+      if (Intersection(stadium.league, target.league).length > 1) score += 4;
+      else if (Intersection(stadium.league, target.league).length > 0) score += 8;
+      else if (Intersection(stadium.sport, target.sport).length > 1) score += 3;
+      else if (Intersection(stadium.sport, target.sport).length > 0) score += 7;
+    }
+    stadium.score = score;
+  });
+  stadiums.sort(function(a, b) {
+    return a.score - b.score;
+  });
+  stadiums.reverse();
+  stadiums.slice(0, 4).forEach(function(stadium) {
+    console.log(stadium.score);
+    recommandation.push({
+      name: stadium.name,
+      href: `/stadium/${stadium.sport[0]}/${stadium.league[0].replace(' ', '%20')}/${stadium._id}`,
+      image: stadium.detail.images[0],
+    });
+  });
+  return recommandation;
+}
+
+function Intersection(a, b) {
+  intersection = [];
+  x = 0;
+  for (var i=0; i < a.length; ++i)
+    if (b.indexOf(a[i]) != -1)
+        intersection[x++] = a[i];
+  return intersection;
 }
 
 module.exports = router;
