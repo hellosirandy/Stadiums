@@ -1,0 +1,23 @@
+#signupText {
+  font-size: 1vw;
+  line-height: 2;
+}
+
+#signupText a {
+  cursor: pointer;
+}
+
+#signupText a:hover {
+  text-decoration: underline;
+}
+
+#errorMessages {
+  border-radius: 7px;
+}
+
+#errorMessages p {
+  margin: 0;
+  line-height: 2;
+  font-size: 1.2vw;
+  color: #e57373;
+}

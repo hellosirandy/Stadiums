@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/stylesheets/user/signin.css">
+<div class="row" style="margin: 30px 0;">
+  <form method="post">
+    <div class="col s4 offset-s4">
+      <div class="row">
+        <div class="col s12">
+          <h4>Sign in</h4>
+        </div>
+      </div>
+      {{#if hasError}}
+      <div class="row">
+        <div class="col s12 grey lighten-2" id="errorMessages">
+          {{#each messages}}
+          <p>* {{this}}</p>
+          {{/each}}
+        </div>
+      </div>
+      {{/if}}
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="emailInput" type="text" name="email">
+          <label for="emailInput">email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="passwordInput" type="password" name="password">
+          <label for="passwordInput">Password</label>
+        </div>
+      </div>
+      <div class="col s12">
+        <p id="signupText">Don't have an account yet? <a href="/user/signup">Sign up here</a></p>
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button class="btn waves-effect waves-light light-blue darken-4" type="submit" name="action">Sign in</button>
+      </div>
+    </div>
+  </form>
+</div>

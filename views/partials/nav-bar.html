@@ -21,6 +21,7 @@
     </div>
   </div>
 </div>
+{{#if navTitle}}
 <div id="stadiumNav" class="grey darken-1">
   <div class="container">
     <a id="title" class="grey-text text-lighten-3">
@@ -28,6 +29,7 @@
     </a>
   </div>
 </div>
+{{/if}}
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <h4>Sign in with</h4>
@@ -47,6 +49,9 @@
       <div class="socialBtnTextDiv">
         <a>Twitter</a>
       </div>
+    </div>
+    <div id="emailSignin">
+      <a href="/user/signin">Sign in or sign up with email</a>
     </div>
   </div>
 </div>
