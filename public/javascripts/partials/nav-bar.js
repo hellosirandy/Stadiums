@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('#profilePic').click(function() {
     $(this).dropdown('open');
   });
-  
+
 	var allStadiums = JSON.parse($('#allStadiums').html());
 	$('#searchInput').keyup(function() {
 		$('#searchResults').html('');
@@ -38,7 +38,7 @@ $(document).ready(function(){
 function ShowSearchResults(results) {
 	$('#searchResults').css({'max-height': '500px'});
 	for (var i = 0; i < results.length; i++) {
-		$('#searchResults').append(
+    $('#searchResults').append(
 			`<a href="${results[i].url}" class="searchResultsLink">${results[i].name}</a>`
 		);
 	}

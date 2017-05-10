@@ -15,6 +15,7 @@ var validator = require('express-validator');
 var index = require('./routes/index');
 var auth = require('./routes/auth');
 var stadium = require('./routes/stadium');
+var user = require('./routes/user');
 
 var app = express();
 
@@ -25,8 +26,8 @@ mongoose.connect('localhost:27017/stadiums', function(err){
 require('./configs/passport');
 
 // view engine setup
-app.engine('hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
-app.set('view engine', '.hbs');
+app.engine('html', expressHbs({defaultLayout: 'layout', extname: '.html'}));
+app.set('view engine', '.html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -50,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/stadium', stadium);
+app.use('/user', user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
