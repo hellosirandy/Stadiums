@@ -16,7 +16,7 @@ router.get('/signin', LoadStadium, function (req, res) {
   res.render('user/signin', req.renderValues);
 });
 
-router.post('/signin', passport.authenticate('local.signin', {failureRedirect: '/login', failureFlash: true }),
+router.post('/signin', passport.authenticate('local.signin', {failureRedirect: '/user/login', failureFlash: true }),
   function(req, res, next) {
     req.logIn(req.user, function(err) {
       if (err) throw err;
@@ -32,7 +32,7 @@ router.get('/signup', LoadStadium, function(req, res) {
   res.render('user/signup', req.renderValues);
 });
 
-router.post('/signup', passport.authenticate('local.signup', {failureRedirect: '/login', failureFlash: true }),
+router.post('/signup', passport.authenticate('local.signup', {failureRedirect: '/user/login', failureFlash: true }),
   function(req, res, next) {
     req.logIn(req.user, function(err) {
       if (err) throw err;
