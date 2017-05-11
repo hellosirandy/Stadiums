@@ -3,7 +3,10 @@
     {{#each stadium.detail.handledImages}}
     <div class="row">
       {{#each this}}
-      <div class="col s3 albumCell">
+      <div class="col s3">
+        <div class="albumCell" style="background-image: url({{this}})">
+
+        </div>
         <img class="materialboxed cellContent" data-caption="Source: {{this}}" src="{{this}}" alt="">
       </div>
       {{/each}}
