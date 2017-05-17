@@ -2,7 +2,6 @@ var Slider = require('../helpers/slider');
 var slideNum = 7;
 var sportList = ['Baseball', 'Football', 'Basketball', 'Hockey'];
 var League = require('../configs/league');
-
 function home(req, res, next) {
   var stadiums = req.stadiums;
   var n = slideNum;
@@ -22,7 +21,7 @@ function sport(req, res, next) {
         sportStadiums.push(stadium);
       }
     });
-    leagues = League(req.params.sport);
+    var leagues = League(req.params.sport);
     if (leagues.length == 1) {
       res.redirect(`/stadium/${req.params.sport}/${leagues[0]}`);
     }
