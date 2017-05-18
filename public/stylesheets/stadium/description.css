@@ -1,0 +1,28 @@
+.description img {
+  margin-left: 30%;
+  width: 40%;
+}
+
+.description h4 {
+  font-size: 1.8vw;
+  text-align: center;
+  font-weight: bold;
+}
+
+.description h5 {
+  font-size: 1.3vw;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.one-fifth {
+  width: 20%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+#stadiumDescription {
+  padding-top: 70px;
+  padding-bottom: 10px;
+}

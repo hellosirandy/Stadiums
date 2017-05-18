@@ -16,20 +16,11 @@ $(document).ready(function() {
 		},
 	});
 
-  var imageOpen = false;
   $('.albumCell').click(function() {
     var index = $('.albumCell').index( this );
     var $image = $('.cellContent').eq(index);
-    // $image.css('display', 'block');
     $image.click();
-    // imageOpen = true;
   });
-  // $('.cellContent').click(function() {
-  //   if (imageOpen) {
-  //     imageOpen = false;
-  //     $(this).css('display', 'none');
-  //   }
-  // });
 
   $('.continueBtn').click(function() {
     var storyContent = $(this).parent().find('.storyContent');
