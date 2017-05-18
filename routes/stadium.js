@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var Stadium = require('../models/stadium-schema');
-var League = require('../configs/league');
 var Story = require('../models/story-schema');
 var Slider = require('../helpers/slider');
 var Recommand = require('../helpers/recommand');
