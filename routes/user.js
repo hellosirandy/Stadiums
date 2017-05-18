@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var RouteBasics = require('../middlewares/route-basics');
+var middlewares = require('../middlewares/middlewares');
 var csrf = require('csurf');
 var passport = require('passport');
-var LoadStadium = require('../middlewares/load-stadium');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
-router.get('/signin', LoadStadium, function (req, res) {
+router.get('/signin', middlewares.loadStadium, function (req, res) {
   req.renderValues.csrfToken = req.csrfToken();
   var messages = req.flash('error');
   req.renderValues.messages = messages;
@@ -24,7 +23,7 @@ router.post('/signin', passport.authenticate('local.signin', {failureRedirect: '
   });
 });
 
-router.get('/signup', LoadStadium, function(req, res) {
+router.get('/signup', middlewares.loadStadium, function(req, res) {
   req.renderValues.csrfToken = req.csrfToken();
   var messages = req.flash('error');
   req.renderValues.messages = messages;

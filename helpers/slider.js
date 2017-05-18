@@ -8,7 +8,9 @@ function GetRandomNums(n, s) {
   return arr;
 }
 
-function GenSlider(n, stadiums) {
+function GenSlider(stadiums) {
+  var n = 7;
+  if (stadiums.length < n) n = stadiums.length;
   var randNums = GetRandomNums(n, stadiums.length);
   var stadiumSlider = [];
   var align = ['center-align', 'left-align', 'right-align'];
