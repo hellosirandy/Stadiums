@@ -1,6 +1,6 @@
 var LEAGUES = {
   Baseball: ['MLB', 'NPB'],
-  Football: ['NFL', 'Premier League', 'La Liga', 'Premier League'],
+  Football: ['NFL', 'Premier League', 'La Liga', 'Bundesliga'],
   Basketball: ['NBA'],
   Hockey: ['NHL']
 }

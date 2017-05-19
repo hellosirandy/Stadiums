@@ -30,32 +30,9 @@
   </div>
 </div>
 {{/if}}
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <h4>Sign in with</h4>
-    <hr>
-    <div id="facebookBtn" class="socialBtn hoverable">
-      <div class="socialBtnImgDiv">
-        <img src="/images/facebook.png" alt="" class="socialBtnImg">
-      </div>
-      <div class="socialBtnTextDiv" onclick="window.location = '/auth/facebook';">
-        <a>Facebook</a>
-      </div>
-    </div>
-    <div id="twitterBtn" class="socialBtn hoverable">
-      <div class="socialBtnImgDiv">
-        <img src="/images/twitter.png" alt="" class="socialBtnImg">
-      </div>
-      <div class="socialBtnTextDiv">
-        <a>Twitter</a>
-      </div>
-    </div>
-    <div id="emailSignin">
-      <a href="/user/signin">Sign in or sign up with email</a>
-    </div>
-  </div>
-</div>
+{{> nav-bar/login-modal}}
 
 <ul id='profileDropdown' class='dropdown-content'>
   <li><a href="/signout" class="dropDownLink grey-text text-darken-3">Sign out</a></li>
+  <li><a href="#" class="dropDownLink grey-text text-darken-3">Profile</a></li>
 </ul>
