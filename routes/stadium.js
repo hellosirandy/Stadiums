@@ -53,7 +53,7 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
   var stadiums = req.stadiums;
   var leagueStadiums = req.leagueStadiums;
   req.renderValues.selectedSport = req.params.sport;
-  req.renderValues.leagues = League(req.params.sport);
+  req.renderValues.leagues = req.leagues;
   req.renderValues.selectedLeague = req.params.league;
   req.renderValues.sideNavStadiums = leagueStadiums;
 

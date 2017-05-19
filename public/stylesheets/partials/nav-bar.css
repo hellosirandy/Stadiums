@@ -165,7 +165,27 @@
 }
 
 #profileDropdown {
-  margin-top: 10px;
+  margin-top: 20px;
+  top: 50px !important;
+  position: absolute;
+  /*border-top-right-radius: 10px;*/
+}
+
+#profileDropdown::after{
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  top: -8px;
+  width: 0;
+  height: 0;
+  content:'';
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #ffffff;
+}
+
+#profilePic {
+  position: relative;
 }
 
 #hamburger {
