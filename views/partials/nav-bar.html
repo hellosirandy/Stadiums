@@ -2,6 +2,10 @@
 <script src="/javascripts/partials/nav-bar.js" charset="utf-8"></script>
 <div id="navBar" class="grey darken-1">
   <div class="container">
+    {{#if sideNav}}
+    {{else}}
+    <a href="/" class="brand-logo">{{title}}</a>
+    {{/if}}
   	<a data-activates="slide-out" class="button-collapse" id="hamburger">
 			<i class="material-icons">menu</i>
     </a>
@@ -37,6 +41,6 @@
      <span class="grey-text text-darken-4">{{user.fullName}}</span>
    </a></li>
   <li class="divider"></li>
-  <li><a href="#" class="grey-text text-darken-1 profileLink">Profile</a></li>
+  <li><a href="/user/profile" class="grey-text text-darken-1 profileLink">Profile</a></li>
   <li><a href="/signout" class="grey-text text-darken-1 profileLink">Sign out</a></li>
 </ul>

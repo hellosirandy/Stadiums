@@ -7,6 +7,13 @@
   border-bottom: solid 0.5px #9e9e9e;
 }
 
+#navBar .brand-logo {
+  font-size: 35px;
+  line-height: 60px;
+  color: #eeeeee;
+  font-family: 'Pacifico', cursive;
+}
+
 #stadiumNav {
   padding: 20px 0;
   z-index: 0;
