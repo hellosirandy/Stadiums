@@ -25,4 +25,9 @@
 #stadiumDescription {
   padding-top: 70px;
   padding-bottom: 10px;
+  overflow-x: scroll;
+}
+
+#stadiumDescription .row {
+  min-width: 500px;
 }

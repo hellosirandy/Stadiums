@@ -175,16 +175,14 @@
 
 #profileDropdown {
   overflow-y: initial;
-  margin-top: 20px;
+  margin-top: 10px;
   top: 50px !important;
-  position: absolute;
   border: 1px solid rgba(27,31,35,0.15);
   box-shadow: 0 3px 12px rgba(27,31,35,0.15);
   width: 150px !important;
 }
 
 #profileDropdown::before{
-  z-index: 999;
   position: absolute;
   right: 10%;
   top: -10px;
