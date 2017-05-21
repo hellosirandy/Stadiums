@@ -6,13 +6,31 @@
   margin-top: 0;
   margin-bottom: 10px;
   line-height: 2;
-  font-size: 1.5vw;
+  font-size: 1.5rem;
 }
 
 .recommandationName {
-  font-size: 1.2vw;
+  font-size: 1.2rem;
   text-align: center;
   color: #616161;
+}
+
+@media only screen and (max-width: 992px) {
+  #stadiumRecommandation h4 {
+    font-size: 1.35rem;
+  }
+  .recommandationName {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #stadiumRecommandation h4 {
+    font-size: 0.8rem;
+  }
+  .recommandationName {
+    font-size: 0.6rem;
+  }
 }
 
 .recommandationPic {

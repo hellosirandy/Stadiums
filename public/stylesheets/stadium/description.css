@@ -4,13 +4,13 @@
 }
 
 .description h4 {
-  font-size: 1.8vw;
+  font-size: 1.8rem;
   text-align: center;
   font-weight: bold;
 }
 
 .description h5 {
-  font-size: 1.3vw;
+  font-size: 1.3rem;
   text-align: center;
   word-wrap: break-word;
 }
@@ -21,6 +21,26 @@
   left: auto;
   right: auto;
 }
+
+@media only screen and (max-width: 992px) {
+  .description h4 {
+    font-size: 1.5rem;
+  }
+  .description h5 {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  .description h4 {
+    font-size: 1rem;
+  }
+  .description h5 {
+    font-size: 0.7rem;
+  }
+}
+
+
 
 #stadiumDescription {
   padding-top: 70px;
