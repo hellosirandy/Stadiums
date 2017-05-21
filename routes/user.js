@@ -39,4 +39,8 @@ router.post('/signup', passport.authenticate('local.signup', {failureRedirect: '
   });
 });
 
+router.get('/profile', middlewares.loadStadium, function(req, res) {
+  res.render('user/profile', req.renderValues);
+});
+
 module.exports = router;

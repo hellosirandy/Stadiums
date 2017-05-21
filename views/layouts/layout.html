@@ -2,7 +2,11 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/layouts/style.css'/>
+    {{#if sideNav}}
+    <link rel="stylesheet" href="/stylesheets/layouts/side-nav.css">
+    {{/if}}
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- materialize css -->
@@ -24,7 +28,9 @@
     </script>
   </head>
   <body>
+    {{#if sideNav}}
     {{>side-nav}}
+    {{/if}}
     <main>
       {{>nav-bar}}
       {{{body}}}

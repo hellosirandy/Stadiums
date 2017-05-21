@@ -11,22 +11,10 @@ a {
   color: #00B7FF;
 }
 
-header, main, footer {
-  padding-left: 300px;
-}
+
 
 #hamburger {
   display: none;
-}
-
-@media only screen and (max-width : 992px) {
-  header, main, footer {
-    padding-left: 0;
-  }
-  #hamburger {
-    display: inline-block;
-    cursor: pointer;
-  }
 }
 
 main .container {

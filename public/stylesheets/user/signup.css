@@ -8,3 +8,12 @@
   font-size: 1rem;
   color: #e57373;
 }
+
+.input-field input:focus {
+  border-bottom: 1px solid #616161 !important;
+  box-shadow: 0 1px 0 0 #616161 !important;
+}
+
+.input-field label.active {
+  color: #616161 !important;
+}

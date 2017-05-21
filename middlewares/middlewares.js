@@ -10,6 +10,7 @@ function basic(req, res, next) {
   req.renderValues = {
     title: 'Stadiums',
     user: req.user,
+    sideNav: true
   }
   return next();
 }
@@ -22,6 +23,7 @@ function loadStadium(req, res, next) {
       req.renderValues.allStadiums = JSON.stringify(generateSearchData(stadiums));
     } else {
       req.renderValues = {
+        title: 'Stadiums',
         allStadiums: JSON.stringify(generateSearchData(stadiums))
       }
     }
