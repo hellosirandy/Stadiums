@@ -12,7 +12,7 @@ var stadiumSchema = new Schema({
     architect: String,
     location: String,
     images: [String]
-  }
+  },
 });
 
 stadiumSchema.methods.convertOpenedDate = function() {

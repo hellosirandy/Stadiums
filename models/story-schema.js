@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var storySchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'user' },
-  stadium: String,
+  stadium: { type: Schema.Types.ObjectId, ref: 'stadium' },
   title: String,
   content: String,
   create: {type: Date, default: Date.now},
