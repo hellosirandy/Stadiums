@@ -17,7 +17,15 @@ a {
   display: none;
 }
 
+header .container {
+  width: 70%;
+}
+
 main .container {
-  width: 90%;
+  width: 70%;
   max-width: none;
+}
+
+footer .container {
+  width: 70%;
 }

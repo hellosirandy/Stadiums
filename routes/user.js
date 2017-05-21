@@ -3,6 +3,7 @@ var router = express.Router();
 var middlewares = require('../middlewares/middlewares');
 var csrf = require('csurf');
 var passport = require('passport');
+var User = require('../models/user-schema');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -39,8 +40,16 @@ router.post('/signup', passport.authenticate('local.signup', {failureRedirect: '
   });
 });
 
-router.get('/profile', middlewares.loadStadium, function(req, res) {
-  res.render('user/profile', req.renderValues);
+router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, function(req, res) {
+  req.renderValues.sideNav = false;
+  User.findById(req.params.userid, function(err, user) {
+    if (err) {
+      throw err;
+    } else {
+      req.renderValues.profile = user;
+      res.render('user/profile', req.renderValues);
+    }
+  });
 });
 
 module.exports = router;

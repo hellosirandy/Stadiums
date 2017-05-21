@@ -1,0 +1,18 @@
+#pic-name {
+  position: relative;
+}
+
+#pic-name img {
+  width: 180px;
+  height: 180px;
+}
+
+#pic-name h4 {
+  position: absolute;
+  bottom: 10px;
+  left: 220px;
+}
+
+div#profile-content {
+  padding-top: 100px;
+}
