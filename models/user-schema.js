@@ -6,7 +6,7 @@ var userSchema = new Schema({
   fullName: {type: String, required: true},
   email: {type: String, required: true},
   profilePic: {type: String, default: '/images/default_profile_pic.png'},
-  password: {type: String, required: true},
+  password: String,
   strategy: {type: String, required: true},
   stories: [{ type: Schema.Types.ObjectId, ref: 'story' }],
 });
