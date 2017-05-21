@@ -7,7 +7,8 @@ var userSchema = new Schema({
   email: {type: String, required: true},
   profilePic: {type: String, default: '/images/default_profile_pic.png'},
   password: {type: String, required: true},
-  strategy: {type: String, required: true}
+  strategy: {type: String, required: true},
+  stories: [{ type: Schema.Types.ObjectId, ref: 'story' }],
 });
 
 userSchema.methods.encryptPassword = function(password) {

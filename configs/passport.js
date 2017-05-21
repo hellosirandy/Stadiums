@@ -64,6 +64,7 @@ passport.use('local.signup', new LocalStrategy({
       errorMessage: 'Full name cannot be empty.'
     }
   });
+  req.checkBody('confirmPassword','Passwords do not match.').equals(req.body.password);
   var errors = req.validationErrors();
   if (errors) {
     var messages = [];
