@@ -33,6 +33,10 @@
 {{> nav-bar/login-modal}}
 
 <ul id='profileDropdown' class='dropdown-content'>
-  <li><a href="/signout" class="dropDownLink grey-text text-darken-3">Sign out</a></li>
-  <li><a href="#" class="dropDownLink grey-text text-darken-3">Profile</a></li>
+  <li><a id="sign-in-as" class="grey-text text-darken-1">Signed in as <br>
+     <span class="grey-text text-darken-4">{{user.fullName}}</span>
+   </a></li>
+  <li class="divider"></li>
+  <li><a href="#" class="grey-text text-darken-1 profileLink">Profile</a></li>
+  <li><a href="/signout" class="grey-text text-darken-1 profileLink">Sign out</a></li>
 </ul>
