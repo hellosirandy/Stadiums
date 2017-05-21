@@ -49,17 +49,22 @@ passport.use('local.signup', new LocalStrategy({
     'email': {
       notEmpty: true,
       isEmail: {
-        errorMessage: 'Invalid Email'
+        errorMessage: 'Invalid Email.'
       }
     },
     'password': {
       notEmpty: true,
       isLength: {
         options: [{ min: 8}],
-        errorMessage: 'Password must be at least 8 chars long'
+        errorMessage: 'Password must be at least 8 chars long.'
       }
+    },
+    'fullName': {
+      notEmpty: true,
+      errorMessage: 'Full name cannot be empty.'
     }
   });
+  req.checkBody('confirmPassword','Passwords do not match.').equals(req.body.password);
   var errors = req.validationErrors();
   if (errors) {
     var messages = [];
@@ -74,6 +79,7 @@ passport.use('local.signup', new LocalStrategy({
     var newUser = new User();
     newUser.email = email;
     newUser.password = newUser.encryptPassword(password);
+    newUser.fullName = req.body.fullName;
     newUser.strategy = 'local';
     newUser.save(function(err, result) {
       if (err) return done(err);

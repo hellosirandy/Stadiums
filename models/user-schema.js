@@ -3,11 +3,12 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 var userSchema = new Schema({
-  fullName: String,
-  email: String,
+  fullName: {type: String, required: true},
+  email: {type: String, required: true},
   profilePic: {type: String, default: '/images/default_profile_pic.png'},
   password: String,
-  strategy: String
+  strategy: {type: String, required: true},
+  stories: [{ type: Schema.Types.ObjectId, ref: 'story' }],
 });
 
 userSchema.methods.encryptPassword = function(password) {

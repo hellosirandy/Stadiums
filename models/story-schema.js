@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var storySchema = new Schema({
-  author: Object,
+  author: { type: Schema.Types.ObjectId, ref: 'user' },
   stadium: String,
   title: String,
   content: String,

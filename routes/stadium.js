@@ -61,7 +61,7 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
   req.renderValues.handledDetail = stadium.handleDetail(4);
   req.renderValues.stadium = stadium;
   req.renderValues.navTitle = stadium.name;
-  Story.find({stadium: stadium._id}, function(err, stories) {
+  Story.find({stadium: stadium._id}).populate('author').exec(function(err, stories) {
     if (err) throw err;
     else {
       var handledStories = [];
@@ -93,7 +93,7 @@ router.post('/:sport/:league/:stadium', function(req, res) {
     }
     else {
       var newStory = new Story({
-        author: req.user,
+        author: req.user._id,
         title: req.body.storyTitleInput,
         stadium: req.params.stadium,
         content: req.body.storyContent,
