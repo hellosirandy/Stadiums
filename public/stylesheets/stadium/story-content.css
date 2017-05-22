@@ -1,0 +1,95 @@
+.story {
+  border: #e0e0e0  1px solid;
+  padding: 15px;
+}
+
+
+.storyInfo a {
+  display: block;
+}
+
+.storyInfo img {
+  width: 34px;
+  height: 34px;
+  float: left;
+}
+
+.storyAuthor {
+  color: #616161 ;
+  font-size: 15px;
+  line-height: 17px;
+}
+
+.storyTime {
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.storyAuthorTimeDiv {
+  margin-left: 45px;
+}
+
+.storyTitle {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.storyTitle span {
+  float: right;
+  font-size: 0.7em;
+}
+.storyTitle span.positive {
+  color: #81c784;
+}
+.storyTitle span.negative {
+  color: #e57373;
+}
+.storyTitle span.zero {
+  color: #bdbdbd;
+}
+
+.storyContent {
+  max-height: 150px;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+  -moz-transition: max-height 1s ease;
+  -webkit-transition: max-height 1s ease;
+  -o-transition: max-height 1s ease;
+  transition: max-height 1s ease;
+}
+
+.storyContent p {
+  font-size: 1.3em;
+  margin: 2px 0;
+}
+
+.storyContent h1 {
+  font-size: 3em;
+  margin: 3px 0;
+}
+
+.storyContent h2 {
+  font-size: 2.25em;
+  margin: 2.5px 0;
+}
+
+.storyContent h3 {
+  font-size: 2em;
+  margin: 2.3px 0;
+}
+
+.continueBtn {
+  color: #757575;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.continueBtn:hover {
+  color: #9e9e9e;
+  -moz-transition: color 0.2s ease;
+  -webkit-transition: color 0.2s ease;
+  -o-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}

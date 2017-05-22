@@ -4,6 +4,7 @@ var middlewares = require('../middlewares/middlewares');
 var csrf = require('csurf');
 var passport = require('passport');
 var User = require('../models/user-schema');
+var Story = require('../models/story-schema');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -46,16 +47,29 @@ router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, funct
     if (err) {
       throw err;
     } else {
-      req.renderValues.profile = user;
+      // temporarily generate collection list
       req.renderValues.wanted = req.stadiums[0];
-
       req.renderValues.wanted.cover = req.renderValues.wanted.detail.images[0];
       req.renderValues.wantedList = req.stadiums.slice(0, 5);
       req.renderValues.wantedList.forEach(function(wanted) {
         wanted.cover = wanted.detail.images[0];
         wanted.href = `/stadium/${wanted.sport[0]}/${wanted.league[0]}/${wanted._id}`;
       });
-      res.render('user/profile', req.renderValues);
+
+      req.renderValues.profile = user;
+      Story.find({author: req.user._id}).populate('author stadium').exec(function(err, stories) {
+        if (err) {
+          throw err;
+        } else {
+          var handledStories = [];
+          stories.forEach(function(story) {
+            handledStories.push(story.handleStory())
+          });
+          req.renderValues.stories = handledStories;
+          res.render('user/profile', req.renderValues);
+        }
+      });
+
     }
   });
 });

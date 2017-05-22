@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/user/profile.css">
+<link rel="stylesheet" href="/stylesheets/stadium/story-content.css">
+<script src="/javascripts/stadium/story-content.js" charset="utf-8"></script>
 <div id="profile-page">
   <div class="container">
     <div id="profile-content">
@@ -42,14 +44,34 @@
           </div>
         </div>
         <div class="col s8">
-          <div class="grey lighten-3">
-            <div class="row" style="height: 620px;">
+          <div class="grey lighten-4" id="story-div">
+            <div class="row">
+              {{#each stories}}
+              <div class="stadium-link-div grey lighten-5 row">
+                <h6>{{this.stadium.name}}</h6>
+              </div>
+              <div class="story grey lighten-5 row" data-content={{this.content}}>
+
+                <div class="storyInfo">
+                  <img src="{{this.author.profilePic}}" alt="" class="circle">
+                  <div class="storyAuthorTimeDiv">
+                    <a class="storyAuthor">{{this.author.fullName}}</a>
+                    <a class="storyTime">{{this.processedCreate}}</a>
+                  </div>
+                </div>
+                <div class="storyContent">
+                  <h5 class="storyTitle">{{this.title}} <span class="{{this.evaluationClass}}">{{this.evaluation}}</span></h5>
+                  <div class="divider" style="margin-bottom: 10px;"></div>
+                  {{{this.content}}}
+                </div>
+                <a class="continueBtn" data-status="hidden">... Full article</a>
+              </div>
+              {{/each}}
             </div>
 
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>

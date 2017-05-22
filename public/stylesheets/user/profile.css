@@ -56,3 +56,20 @@ div#profile-content {
   line-height: 50px;
   color: #424242;
 }
+
+#story-div {
+  padding: 30px 70px;
+}
+
+.stadium-link-div {
+  margin-bottom: 0;
+  border: #e0e0e0  1px solid;
+  border-bottom: none;
+}
+
+.stadium-link-div h6 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  padding: 8px;
+  color: #546e7a;
+}
