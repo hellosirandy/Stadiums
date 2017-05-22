@@ -47,6 +47,14 @@ router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, funct
       throw err;
     } else {
       req.renderValues.profile = user;
+      req.renderValues.wanted = req.stadiums[0];
+
+      req.renderValues.wanted.cover = req.renderValues.wanted.detail.images[0];
+      req.renderValues.wantedList = req.stadiums.slice(0, 5);
+      req.renderValues.wantedList.forEach(function(wanted) {
+        wanted.cover = wanted.detail.images[0];
+        wanted.href = `/stadium/${wanted.sport[0]}/${wanted.league[0]}/${wanted._id}`;
+      });
       res.render('user/profile', req.renderValues);
     }
   });

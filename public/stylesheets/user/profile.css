@@ -16,3 +16,43 @@
 div#profile-content {
   padding-top: 100px;
 }
+
+#wanted-list {
+  padding: 10px;
+}
+
+#wanted-list h5 {
+  text-align: center;
+}
+
+.profile-title {
+  border-bottom: solid 0.8px #bdbdbd;
+  margin-bottom: 10px;
+}
+
+.collection-item .stadium-cover {
+  width: 70px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+  position: absolute;
+  left: 20px;
+}
+
+.collection.with-header {
+  margin-top: 0;
+}
+
+.collection.with-header .collection-item.avatar {
+  padding-left: 100px;
+  min-height: 70px;
+  cursor: pointer;
+}
+
+.collection.with-header .collection-item.avatar h6 {
+  margin: 0;
+  line-height: 50px;
+  color: #424242;
+}
