@@ -57,7 +57,7 @@ router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, funct
       });
 
       req.renderValues.profile = user;
-      Story.find({author: req.user._id}).populate('author stadium').exec(function(err, stories) {
+      Story.find({author: req.params.userid}).populate('author stadium').exec(function(err, stories) {
         if (err) {
           throw err;
         } else {
