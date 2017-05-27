@@ -48,7 +48,8 @@
             <div class="row">
               {{#each stories}}
               <div class="stadium-link-div grey lighten-5 row">
-                <h6>{{this.stadium.name}}</h6>
+                <a href="{{this.stadium.href}}">{{this.stadium.name}}</a>
+                <!-- <h6>{{this.stadium.name}}</h6> -->
               </div>
               <div class="story grey lighten-5 row" data-content={{this.content}}>
 

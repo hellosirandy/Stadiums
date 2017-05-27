@@ -63,7 +63,9 @@ router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, funct
         } else {
           var handledStories = [];
           stories.forEach(function(story) {
-            handledStories.push(story.handleStory())
+            var hs = story.handleStory();
+            hs.stadium.href = hs.stadium.genHref();
+            handledStories.push(hs);
           });
           req.renderValues.stories = handledStories;
           res.render('user/profile', req.renderValues);

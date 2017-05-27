@@ -35,6 +35,10 @@ stadiumSchema.methods.arrangeImage = function(chunkSize) {
   return images;
 }
 
+stadiumSchema.methods.genHref = function() {
+  return `/stadium/${this.sport[0]}/${this.league[0]}/${this._id}`;
+}
+
 stadiumSchema.methods.handleDetail = function(chunkSize) {
   var handledDetail = {};
   if (this.detail.opened) handledDetail.opened = this.convertOpenedDate();
