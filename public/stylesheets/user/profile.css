@@ -7,10 +7,26 @@
   height: 180px;
 }
 
-#pic-name h4 {
+#pic-name a {
+  font-size: 2rem;
+  line-height: 2;
   position: absolute;
   bottom: 10px;
   left: 220px;
+  color: #424242;
+  cursor: pointer;
+}
+
+#pic-name a:hover {
+  text-decoration: underline;
+}
+
+#pic-name a:hover i {
+  display: inline-block;
+}
+
+#pic-name a i {
+  display: none;
 }
 
 div#profile-content {
