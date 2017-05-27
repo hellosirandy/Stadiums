@@ -1,3 +1,20 @@
+div.map {
+  position: relative;
+}
+
+div.map #map-background {
+  width: 100%;
+  height: auto;
+}
+
+div.map .team-logo {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
 .sliderDiv {
   padding-top: 70px;
   padding-bottom: 70px;

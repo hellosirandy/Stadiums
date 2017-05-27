@@ -2,19 +2,29 @@
 <link rel="stylesheet" href="/stylesheets/index.css">
 <div id="sliderDiv" class="grey lighten-4 sliderDiv">
   <div class="container">
-    <div class="slider">
-      <ul class="slides">
-        {{#each slider}}
-        <li>
-          <img src={{this.image}} />
-          <div class="caption {{this.align}}">
-            <a href="{{this.href}}" class="stadiumName">{{this.name}}</a>
-            <a class="stadiumInfo">{{this.location}}</a>
-            <a class="stadiumInfo">{{this.league}}</a>
-          </div>
-        </li>
-        {{/each}}
-      </ul>
+    <div class="row">
+      <div class="slider">
+        <ul class="slides">
+          {{#each slider}}
+          <li>
+            <img src={{this.image}} />
+            <div class="caption {{this.align}}">
+              <a href="{{this.href}}" class="stadiumName">{{this.name}}</a>
+              <a class="stadiumInfo">{{this.location}}</a>
+              <a class="stadiumInfo">{{this.league}}</a>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
     </div>
+    <div class="row">
+      <div class="map">
+        <img src="/images/map/MLB/USA_9.png" alt="" id="map-background">
+        <img src="/images/map/MLB/logo/pirates.png" alt="" class="team-logo">
+      </div>
+    </div>
+
   </div>
+
 </div>
