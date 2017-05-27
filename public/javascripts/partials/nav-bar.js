@@ -1,6 +1,8 @@
 $(document).ready(function(){
   $('#loginModal').modal();
-  $('#profilePic').dropdown();
+  $('#profilePic').dropdown({
+    alignment: 'right',
+  });
   $('#profilePic').click(function() {
     $(this).dropdown('open');
   });
