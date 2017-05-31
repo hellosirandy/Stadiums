@@ -19,15 +19,42 @@
   z-index: 0;
 }
 
-#stadiumNav #title {
+#stadiumNav a {
   margin: 0;
-  font-size: 3vw;
+  font-size: 3rem;
   line-height: 1.5;
 }
 
+#stadiumNav a i {
+  color: #e0e0e0;
+  text-shadow: -1px 0 #424242, 0 1px #424242, 1px 0 #424242, 0 -1px #424242;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#stadiumNav a i.in-list#wanted-btn {
+  color: #81d4fa;
+}
+
+#stadiumNav a i.in-list#checked-btn {
+  color: #81c784;
+}
+
+#stadiumNav a i#wanted-btn:hover {
+  color: #81d4fa;
+}
+
+#stadiumNav a i.in-list:hover {
+  color: #e0e0e0 !important;
+}
+
+#stadiumNav a i#checked-btn:hover {
+  color: #81c784;
+}
+
 @media only screen and (max-width : 1024px) {
-  #stadiumNav #title {
-    font-size: 30px;
+  #stadiumNav a {
+    font-size: 2rem;
   }
 }
 

@@ -28,8 +28,11 @@
 {{#if navTitle}}
 <div id="stadiumNav" class="grey darken-1">
   <div class="container">
-    <a id="title" class="grey-text text-lighten-3">
-      {{navTitle}} {{#if stadiumCount}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span> {{/if}}
+    <a class="grey-text text-lighten-3">
+      {{navTitle}}
+      {{#if stadiumCount}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span> {{/if}}
+      <i id="wanted-btn" class="material-icons small tooltipped" data-position="bottom" data-delay="10" data-tooltip="Add to wanted list">add</i>
+      <i id="checked-btn" class="material-icons small tooltipped" data-position="bottom" data-delay="10" data-tooltip="Add to checked list">check</i>
     </a>
   </div>
 </div>
