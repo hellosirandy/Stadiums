@@ -30,9 +30,9 @@
   <div class="container">
     <a class="grey-text text-lighten-3">
       {{navTitle}}
-      {{#if stadiumCount}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span> {{/if}}
-      <i id="wanted-btn" class="material-icons small tooltipped" data-position="bottom" data-delay="10" data-tooltip="Add to wanted list">add</i>
-      <i id="checked-btn" class="material-icons small tooltipped" data-position="bottom" data-delay="10" data-tooltip="Add to checked list">check</i>
+      {{#if stadiumCount}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span> {{/if}} 
+      <i id="wanted-btn" class="material-icons small tooltipped {{wantedBtnClass}}" data-position="bottom" data-delay="10" data-tooltip="{{wantedBtnTip}}" data-stadiumid="{{stadium._id}}" data-userid="{{user._id}}" onclick="$('#wanted-submit').click();">add</i>
+      <i id="checked-btn" class="material-icons small tooltipped {{checkedBtnClass}}" data-position="bottom" data-delay="10" data-tooltip="{{checkedBtnTip}}" data-stadiumid="{{stadium._id}}" data-userid="{{user._id}}">check</i>
     </a>
   </div>
 </div>

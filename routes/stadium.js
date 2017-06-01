@@ -61,6 +61,22 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
   req.renderValues.handledDetail = stadium.handleDetail(4);
   req.renderValues.stadium = stadium;
   req.renderValues.navTitle = stadium.name;
+  req.renderValues.wantedBtnClass = 'not-in-list';
+  req.renderValues.wantedBtnTip = 'Add to wanted list';
+  req.renderValues.checkedBtnClass = 'not-in-list';
+  req.renderValues.checkedBtnTip = 'Add to checked list';
+  req.user.wantedList.forEach(function(ws) {
+    if (ws._id.equals(stadium._id)) {
+      req.renderValues.wantedBtnClass = 'in-list';
+      req.renderValues.wantedBtnTip = 'Remove from wanted list';
+    }
+  });
+  req.user.checkedList.forEach(function(cs) {
+    if (cs._id.equals(stadium._id)) {
+      req.renderValues.checkedBtnClass = 'in-list';
+      req.renderValues.checkedBtnTip = 'Remove from checked list';
+    }
+  });
   Story.find({stadium: stadium._id}).populate('author').exec(function(err, stories) {
     if (err) throw err;
     else {
