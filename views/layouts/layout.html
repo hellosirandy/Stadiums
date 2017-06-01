@@ -10,11 +10,11 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- materialize css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <!-- jquery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- materialize js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <!-- favicon -->
     <link rel="icon" href="/images/logo.png">
     <!-- github-button -->
@@ -31,11 +31,12 @@
     {{#if sideNav}}
     <header>
       {{>side-nav}}
-      
+
     </header>
     {{/if}}
     <main>
       {{>nav-bar}}
+      <!-- {{>old-nav-bar}} -->
       {{{body}}}
     </main>
     {{>footer}}
