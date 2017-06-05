@@ -88,6 +88,7 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
       var errors = req.flash('error');
       if (errors.length > 0) req.renderValues.errors = errors[0];
       req.renderValues.recommandation = Recommand(stadium, stadiums);
+      req.renderValues.isStadium = 'true';
       res.render('stadium', req.renderValues);
     }
   });

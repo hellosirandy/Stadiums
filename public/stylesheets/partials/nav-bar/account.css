@@ -11,6 +11,12 @@
   }
 }
 
+@media only screen and (max-width : 400px) {
+  #sign-in-up {
+    font-size: 0.75rem;
+  }
+}
+
 #profile-dropdown {
   overflow-y: initial;
   margin-top: 10px;
@@ -107,7 +113,7 @@
 
 #profile-dropdown li a {
   cursor: default;
-  
+
 }
 
 #profile-dropdown li a:hover {

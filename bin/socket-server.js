@@ -8,46 +8,6 @@ function Server(server) {
       var score = sentiment(sentences);
       socket.emit('update score', score);
     });
-
-    socket.on('modify list', function(data, callback) {
-      User.findById(data.userId, function(err, user) {
-        if (err) {
-          throw err;
-        } else {
-          list = user[data.listName];
-          if (data.action == 'add') {
-            if (!list) {
-              list = [];
-            }
-            if (list.indexOf(data.stadiumId) == -1) {
-              list.push(data.stadiumId);
-            }
-          } else if (data.action == 'remove') {
-            var index = list.indexOf(data.stadiumId)
-            if (index > -1) {
-              list.splice(index, 1);
-            }
-          }
-
-          user.save(function(err, result) {
-            if (err) {
-              throw err;
-            } else {
-              var id = '';
-              if (data.listName == 'wantedList') {
-                id = '#wanted-btn';
-              } else if (data.listName = 'checkedList') {
-                id = '#checked-btn';
-              }
-              socket.emit('toggle in list class', {
-                id: id,
-                action: data.action
-              });
-            }
-          });
-        }
-      });
-    });
   });
 };
 module.exports = Server;

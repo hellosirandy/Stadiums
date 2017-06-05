@@ -2,17 +2,22 @@
 <nav class="nav-extended grey darken-1">
   <div class="container">
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo"style="display: none;">Stadiums</a>
+      <!-- <a href="/" class="brand-logo">Stadiums</a> -->
+      <a data-activates="slide-out" class="button-collapse" id="hamburger">
+  			<i class="material-icons">menu</i>
+      </a>
       <ul class="right">
         <li class="nav-bar-list">{{>nav-bar/search-field}}</li>
-        <li class="nav-bar-list">{{>nav-bar/account}}</li>
+        <li class="nav-bar-list" id="account-li">{{>nav-bar/account}}</li>
       </ul>
     </div>
     <div class="nav-content">
       <span class="nav-title">{{navTitle}}</span>
-      <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal">
+      {{#if isStadium}}
+      <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal green lighten-2">
         <i class="material-icons">add</i>
       </a>
+      {{/if}}
     </div>
   </div>
 
