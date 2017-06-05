@@ -89,6 +89,7 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
       if (errors.length > 0) req.renderValues.errors = errors[0];
       req.renderValues.recommandation = Recommand(stadium, stadiums);
       req.renderValues.isStadium = 'true';
+      req.renderValues.stadiumHref = stadium.genHref();
       res.render('stadium', req.renderValues);
     }
   });
@@ -125,6 +126,16 @@ router.post('/:sport/:league/:stadium', function(req, res) {
   else {
     res.redirect(req.session.current_url);;
   }
+});
+
+router.post('/:sport/:league/:stadium/wanted', function(req, res) {
+  Stadium.findById(req.params.stadium, function(err, stadium) {
+    if (err) {
+      throw err;
+    } else {
+      res.end('It worked!');
+    }
+  });
 });
 
 module.exports = router;

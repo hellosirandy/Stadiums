@@ -16,10 +16,6 @@
   font-family: 'Pacifico', cursive;
 }
 
-@media only screen and (max-width: 992px) {
-
-}
-
 .nav-bar-list {
   margin-left: 10px;
 }
@@ -38,4 +34,16 @@
 
 #checked-btn {
   right: 10px;
+}
+
+.halfway-btn i.material-icons {
+  line-height: 40px;
+}
+
+#wanted-btn {
+  right: 70px;
+}
+
+#checked-btn {
+  right: 15px;
 }

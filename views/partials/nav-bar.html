@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/stylesheets/partials/nav-bar.css">
+<script src="/javascripts/partials/nav-bar.js" charset="utf-8"></script>
 <nav class="nav-extended grey darken-1">
   <div class="container">
     <div class="nav-wrapper">
@@ -14,7 +15,15 @@
     <div class="nav-content">
       <span class="nav-title">{{navTitle}}</span>
       {{#if isStadium}}
-      <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal green lighten-2">
+      <form data-href="{{stadiumHref}}" id="wanted-form" method="post">
+        <input type="submit" id="wanted-submit" style="display: none;">
+        <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped" id="wanted-btn"
+          data-position="bottom" data-delay="10" data-tooltip="Add to wanted list" onclick="$('#wanted-submit').click();">
+          <i class="material-icons">add</i>
+        </a>
+      </form>
+      <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped" id="checked-btn"
+        data-position="bottom" data-delay="10" data-tooltip="Add to checked list">
         <i class="material-icons">add</i>
       </a>
       {{/if}}

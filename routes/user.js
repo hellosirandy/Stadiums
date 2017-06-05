@@ -5,6 +5,7 @@ var csrf = require('csurf');
 var passport = require('passport');
 var User = require('../models/user-schema');
 var Story = require('../models/story-schema');
+var Stadium = require('../models/stadium-schema');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
