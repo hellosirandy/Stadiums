@@ -1,57 +1,20 @@
-$(document).ready(function(){
-  $('#loginModal').modal();
-  $('#profilePic').dropdown();
-  $('#profilePic').click(function() {
-    $(this).dropdown('open');
-  });
-
-	var allStadiums = JSON.parse($('#allStadiums').html());
-	$('#searchInput').keyup(function() {
-		$('#searchResults').html('');
-		var val = $(this).val();
-		if (val != '') {
-			var results = [];
-			for (var i = 0; i < allStadiums.length; i++) {
-				if (allStadiums[i].name.toLowerCase().search(val.toLowerCase()) > -1) {
-					results.push(allStadiums[i]);
-				}
-			}
-			LoadSearchResults(results);
-      $('#searchResults').show();
-		}
-		else {
-      $('#searchResults').hide();
-		}
-	});
-	var con = parseFloat($('#navBar .container').width()) - 40;
-	$('#searchInput').focus(function() {
-		$('#profilePic').css({'display': 'none'});
-		$('.navBarLinks').css({'display': 'none'});
-    $('#searchResults').show();
-		$(this).width(200);
-	});
-	$('#searchInput').focusout(function() {
-		$('#profilePic').css({'display': 'block'});
-		$('.navBarLinks').css({'display': 'block'});
-		$(this).width(100);
-	});
-  $(document).mouseup(function(e) {
-    var trigger = $('#searchInput');
-    var container = $('#searchResults');
-    if (!trigger.is(e.target) && trigger.has(e.target).length === 0){
-        container.hide();
-    }
+$(document).ready(function() {
+  $('.add-to-list-form').submit(function(e) {
+    var stadiumId = $(this).data('stadiumid');
+    var csrf = $(this).data('csrf');
+    var listName = $(this).data('listname');
+    $.ajax({
+      type: $(this).attr('method'),
+      url: `/user/${listName}/${stadiumId}`,
+      data: {_csrf: csrf},
+      success: function(data) {
+        $(`#${listName}-btn`).addClass('disabled');
+        Materialize.toast(`Added to ${listName} list.`, 4000);
+      },
+      error: function(err) {
+        Materialize.toast(`Failed to add to ${listName} list.`, 4000);
+      }
+    });
+    return false;
   });
 });
-
-function LoadSearchResults(results) {
-	for (var i = 0; i < results.length; i++) {
-    $('#searchResults').append(
-			`<a href="${results[i].url}" class="searchResultsLink">${results[i].name}</a>`
-		);
-	}
-}
-
-function HideSearchResults() {
-	$('#searchResults').css({'max-height': '0'});
-}

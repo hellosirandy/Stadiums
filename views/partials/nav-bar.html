@@ -1,46 +1,36 @@
 <link rel="stylesheet" href="/stylesheets/partials/nav-bar.css">
 <script src="/javascripts/partials/nav-bar.js" charset="utf-8"></script>
-<div id="navBar" class="grey darken-1">
+<nav class="nav-extended grey darken-1">
   <div class="container">
-    {{#if sideNav}}
-    {{else}}
-    <a href="/" class="brand-logo">{{title}}</a>
-    {{/if}}
-  	<a data-activates="slide-out" class="button-collapse" id="hamburger">
-			<i class="material-icons">menu</i>
-    </a>
-    <div id="navBarLinkDiv">
-    	<div id="searchWrapper">
-    		<span id="allStadiums" style="display: none;">{{allStadiums}}</span>
-				<input type="text" id="searchInput" class="grey darken-1" data-stadiums={{allStadiums}}>
-				<i class="material-icons" id="searchIcon">search</i>
-				<div id="searchResults" class="grey lighten-2 z-depth-3">
-				</div>
-    	</div>
-      {{#if user}}
-      <img src="{{user.profilePic}}" alt="" class="circle" id="profilePic" data-activates='profileDropdown' data-beloworigin="true" >
-      {{else}}
-      <a href="#loginModal" class="navBarLinks">Sign in / Sign up</a>
+    <div class="nav-wrapper">
+      <!-- <a href="/" class="brand-logo">Stadiums</a> -->
+      <a data-activates="slide-out" class="button-collapse" id="hamburger">
+  			<i class="material-icons">menu</i>
+      </a>
+      <ul class="right">
+        <li class="nav-bar-list">{{>nav-bar/search-field}}</li>
+        <li class="nav-bar-list" id="account-li">{{>nav-bar/account}}</li>
+      </ul>
+    </div>
+    <div class="nav-content">
+      <span class="nav-title">{{navTitle}}</span>
+      {{#if isStadium}}
+      <form data-stadiumid="{{stadium._id}}" data-csrf="{{csrfToken}}" data-listname="wanted" id="wanted-form" method="post" class="add-to-list-form">
+        <input type="submit" id="wanted-submit" style="display: none;">
+        <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped {{wantedDisable}}" id="wanted-btn"
+          data-position="bottom" data-delay="10" data-tooltip="Add to wanted list" onclick="$('#wanted-submit').click();">
+          <i class="material-icons">add</i>
+        </a>
+      </form>
+      <form data-stadiumid="{{stadium._id}}" data-csrf="{{csrfToken}}" data-listname="checked" id="checked-form" method="post"  class="add-to-list-form">
+        <input type="submit" id="checked-submit" style="display: none;">
+        <a class="btn-floating halfway-fab waves-effect waves-light teal blue lighten-2 halfway-btn tooltipped {{checkedDisable}}" id="checked-btn"
+          data-position="bottom" data-delay="10" data-tooltip="Add to checked list" onclick="$('#checked-submit').click();">
+          <i class="material-icons">check</i>
+        </a>
+      </form>
       {{/if}}
     </div>
   </div>
-</div>
-{{#if navTitle}}
-<div id="stadiumNav" class="grey darken-1">
-  <div class="container">
-    <a id="title" class="grey-text text-lighten-3">
-      {{navTitle}} {{#if stadiumCount}} <span id="stadiumCount"> - {{stadiumCount}} stadiums</span> {{/if}}
-    </a>
-  </div>
-</div>
-{{/if}}
-{{> nav-bar/login-modal}}
 
-<ul id='profileDropdown' class='dropdown-content'>
-  <li><a id="sign-in-as" class="grey-text text-darken-1">Signed in as <br>
-     <span class="grey-text text-darken-4">{{user.fullName}}</span>
-   </a></li>
-  <li class="divider"></li>
-  <li><a href="/user/profile" class="grey-text text-darken-1 profileLink">Profile</a></li>
-  <li><a href="/signout" class="grey-text text-darken-1 profileLink">Sign out</a></li>
-</ul>
+</nav>

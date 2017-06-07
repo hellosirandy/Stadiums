@@ -8,6 +8,8 @@ var userSchema = new Schema({
   profilePic: {type: String, default: '/images/default_profile_pic.png'},
   password: String,
   strategy: {type: String, required: true},
+  wantedList: [{type: Schema.Types.ObjectId, ref: 'stadium'}],
+  checkedList: [{type: Schema.Types.ObjectId, ref: 'stadium'}]
 });
 
 userSchema.methods.encryptPassword = function(password) {

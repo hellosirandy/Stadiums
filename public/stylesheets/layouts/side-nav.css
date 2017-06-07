@@ -11,3 +11,16 @@ header, main, footer {
     cursor: pointer;
   }
 }
+
+header .container {
+  width: 90%;
+}
+
+main .container {
+  width: 90%;
+  max-width: none;
+}
+
+footer .container {
+  width: 90%;
+}

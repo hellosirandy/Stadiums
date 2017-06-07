@@ -1,245 +1,54 @@
-#navBar {
-  z-index: 0;
+.nav-wrapper {
+  border-bottom: solid 1px #9e9e9e;
 }
 
-#navBar .container {
-  height: 60px;
-  border-bottom: solid 0.5px #9e9e9e;
-}
-
-#navBar .brand-logo {
-  font-size: 35px;
-  line-height: 60px;
-  color: #eeeeee;
-  font-family: 'Pacifico', cursive;
-}
-
-#stadiumNav {
-  padding: 20px 0;
-  z-index: 0;
-}
-
-#stadiumNav #title {
-  margin: 0;
-  font-size: 3vw;
-  line-height: 1.5;
-}
-
-@media only screen and (max-width : 1024px) {
-  #stadiumNav #title {
-    font-size: 30px;
-  }
-}
-
-#stadiumNav #stadiumCount {
-  font-size: 2vh;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-#navBarLinkDiv {
-  height: 60px;
-  float: right;
-}
-
-#navBarLinkDiv .navBarLinks {
-  color: #e0e0e0;
-  transition: color 0.2s;
-  font-weight: bold;
-	line-height: 60px;
-	float: right;
-}
-
-#navBarLinkDiv a:hover {
-  color: #bdbdbd;
-  transition: color 0.2s;
-}
-
-#navBarLinkDiv img {
-	margin-top: 10px;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-	float: right;
-}
-
-#navBarLinkDiv #searchWrapper {
-	position: relative;
-	display: inline-block;
-}
-
-#navBarLinkDiv #searchWrapper #searchInput {
-	width: 100px;
-	height: 40px;
-	margin: 10px;
-	border: solid 1px #9e9e9e;
-	border-radius: 5px;
-	padding-left: 10px;
-	padding-right: 32px;
-	font-size: 15px;
-	color: #e0e0e0;
-	transition: none;
-}
-
-#navBarLinkDiv #searchWrapper #searchIcon {
-	position: absolute;
-	right: 20px;
-	top: 19px;
-	font-size: 24px;
-}
-
-#navBarLinkDiv #searchWrapper #searchInput:focus {
-	border-bottom: 1px solid #bdbdbd !important;
-	box-shadow: none !important;
-	background-color: #e0e0e0 !important;
-	color: #424242;
-	transition: all 0.3s ease;
-}
-
-#navBarLinkDiv #searchWrapper #searchResults {
-	width: 244px;
-	margin-left: 10px;
-	margin-top: -10px;
-	z-index: 9999;
-	position: absolute;
-	max-height: 500px;
-	overflow-y: scroll;
-	transition: max-height 0.3s ease;
-}
-
-#navBarLinkDiv #searchWrapper #searchResults a{
-	padding-left: 10px;
-	line-height: 50px;
-	height: 50px;
-	display: block;
-	cursor: pointer;
-	background-color: #e0e0e0;
-	color: #424242;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#navBarLinkDiv #searchWrapper #searchResults a:hover {
-	background-color: #bdbdbd;
-}
-
-#loginModal {
-  width: 400px;
-}
-
-#loginModal .socialBtn {
-  height: 60px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-#loginModal #facebookBtn {
-  background-color: var(--facebook-color);
-}
-
-#loginModal #twitterBtn {
-  background-color: var(--twitter-color);
-}
-
-.socialBtn .socialBtnImgDiv {
-  width: 62px;
-  height: 60px;
-  padding: 0 7px 0 5px;
-  float: left;
-}
-
-.socialBtnImgDiv img {
-  margin-top: 10px;
-  width: 40px;
-  height: 40px;
-}
-
-.socialBtnTextDiv {
-  height: 60px;
-  line-height: 60px;
-  padding-left: 75px;
-}
-
-.socialBtnTextDiv a {
-  color: #eeeeee;
-  font-size: 30px;
+.nav-title {
+  font-size: 3rem;
 }
 
 @media only screen and (max-width : 400px) {
-  #loginModal {
-    width: 100%;
+  .nav-title {
+    font-size: 2rem;
   }
 }
 
-#profileDropdown {
-  overflow-y: initial;
-  margin-top: 10px;
-  top: 50px !important;
-  border: 1px solid rgba(27,31,35,0.15);
-  box-shadow: 0 3px 12px rgba(27,31,35,0.15);
-  width: 150px !important;
+.brand-logo {
+  font-family: 'Pacifico', cursive;
 }
 
-#profileDropdown::before{
-  position: absolute;
-  right: 10%;
-  top: -10px;
-  width: 0;
-  height: 0;
-  content:'';
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #ffffff;
-  display: block;
-}
-
-#profileDropdown li {
-  min-height: 46px;
-}
-
-#profileDropdown li.divider {
-  min-height: 0px;
-}
-
-#profileDropdown li:hover{
-  background-color: inherit;
-}
-
-#profileDropdown li:hover a.profileLink {
-  cursor: pointer;
-  color: #212121 !important;
-}
-
-#profileDropdown li a {
-  font-size: 14px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  cursor: default;
-}
-
-#profilePic {
-  position: relative;
+.nav-bar-list {
+  margin-left: 10px;
 }
 
 #hamburger {
-	color: #f5f5f5;
+  margin-left: 0;
 }
 
 #hamburger i {
-	font-size: 33px;
-	line-height: 60px;
+  font-size: 30px;
 }
 
-#emailSignin {
-  text-align: center;
+#wanted-btn {
+  right: 100px;
 }
-#emailSignin a {
-  font-size: 18px;
-  line-height: 5;
-  color: #616161;
+
+#checked-btn {
+  right: 10px;
 }
-#emailSignin a:hover {
-    text-decoration: underline;
+
+.halfway-btn i.material-icons {
+  line-height: 40px;
+}
+
+#wanted-btn {
+  right: 70px;
+}
+
+#checked-btn {
+  right: 15px;
+}
+
+#toast-container {
+  top: 0;
+  right: 10px;
 }

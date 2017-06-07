@@ -3,6 +3,10 @@ var router = express.Router();
 var middlewares = require('../middlewares/middlewares');
 var csrf = require('csurf');
 var passport = require('passport');
+var User = require('../models/user-schema');
+var Story = require('../models/story-schema');
+var Stadium = require('../models/stadium-schema');
+var userMiddleware = require('../middlewares/user');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -39,8 +43,47 @@ router.post('/signup', passport.authenticate('local.signup', {failureRedirect: '
   });
 });
 
-router.get('/profile', middlewares.loadStadium, function(req, res) {
-  res.render('user/profile', req.renderValues);
+router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, function(req, res) {
+  req.renderValues.sideNav = false;
+  User.findById(req.params.userid, function(err, user) {
+    if (err) {
+      throw err;
+    } else {
+      // temporarily generate collection list
+      req.renderValues.wanted = req.stadiums[0];
+      req.renderValues.wanted.cover = req.renderValues.wanted.detail.images[0];
+      req.renderValues.wantedList = req.stadiums.slice(0, 5);
+      req.renderValues.wantedList.forEach(function(wanted) {
+        wanted.cover = wanted.detail.images[0];
+        wanted.href = `/stadium/${wanted.sport[0]}/${wanted.league[0]}/${wanted._id}`;
+      });
+
+      req.renderValues.profile = user;
+      Story.find({author: req.params.userid}).populate('author stadium').exec(function(err, stories) {
+        if (err) {
+          throw err;
+        } else {
+          var handledStories = [];
+          stories.forEach(function(story) {
+            var hs = story.handleStory();
+            hs.stadium.href = hs.stadium.genHref();
+            handledStories.push(hs);
+          });
+          req.renderValues.stories = handledStories;
+          res.render('user/profile', req.renderValues);
+        }
+      });
+
+    }
+  });
+});
+
+router.post('/wanted/:stadiumid', userMiddleware.addToList, function(req, res) {
+  res.end();
+});
+
+router.post('/checked/:stadiumid', userMiddleware.addToList, function(req, res) {
+  res.end();
 });
 
 module.exports = router;

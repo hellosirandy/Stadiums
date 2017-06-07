@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/stadium/story.css">
+<link rel="stylesheet" href="/stylesheets/stadium/story-content.css">
+<script src="/javascripts/stadium/story-content.js" charset="utf-8"></script>
 <div id="stadiumStoryWall" class="stadiumTabs" data-user="{{user}}">
   <div class="container">
     {{#each stories}}
@@ -22,7 +24,7 @@
     {{#if user}}
     <div id="newStoryDiv" class="row grey lighten-4">
 
-      <form class="col s12" method="post">
+      <form class="col s12" method="post" id="story-form">
         {{#if errors}}
           <div class="red lighten-4" id="errorDiv">
             {{#each errors.messages}}
@@ -48,7 +50,7 @@
             </div>
           </div>
         </div>
-        <input name="storyContent" type="hidden">
+        <input name="storyContent" type="text" style="display: none;">
         <div class="row">
           <div class="col s12">
             <input name="storyEvaluation" type="hidden">
@@ -57,6 +59,7 @@
         </div>
         <div class="row">
           <div class="col s5">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
             <input type="submit" style="display: none;" id="submitBtn"/>
             <a id="postBtn" class="waves-effect waves-light btn grey darken-2" onclick="$('#submitBtn').click();">Post</a>
           </div>

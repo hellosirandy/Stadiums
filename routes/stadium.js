@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var middlewares = require('../middlewares/middlewares');
+var csrf = require('csurf');
 var Stadium = require('../models/stadium-schema');
 var Story = require('../models/story-schema');
 var Slider = require('../helpers/slider');
 var Recommand = require('../helpers/recommand');
-var middlewares = require('../middlewares/middlewares');
+
+var csrfProtection = csrf();
+router.use(csrfProtection);
 
 var SPORTS = ['Baseball', 'Football', 'Basketball', 'Hockey'];
 
@@ -61,6 +65,20 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
   req.renderValues.handledDetail = stadium.handleDetail(4);
   req.renderValues.stadium = stadium;
   req.renderValues.navTitle = stadium.name;
+  req.renderValues.wantedBtnClass = 'not-in-list';
+  req.renderValues.wantedBtnTip = 'Add to wanted list';
+  req.renderValues.checkedBtnClass = 'not-in-list';
+  req.renderValues.checkedBtnTip = 'Add to checked list';
+  req.user.wantedList.forEach(function(ws) {
+    if (ws._id.equals(stadium._id)) {
+      req.renderValues.wantedDisable = 'disabled';
+    }
+  });
+  req.user.checkedList.forEach(function(cs) {
+    if (cs._id.equals(stadium._id)) {
+      req.renderValues.checkedDisable = 'disabled';
+    }
+  });
   Story.find({stadium: stadium._id}).populate('author').exec(function(err, stories) {
     if (err) throw err;
     else {
@@ -72,6 +90,8 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
       var errors = req.flash('error');
       if (errors.length > 0) req.renderValues.errors = errors[0];
       req.renderValues.recommandation = Recommand(stadium, stadiums);
+      req.renderValues.isStadium = 'true';
+      req.renderValues.csrfToken = req.csrfToken();
       res.render('stadium', req.renderValues);
     }
   });
@@ -79,6 +99,7 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
 
 router.post('/:sport/:league/:stadium', function(req, res) {
   if (req.isAuthenticated()) {
+    console.log(req.body);
     req.checkBody('storyTitleInput', 'Please give it a title').notEmpty();
     var errors = req.validationErrors();
     if (errors) {

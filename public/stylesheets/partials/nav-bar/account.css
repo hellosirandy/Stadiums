@@ -1,0 +1,129 @@
+#profile-pic {
+  margin-top: 12px;
+  width: 32px;
+  height: 32px;
+}
+
+@media only screen and (min-width : 601px) {
+  #profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media only screen and (max-width : 400px) {
+  #sign-in-up {
+    font-size: 0.75rem;
+  }
+}
+
+#profile-dropdown {
+  overflow-y: initial;
+  margin-top: 10px;
+  top: 50px !important;
+  border: 1px solid rgba(27,31,35,0.15);
+  box-shadow: 0 3px 12px rgba(27,31,35,0.15);
+  width: 150px !important;
+}
+
+#profile-dropdown::before{
+  position: absolute;
+  right: 10%;
+  top: -10px;
+  width: 0;
+  height: 0;
+  content:'';
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ffffff;
+  display: block;
+}
+
+.nav-bar-link {
+  color: #e0e0e0;
+  font-weight: bold;
+  transition: color 0.4s ease;
+}
+
+.nav-bar-link:hover {
+  background-color: inherit;
+  color: #bdbdbd;
+}
+
+#login-modal {
+  width: 400px;
+}
+
+#login-modal h4 {
+  color: black;
+}
+
+#login-modal #email-login-btn a {
+  color: #424242 ;
+  line-height: 1.1;
+  font-size: 1.2rem;
+  margin: 20px;
+  height: auto;
+  text-align: center;
+}
+
+#login-modal #email-login-btn a:hover {
+  background-color: inherit;
+  text-decoration: underline;
+}
+
+#login-modal .social-login-btn {
+  height: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#login-modal #facebookBtn {
+  background-color: rgb(59, 89, 152);
+}
+
+#login-modal #twitterBtn {
+  background-color: rgb(0, 172, 237);
+}
+
+.social-login-btn .socialBtnImgDiv {
+  width: 62px;
+  height: 60px;
+  padding: 0 7px 0 5px;
+  float: left;
+}
+
+.socialBtnImgDiv img {
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.socialBtnTextDiv {
+  height: 60px;
+  line-height: 60px;
+  padding-left: 75px;
+}
+
+.socialBtnTextDiv a {
+  color: #eeeeee;
+  font-size: 30px;
+}
+
+#profile-dropdown li a {
+  cursor: default;
+
+}
+
+#profile-dropdown li a:hover {
+  background-color: inherit;
+}
+
+#profile-dropdown li:hover {
+  background-color: inherit;
+}
+#profile-dropdown li:hover a.profile-link{
+  cursor: pointer;
+  color: #212121 !important;
+}
