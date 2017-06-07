@@ -15,17 +15,20 @@
     <div class="nav-content">
       <span class="nav-title">{{navTitle}}</span>
       {{#if isStadium}}
-      <form data-href="{{stadiumHref}}" id="wanted-form" method="post">
+      <form data-href="{{stadiumHref}}" data-csrf="{{csrfToken}}" id="wanted-form" method="post">
         <input type="submit" id="wanted-submit" style="display: none;">
         <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped" id="wanted-btn"
           data-position="bottom" data-delay="10" data-tooltip="Add to wanted list" onclick="$('#wanted-submit').click();">
           <i class="material-icons">add</i>
         </a>
       </form>
-      <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped" id="checked-btn"
-        data-position="bottom" data-delay="10" data-tooltip="Add to checked list">
-        <i class="material-icons">add</i>
-      </a>
+      <form data-href="{{stadiumHref}}" id="checked-form" method="post">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <a class="btn-floating halfway-fab waves-effect waves-light teal blue lighten-2 halfway-btn tooltipped" id="checked-btn"
+          data-position="bottom" data-delay="10" data-tooltip="Add to checked list">
+          <i class="material-icons">check</i>
+        </a>
+      </form>
       {{/if}}
     </div>
   </div>

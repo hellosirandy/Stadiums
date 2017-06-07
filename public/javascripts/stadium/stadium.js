@@ -32,7 +32,7 @@ $(document).ready(function() {
       theme: 'snow',
       placeholder: 'Waiting for your precious content',
     });
-    var form = document.querySelector('form');
+    var form = document.querySelector('form[id=story-form]');
     form.onsubmit = function() {
       var storyContent = document.querySelector('input[name=storyContent]');
       var storyEvaluation = document.querySelector('input[name=storyEvaluation]');

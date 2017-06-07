@@ -47,3 +47,8 @@
 #checked-btn {
   right: 15px;
 }
+
+#toast-container {
+  top: 0;
+  right: 10px;
+}

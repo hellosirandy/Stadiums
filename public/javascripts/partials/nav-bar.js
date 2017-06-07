@@ -3,11 +3,12 @@ $(document).ready(function() {
     var href = $(this).data('href');
     $.ajax({
       type: $(this).attr('method'),
-      url: `${href}/wanted`,
-      data: {hi: 'hi'},
+      // url: `${href}/wanted`,
+      url: '/user/wanted',
+      data: {hi: 'hi', _csrf: $(this).data('csrf')},
       success: function(data) {
-        console.log('ya');
-        console.log(data);
+        $('#wanted-btn').addClass('disabled');
+        Materialize.toast('Added to wanted list.', 4000);
       },
       error: function(err) {
         console.log('no');
