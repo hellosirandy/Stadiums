@@ -1,6 +1,7 @@
 $(document).ready(function() {
   up = 38;
   down = 40;
+  enter = 13;
   searchResultHighlight = -1;
   var allStadiums = $('#search-result').data('stadiums');
   $('#search-wrapper').click(function() {
@@ -18,34 +19,48 @@ $(document).ready(function() {
       case down:
         e.preventDefault();
         if ($('#search-result').is(':visible')) {
-          $cur.toggleClass('grey lighten-2');
-          $cur = $cur.next();
-          $cur.toggleClass('grey lighten-2');
+          if ($cur.next().length) {
+            $cur.toggleClass('grey lighten-2');
+            $cur = $cur.next();
+            $cur.toggleClass('grey lighten-2');
+            if ($cur.position().top + $cur.outerHeight() > $('#search-result').height() + $('#search-result').scrollTop()) {
+              $('#search-result').animate({
+                scrollTop: $cur.position().top + $cur.outerHeight() - $('#search-result').height()
+              }, 100);
+            }
+          }
         }
         break;
       case up:
         e.preventDefault();
         if ($('#search-result').is(':visible')) {
-          $cur.toggleClass('grey lighten-2');
-          $cur = $cur.prev();
-          $cur.toggleClass('grey lighten-2');
+          if ($cur.prev().length) {
+            $cur.toggleClass('grey lighten-2');
+            $cur = $cur.prev();
+            $cur.toggleClass('grey lighten-2');
+            if ($cur.position().top < $('#search-result').scrollTop()) {
+              $('#search-result').animate({
+                scrollTop: $cur.position().top
+              }, 100);
+            }
+          }
+        }
+        break;
+      case enter:
+        if ($cur.length && $cur.attr('href')) {
+          window.location = $cur.attr('href');
         }
         break;
       default:
     		var val = $(this).val();
         if (val != inputText) {
-          $('#search-result ul').html('');
-          console.log(val);
           search(val, allStadiums);
           $cur = $('#search-result a').first();
           $cur.toggleClass('grey lighten-2');
         }
     }
   });
-  // $('#search-result ul a').hover(function() {
-  //   $('#search-result a').eq(searchResultHighlight).toggleClass('grey lighten-2');
-  //   searchResultHighlight =
-  // });
+
   $(document).mouseup(function(e) {
     var trigger = $('#search-input');
     var container = $('#search-wrapper');
@@ -57,10 +72,16 @@ $(document).ready(function() {
       }
     }
   });
+  $(document).on("mouseenter", "#search-result a", function() {
+    $cur.toggleClass('grey lighten-2');
+    $cur = $(this);
+    $cur.toggleClass('grey lighten-2');
+  });
 });
 
 function search(inputText, allStadiums) {
   if (inputText != '') {
+    $('#search-result ul').html('');
     for (var i = 0; i < allStadiums.length; i++) {
       if (allStadiums[i].name.toLowerCase().search(inputText.toLowerCase()) > -1) {
         $('#search-result ul').append(
