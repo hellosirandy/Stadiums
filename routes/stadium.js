@@ -65,20 +65,19 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
   req.renderValues.handledDetail = stadium.handleDetail(4);
   req.renderValues.stadium = stadium;
   req.renderValues.navTitle = stadium.name;
-  req.renderValues.wantedBtnClass = 'not-in-list';
-  req.renderValues.wantedBtnTip = 'Add to wanted list';
-  req.renderValues.checkedBtnClass = 'not-in-list';
-  req.renderValues.checkedBtnTip = 'Add to checked list';
-  req.user.wantedList.forEach(function(ws) {
-    if (ws._id.equals(stadium._id)) {
-      req.renderValues.wantedDisable = 'disabled';
-    }
-  });
-  req.user.checkedList.forEach(function(cs) {
-    if (cs._id.equals(stadium._id)) {
-      req.renderValues.checkedDisable = 'disabled';
-    }
-  });
+  if (req.isAuthenticated()) {
+    req.renderValues.isStadiumAndLoggin = 'true';
+    req.user.wantedList.forEach(function(ws) {
+      if (ws._id.equals(stadium._id)) {
+        req.renderValues.wantedDisable = 'disabled';
+      }
+    });
+    req.user.checkedList.forEach(function(cs) {
+      if (cs._id.equals(stadium._id)) {
+        req.renderValues.checkedDisable = 'disabled';
+      }
+    });
+  }
   Story.find({stadium: stadium._id}).populate('author').exec(function(err, stories) {
     if (err) throw err;
     else {
@@ -90,7 +89,6 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
       var errors = req.flash('error');
       if (errors.length > 0) req.renderValues.errors = errors[0];
       req.renderValues.recommandation = Recommand(stadium, stadiums);
-      req.renderValues.isStadium = 'true';
       req.renderValues.csrfToken = req.csrfToken();
       res.render('stadium', req.renderValues);
     }
