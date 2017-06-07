@@ -17,14 +17,14 @@
       {{#if isStadium}}
       <form data-stadiumid="{{stadium._id}}" data-csrf="{{csrfToken}}" data-listname="wanted" id="wanted-form" method="post" class="add-to-list-form">
         <input type="submit" id="wanted-submit" style="display: none;">
-        <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped" id="wanted-btn"
+        <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped {{wantedDisable}}" id="wanted-btn"
           data-position="bottom" data-delay="10" data-tooltip="Add to wanted list" onclick="$('#wanted-submit').click();">
           <i class="material-icons">add</i>
         </a>
       </form>
       <form data-stadiumid="{{stadium._id}}" data-csrf="{{csrfToken}}" data-listname="checked" id="checked-form" method="post"  class="add-to-list-form">
         <input type="submit" id="checked-submit" style="display: none;">
-        <a class="btn-floating halfway-fab waves-effect waves-light teal blue lighten-2 halfway-btn tooltipped" id="checked-btn"
+        <a class="btn-floating halfway-fab waves-effect waves-light teal blue lighten-2 halfway-btn tooltipped {{checkedDisable}}" id="checked-btn"
           data-position="bottom" data-delay="10" data-tooltip="Add to checked list" onclick="$('#checked-submit').click();">
           <i class="material-icons">check</i>
         </a>
