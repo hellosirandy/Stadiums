@@ -134,14 +134,4 @@ router.post('/:sport/:league/:stadium', function(req, res) {
   }
 });
 
-router.post('/:sport/:league/:stadium/wanted', function(req, res) {
-  Stadium.findById(req.params.stadium, function(err, stadium) {
-    if (err) {
-      throw err;
-    } else {
-      res.end('It worked!');
-    }
-  });
-});
-
 module.exports = router;

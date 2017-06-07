@@ -77,18 +77,18 @@ router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, funct
   });
 });
 
-router.post('/wanted', function(req, res) {
-  res.end('It worked!');
+router.post('/wanted/:stadiumid', function(req, res) {
+  Stadium.findById(req.params.stadiumid, function(err, stadium) {
+    if (err) {
+      throw err;
+    } else {
+      res.sendStatus(200);
+    }
+  });
 });
 
 // router.post('/:sport/:league/:stadium/wanted', function(req, res) {
-//   Stadium.findById(req.params.stadium, function(err, stadium) {
-//     if (err) {
-//       throw err;
-//     } else {
-//       res.end('It worked!');
-//     }
-//   });
+
 // });
 
 module.exports = router;

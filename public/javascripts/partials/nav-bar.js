@@ -1,18 +1,17 @@
 $(document).ready(function() {
   $('#wanted-form').submit(function(e) {
-    var href = $(this).data('href');
+    var stadiumId = $(this).data('stadiumid');
+    var csrf = $(this).data('csrf')
     $.ajax({
       type: $(this).attr('method'),
-      // url: `${href}/wanted`,
-      url: '/user/wanted',
-      data: {hi: 'hi', _csrf: $(this).data('csrf')},
+      url: `/user/wanted/${stadiumId}`,
+      data: {_csrf: csrf},
       success: function(data) {
         $('#wanted-btn').addClass('disabled');
         Materialize.toast('Added to wanted list.', 4000);
       },
       error: function(err) {
-        console.log('no');
-        console.log(err);
+        Materialize.toast('Failed to add to wanted list.', 4000);
       }
     });
     return false;

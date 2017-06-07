@@ -15,7 +15,7 @@
     <div class="nav-content">
       <span class="nav-title">{{navTitle}}</span>
       {{#if isStadium}}
-      <form data-href="{{stadiumHref}}" data-csrf="{{csrfToken}}" id="wanted-form" method="post">
+      <form data-stadiumid="{{stadium._id}}" data-csrf="{{csrfToken}}" id="wanted-form" method="post">
         <input type="submit" id="wanted-submit" style="display: none;">
         <a class="btn-floating halfway-fab waves-effect waves-light teal green lighten-2 halfway-btn tooltipped" id="wanted-btn"
           data-position="bottom" data-delay="10" data-tooltip="Add to wanted list" onclick="$('#wanted-submit').click();">
