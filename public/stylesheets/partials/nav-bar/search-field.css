@@ -13,6 +13,7 @@ div#search-wrapper input {
 	font-size: 15px;
 	color: #e0e0e0;
 	transition: none;
+  box-shadow: none;
 }
 
 @media only screen and (min-width : 601px) {
@@ -21,9 +22,8 @@ div#search-wrapper input {
   }
 }
 
-div#search-wrapper input:focus {
+div#search-wrapper input.focus {
   border-bottom: 1px solid #bdbdbd;
-	box-shadow: none;
 	background-color: #e0e0e0;
 	color: #424242;
 	transition: 0.3s ease;
@@ -31,7 +31,7 @@ div#search-wrapper input:focus {
 }
 
 @media only screen and (max-width: 400px) {
-  div#search-wrapper input:focus {
+  div#search-wrapper input.focus {
     width: 170px;
   }
 }
@@ -64,3 +64,7 @@ div#search-wrapper #search-result ul a {
   color: #616161;
   padding-left: 10px;
 }
+
+/*div#search-wrapper #search-result ul a.focus {
+  back
+}*/
