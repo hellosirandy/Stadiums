@@ -11,38 +11,35 @@ $(document).ready(function() {
       search(val, allStadiums);
     }
   });
-  var selecting = false;
   var $cur;
+  var inputText = '';
   $('#search-input').keyup(function(e) {
-    $('#search-result ul').html('');
-		var val = $(this).val();
-    search(val, allStadiums);
-    if ($('#search-result').is(':visible')) {
-      selecting = true;
-      if (!selecting) {
-        $cur = $('#search-result a').first();
-      }
-      $cur.toggleClass('grey lighten-2');
-      switch (e.which) {
-        case down:
-          console.log($cur.html());
-          // $cur.toggleClass('grey lighten-2');
+    switch (e.which) {
+      case down:
+        e.preventDefault();
+        if ($('#search-result').is(':visible')) {
+          $cur.toggleClass('grey lighten-2');
           $cur = $cur.next();
-          // $cur.toggleClass('grey lighten-2');
-          // console.log($('#search-result a').first().html());
-          // searchResultHighlight += 1;
-          // $('#search-result a').eq(searchResultHighlight).toggleClass('grey lighten-2');
-          break;
-        case up:
-          console.log($cur.html());
+          $cur.toggleClass('grey lighten-2');
+        }
+        break;
+      case up:
+        e.preventDefault();
+        if ($('#search-result').is(':visible')) {
           $cur.toggleClass('grey lighten-2');
           $cur = $cur.prev();
           $cur.toggleClass('grey lighten-2');
-          break
-        default:
-          return;
-      }
-      e.preventDefault();
+        }
+        break;
+      default:
+    		var val = $(this).val();
+        if (val != inputText) {
+          $('#search-result ul').html('');
+          console.log(val);
+          search(val, allStadiums);
+          $cur = $('#search-result a').first();
+          $cur.toggleClass('grey lighten-2');
+        }
     }
   });
   // $('#search-result ul a').hover(function() {
