@@ -7,12 +7,85 @@
   height: 180px;
 }
 
-#pic-name h4 {
+#pic-name a {
+  font-size: 2rem;
+  line-height: 2;
   position: absolute;
   bottom: 10px;
   left: 220px;
+  color: #424242;
+  cursor: pointer;
+}
+
+#pic-name a:hover {
+  text-decoration: underline;
+}
+
+#pic-name a:hover i {
+  display: inline-block;
+}
+
+#pic-name a i {
+  display: none;
 }
 
 div#profile-content {
   padding-top: 100px;
+}
+
+#wanted-list {
+  padding: 10px;
+}
+
+#wanted-list h5 {
+  text-align: center;
+}
+
+.profile-title {
+  border-bottom: solid 0.8px #bdbdbd;
+  margin-bottom: 10px;
+}
+
+.collection-item .stadium-cover {
+  width: 70px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+  position: absolute;
+  left: 20px;
+}
+
+.collection.with-header {
+  margin-top: 0;
+}
+
+.collection.with-header .collection-item.avatar {
+  padding-left: 100px;
+  min-height: 70px;
+  cursor: pointer;
+}
+
+.collection.with-header .collection-item.avatar h6 {
+  margin: 0;
+  line-height: 50px;
+  color: #424242;
+}
+
+#story-div {
+  padding: 30px 70px;
+}
+
+.stadium-link-div {
+  margin-bottom: 0;
+  border: #e0e0e0  1px solid;
+  border-bottom: none;
+}
+
+.stadium-link-div a {
+  font-size: 1.2rem;
+  line-height: 2.5;
+  padding: 8px;
+  color: #546e7a;
 }

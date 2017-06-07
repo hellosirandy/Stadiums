@@ -61,6 +61,22 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
   req.renderValues.handledDetail = stadium.handleDetail(4);
   req.renderValues.stadium = stadium;
   req.renderValues.navTitle = stadium.name;
+  req.renderValues.wantedBtnClass = 'not-in-list';
+  req.renderValues.wantedBtnTip = 'Add to wanted list';
+  req.renderValues.checkedBtnClass = 'not-in-list';
+  req.renderValues.checkedBtnTip = 'Add to checked list';
+  req.user.wantedList.forEach(function(ws) {
+    if (ws._id.equals(stadium._id)) {
+      req.renderValues.wantedBtnClass = 'in-list';
+      req.renderValues.wantedBtnTip = 'Remove from wanted list';
+    }
+  });
+  req.user.checkedList.forEach(function(cs) {
+    if (cs._id.equals(stadium._id)) {
+      req.renderValues.checkedBtnClass = 'in-list';
+      req.renderValues.checkedBtnTip = 'Remove from checked list';
+    }
+  });
   Story.find({stadium: stadium._id}).populate('author').exec(function(err, stories) {
     if (err) throw err;
     else {
@@ -72,6 +88,8 @@ router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadiu
       var errors = req.flash('error');
       if (errors.length > 0) req.renderValues.errors = errors[0];
       req.renderValues.recommandation = Recommand(stadium, stadiums);
+      req.renderValues.isStadium = 'true';
+      req.renderValues.stadiumHref = stadium.genHref();
       res.render('stadium', req.renderValues);
     }
   });
@@ -108,6 +126,16 @@ router.post('/:sport/:league/:stadium', function(req, res) {
   else {
     res.redirect(req.session.current_url);;
   }
+});
+
+router.post('/:sport/:league/:stadium/wanted', function(req, res) {
+  Stadium.findById(req.params.stadium, function(err, stadium) {
+    if (err) {
+      throw err;
+    } else {
+      res.end('It worked!');
+    }
+  });
 });
 
 module.exports = router;
