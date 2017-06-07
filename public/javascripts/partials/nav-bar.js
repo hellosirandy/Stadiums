@@ -1,17 +1,18 @@
 $(document).ready(function() {
-  $('#wanted-form').submit(function(e) {
+  $('.add-to-list-form').submit(function(e) {
     var stadiumId = $(this).data('stadiumid');
-    var csrf = $(this).data('csrf')
+    var csrf = $(this).data('csrf');
+    var listName = $(this).data('listname');
     $.ajax({
       type: $(this).attr('method'),
-      url: `/user/wanted/${stadiumId}`,
+      url: `/user/${listName}/${stadiumId}`,
       data: {_csrf: csrf},
       success: function(data) {
-        $('#wanted-btn').addClass('disabled');
-        Materialize.toast('Added to wanted list.', 4000);
+        $(`#${listName}-btn`).addClass('disabled');
+        Materialize.toast(`Added to ${listName} list.`, 4000);
       },
       error: function(err) {
-        Materialize.toast('Failed to add to wanted list.', 4000);
+        Materialize.toast(`Failed to add to ${listName} list.`, 4000);
       }
     });
     return false;

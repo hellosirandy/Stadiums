@@ -6,6 +6,7 @@ var passport = require('passport');
 var User = require('../models/user-schema');
 var Story = require('../models/story-schema');
 var Stadium = require('../models/stadium-schema');
+var userMiddleware = require('../middlewares/user');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -77,18 +78,12 @@ router.get('/profile/:userid', middlewares.basic, middlewares.loadStadium, funct
   });
 });
 
-router.post('/wanted/:stadiumid', function(req, res) {
-  Stadium.findById(req.params.stadiumid, function(err, stadium) {
-    if (err) {
-      throw err;
-    } else {
-      res.sendStatus(200);
-    }
-  });
+router.post('/wanted/:stadiumid', userMiddleware.addToList, function(req, res) {
+  res.end();
 });
 
-// router.post('/:sport/:league/:stadium/wanted', function(req, res) {
-
-// });
+router.post('/checked/:stadiumid', userMiddleware.addToList, function(req, res) {
+  res.end();
+});
 
 module.exports = router;
