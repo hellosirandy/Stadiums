@@ -16,7 +16,14 @@
       </ul>
     </div>
     <div class="nav-content">
-      <span class="nav-title">{{navTitle}}</span>
+      <div>
+        {{#each breadcrumb}}
+        <a href="{{this.href}}" class="breadcrumb">{{this.name}}</a>
+        {{/each}}
+      </div>
+
+      <!-- <span class="nav-title">{{navTitle}}</span> -->
+
       {{#if isStadiumAndLoggin}}
       <form data-stadiumid="{{stadium._id}}" data-csrf="{{csrfToken}}" data-listname="wanted" id="wanted-form" method="post" class="add-to-list-form">
         <input type="submit" id="wanted-submit" style="display: none;">

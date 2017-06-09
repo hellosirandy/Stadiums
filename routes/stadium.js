@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var middlewares = require('../middlewares/middlewares');
+var stadiumMiddleware = require('../middlewares/stadium');
 var csrf = require('csurf');
 var Stadium = require('../models/stadium-schema');
 var Story = require('../models/story-schema');
@@ -12,7 +13,7 @@ router.use(csrfProtection);
 
 var SPORTS = ['Baseball', 'Football', 'Basketball', 'Hockey'];
 
-router.get('/', middlewares.basic, middlewares.loadStadium, function(req, res) {
+router.get('/', middlewares.basic, middlewares.loadStadium, stadiumMiddleware.root, function(req, res) {
   var stadiums = req.stadiums;
   req.renderValues.slider = Slider(stadiums);
   req.renderValues.navTitle = 'Stadiums';
@@ -20,7 +21,7 @@ router.get('/', middlewares.basic, middlewares.loadStadium, function(req, res) {
   res.render('index', req.renderValues);
 });
 
-router.get('/:sport', middlewares.basic, middlewares.loadStadium, middlewares.checkSport, function(req, res) {
+router.get('/:sport', middlewares.basic, middlewares.loadStadium, stadiumMiddleware.root, stadiumMiddleware.checkSport, function(req, res) {
   if (req.leagues.length == 1) {
     res.redirect(`/stadium/${req.params.sport}/${leagues[0]}`);
   } else {
@@ -40,7 +41,7 @@ router.get('/:sport', middlewares.basic, middlewares.loadStadium, middlewares.ch
   }
 });
 
-router.get('/:sport/:league', middlewares.basic, middlewares.loadStadium, middlewares.checkSport, middlewares.checkLeague, function(req, res) {
+router.get('/:sport/:league', middlewares.basic, middlewares.loadStadium, stadiumMiddleware.root, stadiumMiddleware.checkSport, stadiumMiddleware.checkLeague, function(req, res) {
   var stadiums = req.stadiums;
   var leagueStadiums = req.leagueStadiums;
   req.renderValues.slider = Slider(leagueStadiums);
@@ -53,7 +54,7 @@ router.get('/:sport/:league', middlewares.basic, middlewares.loadStadium, middle
   res.render('index', req.renderValues);
 });
 
-router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadium, middlewares.checkSport, middlewares.checkLeague, middlewares.checkStadium, function(req, res) {
+router.get('/:sport/:league/:stadium', middlewares.basic, middlewares.loadStadium, stadiumMiddleware.root, stadiumMiddleware.checkSport, stadiumMiddleware.checkLeague, stadiumMiddleware.checkStadium, function(req, res) {
   var stadiums = req.stadiums;
   var leagueStadiums = req.leagueStadiums;
   req.renderValues.selectedSport = req.params.sport;

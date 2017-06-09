@@ -60,3 +60,8 @@
   top: 0;
   right: 10px;
 }
+
+.breadcrumb {
+  font-size: 20px;
+  line-height: 50px;
+}

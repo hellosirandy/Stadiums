@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   $('#storyModal').modal();
 
 	$('ul.tabs').tabs({
