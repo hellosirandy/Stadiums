@@ -15,6 +15,7 @@ function checkSport(req, res, next) {
     leagues = LEAGUES[req.params.sport];
     req.leagues = leagues;
     req.renderValues.breadcrumb.push({name: req.params.sport, href: `/stadium/${req.params.sport}`});
+    req.renderValues.title = req.params.sport;
     return next();
   } else {
     res.redirect('/stadium');
@@ -33,6 +34,7 @@ function checkLeague(req, res, next) {
     req.renderValues.breadcrumb.push({
       name: req.params.league, href: `/stadium/${req.params.sport}/${req.params.league}`
     });
+    req.renderValues.title = req.params.league;
     return next();
   } else {
     res.redirect(`/stadium/${req.params.sport}`);
@@ -49,6 +51,7 @@ function checkStadium(req, res, next) {
       name: stadium.name,
       href: `/stadium/${req.params.sport}/${req.params.league}/${req.params.stadium}`
     });
+    req.renderValues.title = stadium.name;
     return next();
   } else {
     res.redirect(`/stadium/${req.params.sport}`);
