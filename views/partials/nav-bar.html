@@ -3,7 +3,10 @@
 <nav class="nav-extended grey darken-1">
   <div class="container">
     <div class="nav-wrapper">
-      <!-- <a href="/" class="brand-logo">Stadiums</a> -->
+      {{#if sideNav}}
+      {{else}}
+      <a href="/" class="brand-logo">Stadiums</a>
+      {{/if}}
       <a data-activates="slide-out" class="button-collapse" id="hamburger">
   			<i class="material-icons">menu</i>
       </a>

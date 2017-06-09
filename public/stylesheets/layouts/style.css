@@ -2,25 +2,28 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-}
-
-
-
-#hamburger {
-  display: none;
-}
-
-header .container {
+header.container {
   width: 70%;
 }
 
 main .container {
   width: 70%;
-  max-width: none;
 }
 
 footer .container {
   width: 70%;
+}
+
+@media only screen and (max-width : 992px) {
+  header.container {
+    width: 90%;
+  }
+
+  main .container {
+    width: 90%;
+  }
+
+  footer .container {
+    width: 90%;
+  }
 }
