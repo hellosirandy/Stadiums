@@ -1,3 +1,7 @@
+.description {
+  margin-top: 10px;
+}
+
 .description img {
   margin-left: 30%;
   width: 40%;
@@ -40,10 +44,8 @@
   }
 }
 
-
-
 #stadiumDescription {
-  padding-top: 70px;
+  padding-top: 10px;
   padding-bottom: 10px;
   overflow-x: scroll;
 }

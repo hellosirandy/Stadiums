@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  console.log($('.breadcrumb:last-child').html());
+  $('.breadcrumb').each(function() {
+    console.log($(this).html());
+  });
   $('.add-to-list-form').submit(function(e) {
     var stadiumId = $(this).data('stadiumid');
     var csrf = $(this).data('csrf');
