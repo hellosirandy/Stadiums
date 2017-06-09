@@ -65,11 +65,11 @@
   margin: 20px;
   height: auto;
   text-align: center;
+  text-decoration: underline;
 }
 
 #login-modal #email-login-btn a:hover {
   background-color: inherit;
-  text-decoration: underline;
 }
 
 #login-modal .social-login-btn {
@@ -88,9 +88,8 @@
 }
 
 .social-login-btn .socialBtnImgDiv {
-  width: 62px;
-  height: 60px;
-  padding: 0 7px 0 5px;
+  height: 100%;
+  padding: 0 10px 0 10px;
   float: left;
 }
 
@@ -100,15 +99,54 @@
   height: 40px;
 }
 
-.socialBtnTextDiv {
-  height: 60px;
+.social-login-btn .socialBtnTextDiv {
+  height: 100%;
   line-height: 60px;
-  padding-left: 75px;
+  padding-left: 60px;
 }
 
 .socialBtnTextDiv a {
   color: #eeeeee;
   font-size: 30px;
+}
+
+@media only screen and (max-width : 400px) {
+  #login-modal {
+    width: 90%;
+  }
+
+  #login-modal #email-login-btn a {
+    font-size: 1.2rem;
+    margin: 20px;
+  }
+
+  #login-modal .social-login-btn {
+    height: 50px;
+    margin-top: 10px;
+  }
+
+  .social-login-btn .socialBtnImgDiv {
+    height: 100%;
+    width: 62px;
+    padding: 0 8px 0 8px;
+    float: left;
+  }
+
+  .socialBtnImgDiv img {
+    margin-top: 8px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .social-login-btn .socialBtnTextDiv {
+    height: 100%;
+    line-height: 50px;
+    padding-left: 50px;
+  }
+
+  .socialBtnTextDiv a {
+    font-size: 25px;
+  }
 }
 
 #profile-dropdown li a {
