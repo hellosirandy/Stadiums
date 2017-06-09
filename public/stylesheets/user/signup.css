@@ -17,3 +17,11 @@
 .input-field label.active {
   color: #616161 !important;
 }
+
+#hamburger {
+  display: none;
+}
+
+#sign-in-up {
+  display: none;
+}

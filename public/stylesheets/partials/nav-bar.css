@@ -16,6 +16,14 @@
   font-family: 'Pacifico', cursive;
 }
 
+@media only screen and (max-width : 992px) {
+  nav .brand-logo {
+    left: 0;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
 .nav-bar-list {
   margin-left: 10px;
 }

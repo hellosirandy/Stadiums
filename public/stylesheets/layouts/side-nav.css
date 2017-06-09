@@ -6,10 +6,6 @@ header, main, footer {
   header, main, footer {
     padding-left: 0;
   }
-  #hamburger {
-    display: inline-block;
-    cursor: pointer;
-  }
 }
 
 header .container {
@@ -18,7 +14,6 @@ header .container {
 
 main .container {
   width: 90%;
-  max-width: none;
 }
 
 footer .container {
