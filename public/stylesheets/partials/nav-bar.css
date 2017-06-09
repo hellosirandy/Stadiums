@@ -6,9 +6,28 @@
   font-size: 3rem;
 }
 
+.breadcrumb {
+  font-size: 20px;
+  line-height: 50px;
+}
+
 @media only screen and (max-width : 400px) {
   .nav-title {
     font-size: 2rem;
+  }
+  .breadcrumb {
+    font-size: 15px;
+    line-height: 35px;
+  }
+
+  .breadcrumb::before {
+    font-size: 20px;
+    margin: 0 5px 0 4px;
+  }
+
+  #breadcrumb-div {
+    padding-top: 15px;
+    padding-bottom: 20px;
   }
 }
 
@@ -59,9 +78,4 @@
 #toast-container {
   top: 0;
   right: 10px;
-}
-
-.breadcrumb {
-  font-size: 20px;
-  line-height: 50px;
 }

@@ -29,6 +29,8 @@
 
 @media only screen and (max-width: 400px) {
   #stadium-title {
+    padding-top: 20px;
     font-size: 2rem;
+    text-align: center;
   }
 }
